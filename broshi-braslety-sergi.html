@@ -88,6 +88,27 @@
         }
         
         @media (max-width: 768px) { nav { flex-direction: column; padding: 15px 20px; gap: 15px; } nav ul { flex-direction: column; gap: 10px; width: 100%; } .portfolio-grid { grid-template-columns: 1fr; } }
+               /* === ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ === */
+        body {
+            animation: fadeIn 0.8s ease-in-out; /* Время анимации 0.8 секунд */
+        }
+
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); /* Чуть-чуть сдвигаем снизу вверх */
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        /* Бонус для современных браузеров (Chrome, Edge) */
+        @view-transition {
+            navigation: auto;
+        }
+ 
     </style>
 </head>
 <body>
