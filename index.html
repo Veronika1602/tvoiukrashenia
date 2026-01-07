@@ -292,9 +292,9 @@
             font-size: 14px;
             color: #888;
         }
-  /* Фон для второй карточки "Броши, браслеты и серьги" */
+ /* Фон для второй карточки "Броши, браслеты и серьги" */
 .category-card:nth-child(2) {
-    background-image: url('6876b264-e8fd-4f2b-a5ee-32d199a55a5a(1).png');
+    background-image: url('Braslet.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -309,11 +309,12 @@
     border: 2px solid transparent;
 }
 
-/* При наведении на блок - убираем белый фон */
+/* При наведении на блок - убираем белый фон и появляется рамка */
 .category-card:nth-child(2):hover {
     background-color: rgba(255, 255, 255, 0);
     background-blend-mode: normal;
     border-color: var(--color-accent);
+    transform: translateY(-5px);
 }
         /* Фон для третьей карточки "На заказ" */
 .category-card:nth-child(3) {
