@@ -313,6 +313,28 @@
         linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
         url('6876b264-e8fd-4f2b-a5ee-32d199a55a5a(1).png');
 }
+        /* Фон для третьей карточки "На заказ" */
+.category-card:nth-child(3) {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
+        url('Колье и серьги (ИИ)');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+/* При наведении на "На заказ" - убираем белый фон полностью */
+.category-card:nth-child(3):hover {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+        url('Колье и серьги (ИИ).png');
+}
 
         /* PORTFOLIO SECTION */
         .portfolio {
