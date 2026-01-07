@@ -12,22 +12,23 @@
         }
 
         :root {
-            --color-primary: #8b7355;
-            --color-accent: #d4a574;
-            --color-light: #f5f0eb;
-            --color-heading: #2c2c2c;
-            --color-text: #666;
+            --color-primary: #dbcebb;   /* Бежевый */
+            --color-accent: #c2785d;    /* Рыжий акцент */
+            --color-light: #dbcebb;     /* Фон */
+            --color-heading: #51291f;   /* Темно-коричневый текст */
+            --color-text: #89816a;      /* Обычный текст */
+            --color-dark: #2a2a2a;      /* Темный фон подвала */
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--color-text);
             line-height: 1.6;
-            background-color: #dbcebb;
+            background-color: var(--color-light);
         }
 
-        /* HEADER & NAVIGATION */
-        .header {
+        /* --- ШАПКА САЙТА --- */
+        header {
             background-color: white;
             position: sticky;
             top: 0;
@@ -47,9 +48,8 @@
         .logo {
             font-size: 24px;
             font-weight: 700;
-            color: var(--color-primary);
+            color: var(--color-accent);
             text-decoration: none;
-            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -71,48 +71,51 @@
             color: var(--color-accent);
         }
 
-        .nav-links .contact-btn {
+        /* КНОПКА В МЕНЮ (Коричневая) */
+        .contact-btn {
             background-color: var(--color-primary);
-            color: white !important;
+            color: var(--color-heading) !important;
             padding: 10px 24px;
-            border-radius: 50px;
-            transition: background-color 0.3s, transform 0.2s;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-weight: 600;
+            font-size: 14px;
         }
 
-        .nav-links .contact-btn:hover {
+        .contact-btn:hover {
             background-color: var(--color-accent);
-            transform: translateY(-2px);
+            color: white !important;
         }
 
-        /* PORTFOLIO SECTION */
+        /* --- КАТАЛОГ ТОВАРОВ --- */
         .portfolio {
-            padding: 80px 40px;
-            background-color: white;
+            padding: 40px 40px 80px 40px;
             max-width: 1200px;
-            margin: 40px auto;
-            border-radius: 8px;
+            margin: 0 auto;
         }
 
         .section-title {
             font-size: 36px;
             color: var(--color-heading);
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             font-weight: 700;
         }
 
+        /* СЕТКА (3 колонки на ПК, 1 на телефоне) */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .portfolio-item {
-            background: var(--color-light);
+            background: white;
             border-radius: 8px;
             overflow: hidden;
-            transition: all 0.3s;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
 
         .portfolio-item:hover {
@@ -121,16 +124,16 @@
         }
 
         .portfolio-image {
-            height: 250px;
-            background: linear-gradient(135deg, #ddd 0%, #eee 100%);
+            height: 300px;
+            background: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
-            color: #999;
+            font-size: 40px;
+            color: #ccc;
             overflow: hidden;
         }
-
+        
         .portfolio-image img {
             width: 100%;
             height: 100%;
@@ -138,108 +141,94 @@
         }
 
         .portfolio-content {
-            padding: 30px;
+            padding: 20px;
         }
 
         .portfolio-title {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--color-heading);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             font-weight: 600;
         }
 
         .portfolio-price {
-            font-size: 18px;
+            font-size: 16px;
             color: var(--color-accent);
             font-weight: 700;
             margin-bottom: 15px;
         }
 
         .portfolio-desc {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
             margin-bottom: 20px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        /* BUTTON */
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        .btn-primary {
+        /* КНОПКА ПОД ТОВАРОМ */
+        .btn-buy {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
             background-color: var(--color-accent);
             color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-primary:hover {
-            background-color: var(--color-primary);
-            transform: translateY(-2px);
+        .btn-buy:hover {
+            background-color: var(--color-heading);
         }
 
-        /* FOOTER */
-        .footer {
-            background: var(--color-heading);
+        /* ССЫЛКА НАЗАД */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--color-heading);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* ПОДВАЛ */
+        footer {
+            background-color: var(--color-dark);
             color: white;
             padding: 40px;
             text-align: center;
-        }
-
-        .footer p {
-            margin-bottom: 10px;
             font-size: 14px;
         }
 
-        /* BACK BUTTON */
-        .back-link {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-            font-size: 16px;
-        }
-
-        .back-link:hover {
-            color: var(--color-primary);
-        }
-
-        /* RESPONSIVE */
+        /* АДАПТИВНОСТЬ */
         @media (max-width: 768px) {
-            .header-container {
-                padding: 15px 20px;
-            }
-
             .nav-links {
-                display: none; /* Скрыть меню на мобильных (для бургер-меню нужен JS) */
+                display: none; 
             }
-
+            .header-container {
+                justify-content: center;
+            }
             .portfolio {
-                padding: 40px 20px;
+                padding: 20px;
             }
-
             .portfolio-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 28px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER (Идентичный главной странице) -->
-    <header class="header">
+
+    <!-- ШАПКА -->
+    <header>
         <div class="header-container">
             <a href="index.html" class="logo">Твои украшения✧</a>
             
@@ -253,102 +242,101 @@
         </div>
     </header>
 
-    <!-- PORTFOLIO SECTION -->
-    <section class="portfolio" id="portfolio">
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <section class="portfolio">
         <a href="index.html" class="back-link">← Вернуться на главную</a>
         
         <h2 class="section-title">Колье и чокеры</h2>
+        
         <div class="portfolio-grid">
+            
             <!-- Товар 1 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- ЗАМЕНИТЕ на: <img src="choker-gold.jpg" alt="Чокер из латуни с позолотой"> -->
+                    <!-- Замените 📿 на <img src="фото.jpg"> -->
                     📿
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Чокер Минимализм</h3>
                     <p class="portfolio-price">4 500 ₽</p>
-                    <p class="portfolio-desc">Тонкий чокер из натуральной латуни с позолотой. Минималистичный дизайн, универсальный ко всем образам.</p>
-                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
+                    <p class="portfolio-desc">Тонкий чокер из натуральной латуни с позолотой. Минималистичный дизайн.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
                 </div>
             </div>
 
             <!-- Товар 2 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- ЗАМЕНИТЕ на: <img src="necklace-amethyst.jpg" alt="Колье с аметистом"> -->
                     ✨
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Колье с аметистом</h3>
                     <p class="portfolio-price">7 200 ₽</p>
-                    <p class="portfolio-desc">Колье с натуральным аметистом. Завязывается на шею, легко регулируется по размеру. Идеально для любых случаев.</p>
-                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
+                    <p class="portfolio-desc">Колье с натуральным аметистом. Завязывается на шею, легко регулируется.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
                 </div>
             </div>
 
             <!-- Товар 3 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- ЗАМЕНИТЕ на: <img src="set-rose-quartz.jpg" alt="Комплект из розового кварца"> -->
                     💎
                 </div>
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Комплект из розовых камней</h3>
+                    <h3 class="portfolio-title">Комплект "Роза"</h3>
                     <p class="portfolio-price">9 500 ₽</p>
-                    <p class="portfolio-desc">Комплект: чокер + серьги из натурального розового кварца. Нежное сочетание цветов и фактур.</p>
-                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
+                    <p class="portfolio-desc">Комплект: чокер + серьги из натурального розового кварца.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
                 </div>
             </div>
 
             <!-- Товар 4 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- ЗАМЕНИТЕ на: <img src="earrings-limestone.jpg" alt="Серьги из лаймстоуна"> -->
                     👂
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Серьги Лаймстоун</h3>
                     <p class="portfolio-price">3 800 ₽</p>
-                    <p class="portfolio-desc">Парные серьги из натурального лаймстоуна. Лёгкие, удобные, красиво переливаются на свету.</p>
-                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
+                    <p class="portfolio-desc">Парные серьги из натурального лаймстоуна. Лёгкие и удобные.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
                 </div>
             </div>
 
             <!-- Товар 5 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- ЗАМЕНИТЕ на: <img src="bracelet-sea.jpg" alt="Браслет Океан"> -->
                     ⌚
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Браслет Океан</h3>
                     <p class="portfolio-price">5 100 ₽</p>
-                    <p class="portfolio-desc">Браслет с натуральными камнями в оттенках морской волны. Регулируется по размеру запястья.</p>
-                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
+                    <p class="portfolio-desc">Браслет с натуральными камнями в оттенках морской волны.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
                 </div>
             </div>
 
-            <!-- Товар 6 - Индивидуальный заказ -->
+            <!-- Товар 6 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- ЗАМЕНИТЕ на: <img src="custom-order.jpg" alt="Персональный заказ"> -->
                     🎁
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Персональный заказ</h3>
                     <p class="portfolio-price">от 2 500 ₽</p>
-                    <p class="portfolio-desc">Мечтаете о чём-то особенном? Я создам украшение вашей мечты, учитывая все ваши пожелания и предпочтения.</p>
-                    <a href="index.html#contact" class="btn btn-primary">Оформить заказ</a>
+                    <p class="portfolio-desc">Я создам украшение вашей мечты, учитывая все ваши пожелания.</p>
+                    <a href="index.html#contact" class="btn-buy">Оформить заказ</a>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
+    <!-- ПОДВАЛ -->
+    <footer>
         <p>&copy; 2026 Твои украшения. Все права защищены.</p>
-        <p>Создано с любовью к украшениям ✧</p>
+        <p style="margin-top: 10px; color: #aaa;">Создано с любовью ✧</p>
     </footer>
+
 </body>
 </html>
