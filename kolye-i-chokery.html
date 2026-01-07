@@ -16,136 +16,82 @@
             --color-accent: #d4a574;
             --color-light: #f5f0eb;
             --color-heading: #2c2c2c;
+            --color-text: #666;
         }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #666;
-    line-height: 1.6;
-    background-color: #dbcebb;
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            background-color: #dbcebb;
+        }
 
-  /* HEADER & NAVIGATION */
-.header {
-    background-color: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
+        /* HEADER & NAVIGATION */
+        .header {
+            background-color: white;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-.logo {
-    font-size: 24px;
-    font-weight: 600;
-    color: #c2785d;
-    text-decoration: none;
-}
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
 
-.nav-links a {
-    text-decoration: none;
-    color: #89816a;
-    font-size: 14px;
-    transition: color 0.3s;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-heading);
+            font-size: 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-.nav-links a:hover {
-    color: #c2785d;
-}
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 40px;
-}
+        .nav-links .contact-btn {
+            background-color: var(--color-primary);
+            color: white !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
 
-nav a {
-    text-decoration: none;
-    color: var(--color-text);
-    font-size: 14px;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: var(--color-accent);
-}
-
-.contact-btn {
-    background-color: var(--color-primary);
-    color: white;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    font-size: 14px;
-}
-
-.contact-btn:hover {
-    background-color: var(--color-accent);
-}
-
-/* DROPDOWN MENU */
-.nav-dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 200px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    z-index: 200;
-}
-
-.nav-dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.dropdown-menu li {
-    margin: 0;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 12px 20px;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.dropdown-menu a:hover {
-    background-color: var(--color-primary);
-    color: white;
-    padding-left: 25px;
-}
+        .nav-links .contact-btn:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-2px);
+        }
 
         /* PORTFOLIO SECTION */
-.portfolio {
-    padding: 80px 40px;
-    background-color: white;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 8px;
-}
+        .portfolio {
+            padding: 80px 40px;
+            background-color: white;
+            max-width: 1200px;
+            margin: 40px auto;
+            border-radius: 8px;
+        }
 
         .section-title {
             font-size: 36px;
@@ -175,13 +121,20 @@ nav a:hover {
         }
 
         .portfolio-image {
-            height: 200px;
+            height: 250px;
             background: linear-gradient(135deg, #ddd 0%, #eee 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 48px;
             color: #999;
+            overflow: hidden;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .portfolio-content {
@@ -241,7 +194,7 @@ nav a:hover {
         }
 
         .footer p {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             font-size: 14px;
         }
 
@@ -253,13 +206,27 @@ nav a:hover {
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
+            font-size: 16px;
         }
 
         .back-link:hover {
             color: var(--color-primary);
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none; /* Скрыть меню на мобильных (для бургер-меню нужен JS) */
+            }
+
+            .portfolio {
+                padding: 40px 20px;
+            }
+
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
@@ -267,23 +234,22 @@ nav a:hover {
             .section-title {
                 font-size: 28px;
             }
-
-            .nav-links {
-                display: none;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+    <!-- HEADER (Идентичный главной странице) -->
     <header class="header">
         <div class="header-container">
             <a href="index.html" class="logo">Твои украшения✧</a>
-            <ul class="nav-links">
-                <li><a href="index.html#about">О мне</a></li>
-                <li><a href="index.html#categories">Категории</a></li>
-                <li><a href="index.html#contact">Контакты</a></li>
-            </ul>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">Обо мне</a></li>
+                    <li><a href="index.html#categories">Категории</a></li>
+                    <li><a href="index.html#contact" class="contact-btn">Написать мне</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -293,9 +259,12 @@ nav a:hover {
         
         <h2 class="section-title">Колье и чокеры</h2>
         <div class="portfolio-grid">
-            <!-- Пример 1 -->
+            <!-- Товар 1 -->
             <div class="portfolio-item">
-                <div class="portfolio-image">📿 Фото украшения 1</div>
+                <div class="portfolio-image">
+                    <!-- ЗАМЕНИТЕ на: <img src="choker-gold.jpg" alt="Чокер из латуни с позолотой"> -->
+                    📿
+                </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Чокер Минимализм</h3>
                     <p class="portfolio-price">4 500 ₽</p>
@@ -304,9 +273,12 @@ nav a:hover {
                 </div>
             </div>
 
-            <!-- Пример 2 -->
+            <!-- Товар 2 -->
             <div class="portfolio-item">
-                <div class="portfolio-image">✨ Фото украшения 2</div>
+                <div class="portfolio-image">
+                    <!-- ЗАМЕНИТЕ на: <img src="necklace-amethyst.jpg" alt="Колье с аметистом"> -->
+                    ✨
+                </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Колье с аметистом</h3>
                     <p class="portfolio-price">7 200 ₽</p>
@@ -315,9 +287,12 @@ nav a:hover {
                 </div>
             </div>
 
-            <!-- Пример 3 -->
+            <!-- Товар 3 -->
             <div class="portfolio-item">
-                <div class="portfolio-image">💎 Фото украшения 3</div>
+                <div class="portfolio-image">
+                    <!-- ЗАМЕНИТЕ на: <img src="set-rose-quartz.jpg" alt="Комплект из розового кварца"> -->
+                    💎
+                </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Комплект из розовых камней</h3>
                     <p class="portfolio-price">9 500 ₽</p>
@@ -326,9 +301,12 @@ nav a:hover {
                 </div>
             </div>
 
-            <!-- Пример 4 -->
+            <!-- Товар 4 -->
             <div class="portfolio-item">
-                <div class="portfolio-image">👂 Фото украшения 4</div>
+                <div class="portfolio-image">
+                    <!-- ЗАМЕНИТЕ на: <img src="earrings-limestone.jpg" alt="Серьги из лаймстоуна"> -->
+                    👂
+                </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Серьги Лаймстоун</h3>
                     <p class="portfolio-price">3 800 ₽</p>
@@ -337,9 +315,12 @@ nav a:hover {
                 </div>
             </div>
 
-            <!-- Пример 5 -->
+            <!-- Товар 5 -->
             <div class="portfolio-item">
-                <div class="portfolio-image">⌚ Фото украшения 5</div>
+                <div class="portfolio-image">
+                    <!-- ЗАМЕНИТЕ на: <img src="bracelet-sea.jpg" alt="Браслет Океан"> -->
+                    ⌚
+                </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Браслет Океан</h3>
                     <p class="portfolio-price">5 100 ₽</p>
@@ -348,9 +329,12 @@ nav a:hover {
                 </div>
             </div>
 
-            <!-- Пример 6 -->
+            <!-- Товар 6 - Индивидуальный заказ -->
             <div class="portfolio-item">
-                <div class="portfolio-image">🎁 Фото украшения 6</div>
+                <div class="portfolio-image">
+                    <!-- ЗАМЕНИТЕ на: <img src="custom-order.jpg" alt="Персональный заказ"> -->
+                    🎁
+                </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Персональный заказ</h3>
                     <p class="portfolio-price">от 2 500 ₽</p>
@@ -363,7 +347,7 @@ nav a:hover {
 
     <!-- FOOTER -->
     <footer class="footer">
-        <p>&copy; 2024 Твои украшения. Все права защищены.</p>
+        <p>&copy; 2026 Твои украшения. Все права защищены.</p>
         <p>Создано с любовью к украшениям ✧</p>
     </footer>
 </body>
