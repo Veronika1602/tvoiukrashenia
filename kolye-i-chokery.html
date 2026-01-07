@@ -355,6 +355,22 @@
         @view-transition {
             navigation: auto;
         }
+         /* === ФИКСИРОВАННАЯ КНОПКА В КАРТОЧКЕ === */
+        .portfolio-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-content {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            flex-grow: 1; /* Занимает всё свободное место */
+        }
+
+        .btn-buy {
+            margin-top: auto; /* Кнопка всегда внизу */
+        }
 
     </style>
 </head>
