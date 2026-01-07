@@ -109,7 +109,7 @@
         /* Кнопка в меню */
         .contact-btn {
             background-color: var(--color-primary);
-            color: var(--color-heading) !important; /* Цвет текста как вы просили (коричневый) */
+            color: var(--color-heading) !important;
             padding: 10px 20px;
             border-radius: 4px;
             text-decoration: none;
@@ -157,7 +157,9 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.15);
         }
 
+        /* === ГАЛЕРЕЯ ФОТОГРАФИЙ === */
         .portfolio-image {
+            position: relative;
             height: 300px;
             background: #f9f9f9;
             display: flex;
@@ -167,7 +169,86 @@
             color: #ccc;
             overflow: hidden;
         }
-        
+
+        .gallery-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .gallery-item.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .gallery-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .gallery-prev {
+            left: 10px;
+        }
+
+        .gallery-next {
+            right: 10px;
+        }
+
+        .gallery-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+        }
+
+        .dot.active {
+            background: white;
+        }
+
+        .dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Для остальных товаров без галереи */
         .portfolio-image img {
             width: 100%;
             height: 100%;
@@ -199,7 +280,6 @@
             line-height: 1.5;
         }
 
-        /* Кнопка "Заказать похожее" */
         .btn-buy {
             display: block;
             width: 100%;
@@ -240,7 +320,6 @@
             font-size: 14px;
         }
 
-        /* Адаптив для шапки (как на главной) */
         @media (max-width: 768px) {
             nav {
                 flex-direction: column;
@@ -256,15 +335,16 @@
                 grid-template-columns: 1fr;
             }
         }
-                /* === ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ === */
+
+        /* === ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ === */
         body {
-            animation: fadeIn 0.8s ease-in-out; /* Время анимации 0.8 секунд */
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         @keyframes fadeIn {
             from { 
                 opacity: 0; 
-                transform: translateY(10px); /* Чуть-чуть сдвигаем снизу вверх */
+                transform: translateY(10px);
             }
             to { 
                 opacity: 1; 
@@ -272,7 +352,6 @@
             }
         }
 
-        /* Бонус для современных браузеров (Chrome, Edge) */
         @view-transition {
             navigation: auto;
         }
@@ -281,23 +360,19 @@
 </head>
 <body>
 
-    <!-- ШАПКА (Идентична главной) -->
+    <!-- ШАПКА -->
     <header>
         <nav>
             <a href="index.html" class="logo">Твои украшения✧</a>
             <ul>
                 <li><a href="index.html#about">Обо мне</a></li>
-                
-                <!-- Выпадающее меню -->
                 <li class="nav-dropdown">
                     <a href="index.html#categories">Мои работы</a>
-                   <ul class="dropdown-menu">
-    <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
-    <!-- Добавляем новую ссылку: -->
-    <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
-</ul>
+                    <ul class="dropdown-menu">
+                        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+                        <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
+                    </ul>
                 </li>
-                
                 <li><a href="index.html#contact">Контакты</a></li>
             </ul>
             <a href="index.html#contact" class="contact-btn">Заказать</a>
@@ -312,10 +387,25 @@
         
         <div class="portfolio-grid">
             
-            <!-- Товар 1 -->
+            <!-- Товар 1 С ГАЛЕРЕЕЙ -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    📿
+                    <div class="gallery-container">
+                        <img src="1_1.jpg" alt="Чокер Минимализм - фото 1" class="gallery-item active">
+                        <img src="1_2.jpg" alt="Чокер Минимализм - фото 2" class="gallery-item">
+                        <img src="1_3.jpg" alt="Чокер Минимализм - фото 3" class="gallery-item">
+                        <img src="1_4.jpg" alt="Чокер Минимализм - фото 4" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                        <button class="dot" onclick="goToGallery(this, 2)"></button>
+                        <button class="dot" onclick="goToGallery(this, 3)"></button>
+                    </div>
                 </div>
                 <div class="portfolio-content">
                     <h3 class="portfolio-title">Чокер Минимализм</h3>
@@ -399,5 +489,51 @@
         <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
     </footer>
 
+    <script>
+        // Функция для листания стрелками
+        function changeGallery(btn, direction) {
+            const image = btn.closest('.portfolio-image');
+            const items = image.querySelectorAll('.gallery-item');
+            const dots = image.querySelectorAll('.dot');
+            
+            let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
+            let newIndex = (currentIndex + direction + items.length) % items.length;
+            
+            items[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            
+            items[newIndex].classList.add('active');
+            dots[newIndex].classList.add('active');
+        }
+
+        // Функция для кликания на точку
+        function goToGallery(dot, index) {
+            const image = dot.closest('.portfolio-image');
+            const items = image.querySelectorAll('.gallery-item');
+            const dots = image.querySelectorAll('.dot');
+            
+            let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
+            
+            items[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            
+            items[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        // Листание клавишами стрелок
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft') {
+                const btn = document.querySelector('.gallery-prev');
+                if (btn) btn.click();
+            }
+            if (e.key === 'ArrowRight') {
+                const btn = document.querySelector('.gallery-next');
+                if (btn) btn.click();
+            }
+        });
+    </script>
+
 </body>
 </html>
+
