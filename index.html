@@ -878,6 +878,23 @@
             }
         });
     </script>
+     <script>
+        function orderProduct(productName) {
+            localStorage.setItem('selectedProduct', productName);
+            window.location.href = 'index.html#contact';
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const selectedProduct = localStorage.getItem('selectedProduct');
+            if (selectedProduct) {
+                const textarea = document.querySelector('textarea[placeholder*="Описание"]');
+                if (textarea) {
+                    textarea.value = 'Хочу заказать: ' + selectedProduct;
+                    localStorage.removeItem('selectedProduct');
+                }
+            }
+        });
+    </script>
     
 </body>
 </html>
