@@ -807,6 +807,9 @@
                 if (response.ok) {
                     alert('Спасибо! Ваш заказ (и фото) успешно отправлены.');
                     form.reset();
+ document.getElementById('previewContainer').style.display = 'none'; // Скрываем картинку
+                    document.getElementById('imagePreview').src = ''; // Очищаем путь
+                    
                 } else {
                     alert('Ошибка отправки. Возможно файл слишком большой.');
                 }
