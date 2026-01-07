@@ -432,19 +432,31 @@
                 </div>
             </div>
 
-            <!-- Товар 2 -->
+           <!-- Товар 2 С ГАЛЕРЕЕЙ -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    ✨
+                    <div class="gallery-container">
+                        <img src="2_1.png" alt="Колье Синий кристалл - фото 1" class="gallery-item active">
+                        <img src="2_2.png" alt="Колье Синий кристалл - фото 2" class="gallery-item">
+                        <img src="2_3.png" alt="Колье Синий кристалл - фото 3" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                        <button class="dot" onclick="goToGallery(this, 2)"></button>
+                    </div>
                 </div>
+                
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье с аметистом</h3>
-                    <p class="portfolio-price">7 200 ₽</p>
-                    <p class="portfolio-desc">Колье с натуральным аметистом. Завязывается на шею, легко регулируется.</p>
-                    <button class="btn-buy" onclick="orderProduct('НАЗВАНИЕ ТОВАРА')">Заказать похожее</button>
+                    <h3 class="portfolio-title">Колье "Синий кристалл"</h3>
+                    <p class="portfolio-desc">Колье с натуральным цирконом, гематитом и керамикой. Стильное украшение ручной работы с современным минималистичным дизайном.</p>
+                    <button class="btn-buy" onclick="orderProduct('Колье Синий кристалл')">Заказать похожее</button>
                 </div>
             </div>
-
             <!-- Товар 3 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
