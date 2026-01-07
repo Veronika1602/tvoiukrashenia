@@ -246,10 +246,18 @@
 /* Фон для первой карточки "Колье" */
 .category-card:nth-child(1) {
     background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6)),
+        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
         url('photo_2026-01-07_18-07-37.jpg');
     background-size: cover;
     background-position: center;
+    transition: all 0.3s ease;
+}
+
+/* Когда нажимаешь на блок */
+.category-card:nth-child(1).active {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+        url('photo_2026-01-07_18-07-37.jpg');
 }
 
         .category-card:hover {
@@ -717,6 +725,15 @@
             form.reset();
             alert('Спасибо! Форма отправлена. Сейчас откроется WhatsApp.');
         });
-    </script>
+
+    // Получить первый блок "Колье"
+    const necklaceCard = document.querySelector('.category-card:nth-child(1)');
+    
+    // При клике на блок
+    necklaceCard.addEventListener('click', function() {
+        this.classList.toggle('active');
+    });
+</script>
+    
 </body>
 </html>
