@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Твои украшения — украшения ручной работы</title>
+    <title>Колье и чокеры - Твои украшения</title>
     <style>
         * {
             margin: 0;
@@ -12,213 +12,70 @@
         }
 
         :root {
-            --color-primary: #dbcebb;
-            --color-accent: #c2785d;
-            --color-light: #dbcebb;
-            --color-dark: #2a2a2a;
-            --color-border: #dbac8e;
-            --color-text: #89816a;
-            --color-heading: #51291f;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --color-primary: #8b7355;
+            --color-accent: #d4a574;
+            --color-light: #f5f0eb;
+            --color-heading: #2c2c2c;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--color-light);
-            color: var(--color-text);
+            color: #666;
             line-height: 1.6;
+            background-color: #fff;
         }
 
-        /* HEADER & NAVIGATION */
-        header {
-            background-color: white;
+        /* HEADER */
+        .header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        nav {
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
         }
 
         .logo {
             font-size: 24px;
-            font-weight: 600;
-            color: #c2785d;
+            color: var(--color-primary);
+            font-weight: 700;
             text-decoration: none;
+            cursor: default;
         }
 
-        nav ul {
+        .nav-links {
             display: flex;
+            gap: 30px;
             list-style: none;
-            gap: 40px;
         }
 
-        nav a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--color-text);
-            font-size: 14px;
+            color: var(--color-heading);
+            font-weight: 500;
             transition: color 0.3s;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: var(--color-accent);
         }
 
-        .contact-btn {
-            background-color: var(--color-primary);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            font-size: 14px;
-        }
-
-        .contact-btn:hover {
-            background-color: var(--color-accent);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5a33d3d5-80c4-4424-99e5-04d6e43cd01c') center/cover no-repeat;
-            background-attachment: fixed;
+        /* PORTFOLIO SECTION */
+        .portfolio {
             padding: 80px 40px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(219, 206, 187, 0.5);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            color: var(--color-heading);
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: #dbac8e;
-            color: var(--color-heading);
-            font-weight: bold;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-accent);
-        }
-
-        .btn-secondary {
             background-color: white;
-            color: var(--color-heading);
-            border: 2px solid #dbac8e;
-        }
-
-        .btn-secondary:hover {
-            background-color: #dbac8e;
-            color: var(--color-heading);
-        }
-
-        /* ABOUT SECTION */
-        .about {
-            padding: 80px 40px;
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
         }
-
-        .about-text h2 {
-            font-size: 36px;
-            color: var(--color-heading);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, rgba(45, 95, 100, 0.1), rgba(212, 165, 116, 0.1));
-            height: 400px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary);
-            font-size: 14px;
-        }
-
-        /* CATEGORIES */
-.categories {
-    padding: 80px 40px;
-    background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 8px;
-}
 
         .section-title {
             font-size: 36px;
@@ -228,388 +85,143 @@
             font-weight: 700;
         }
 
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-       .category-card {
-    background: var(--color-light);
-    border-radius: 8px;
-    padding: 40px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-}
-
-/* Фон для первой карточки "Колье и чокеры" */
-.category-card:nth-child(1) {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-        url('photo_2026-01-07_18-07-37.jpg');
-    background-size: cover;
-    background-position: center;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-}
-        /* При наведении на "Колье" - убираем белый фон полностью */
-.category-card:nth-child(1):hover {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url('photo_2026-01-07_18-07-37.jpg');
-}
-
-/* Когда нажимаешь на блок */
-.category-card:nth-child(1).active {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url('photo_2026-01-07_18-07-37.jpg');
-}
-
-        .category-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-5px);
-        }
-
-        .category-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .category-card h3 {
-            font-size: 20px;
-            color: var(--color-heading);
-            margin-bottom: 10px;
-        }
-
-        .category-card p {
-            font-size: 14px;
-            color: #888;
-        }
-/* Фон для второй карточки "Броши, браслеты и серьги" */
-.category-card:nth-child(2) {
-    background-image: 
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%),
-        url('Braslet.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-    border: 2px solid transparent;
-}
-
-/* При наведении на блок - убираем белый фон и появляется рамка */
-.category-card:nth-child(2):hover {
-    background-image: 
-        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%),
-        url('Braslet.png');
-    border-color: var(--color-accent);
-    transform: translateY(-5px);
-}
-        /* Фон для третьей карточки "На заказ" */
-.category-card:nth-child(3) {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-        url('3block.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-}
-
-/* При наведении на "На заказ" - убираем белый фон полностью */
-.category-card:nth-child(3):hover {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url('3block.png');
-}
-
-        /* PORTFOLIO SECTION */
-        .portfolio {
-            padding: 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
 
         .portfolio-item {
-            background: white;
+            background: var(--color-light);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .portfolio-item:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
             transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
         }
 
         .portfolio-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(45, 95, 100, 0.1), rgba(212, 165, 116, 0.1));
+            height: 200px;
+            background: linear-gradient(135deg, #ddd 0%, #eee 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-primary);
-            font-size: 12px;
+            font-size: 48px;
+            color: #999;
         }
 
         .portfolio-content {
-            padding: 20px;
+            padding: 30px;
         }
 
         .portfolio-title {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--color-heading);
             margin-bottom: 10px;
             font-weight: 600;
         }
 
         .portfolio-price {
-            font-size: 16px;
+            font-size: 18px;
             color: var(--color-accent);
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .portfolio-desc {
-            font-size: 13px;
+            font-size: 14px;
             color: #888;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             line-height: 1.6;
         }
 
-        .portfolio-item .btn {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* CONTACT SECTION */
-        .contact {
-            background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-            color: white;
-            padding: 80px 40px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-        }
-
-        .contact p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px 30px;
+        /* BUTTON */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
             border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        .contact-item a {
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--color-heading);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        /* BACK BUTTON */
+        .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
             color: var(--color-accent);
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s;
         }
 
-        .contact-item a:hover {
-            color: white;
+        .back-link:hover {
+            color: var(--color-primary);
         }
 
-        .contact-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ADVANTAGES */
-        .advantages {
-            padding: 80px 40px;
-            background-color: white;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .advantage-item {
-            text-align: center;
-        }
-
-        .advantage-item h3 {
-            color: var(--color-heading);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .advantage-item p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: var(--color-dark);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                padding: 15px 20px;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .about-text h2 {
-                font-size: 28px;
-            }
-
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-buttons {
-                flex-direction: column;
+            .section-title {
+                font-size: 28px;
             }
 
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .contact-methods {
-                flex-direction: column;
+            .nav-links {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
     <!-- HEADER -->
-    <header>
-        <nav>
-<h1 class="logo">Твои украшения✧</h1>
-            <ul>
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#categories">Мои работы</a></li>
-                <li><a href="#portfolio">Портфолио</a></li>
-                <li><a href="#contact">Контакты</a></li>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">Твои украшения✧</a>
+            <ul class="nav-links">
+                <li><a href="index.html#about">О мне</a></li>
+                <li><a href="index.html#categories">Категории</a></li>
+                <li><a href="index.html#contact">Контакты</a></li>
             </ul>
-            <a href="#contact" class="contact-btn">Заказать</a>
-        </nav>
+        </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Украшения ручной работы</h1>
-            <p>Каждое украшение создаётся вручную из качественных материалов. Уникальные, авторские дизайны, которые подчеркивают вашу индивидуальность.</p>
-            <div class="hero-buttons">
-                <a href="#portfolio" class="btn btn-primary">Смотреть работы</a>
-                <a href="#contact" class="btn btn-secondary">Написать мне</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about">
-        <div class="about-text">
-            <h2>Евгения</h2>
-            <p>Меня зовут Евгения, и я создаю украшения вручную в Санкт-Петербурге.</p>
-            <p>Каждое изделие — это результат кропотливого труда, стремления к совершенству и любви к деталям. Я использую только качественные материалы, которые дарят украшениям долгую жизнь.</p>
-            <p>Мне важно, чтобы вы чувствовали себя увереннее и прекраснее, надевая мои украшения. Каждая работа создаётся с душой — это не просто аксессуар, это ваша история.</p>
-        </div>
-        <div class="about-image">
-            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/da5fd1b3-c062-4c45-86c1-b158df1e19f4" alt="Процесс создания украшения" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-        </div>
-    </section>
-
-    <!-- CATEGORIES -->
-    <section class="categories" id="categories">
-        <h2 class="section-title">Мои работы</h2>
-        <div class="categories-grid">
-            <div class="category-card">
-                <h3>Колье и чокеры</h3>
-                <p>Авторские колье и чокеры из качественных материалов</p>
-            </div>
-            <div class="category-card">
-                <h3>Броши, браслеты и серьги</h3>
-                <p>Стильные аксессуары для завершения образа</p>
-            </div>
-            <div class="category-card">
-                <h3>На заказ</h3>
-                <p>Создам украшение вашей мечты по вашему эскизу</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- PORTFOLIO -->
+    <!-- PORTFOLIO SECTION -->
     <section class="portfolio" id="portfolio">
-        <h2 class="section-title">Мои вдохновения</h2>
+        <a href="index.html" class="back-link">← Вернуться на главную</a>
+        
+        <h2 class="section-title">Колье и чокеры</h2>
         <div class="portfolio-grid">
             <!-- Пример 1 -->
             <div class="portfolio-item">
@@ -618,7 +230,7 @@
                     <h3 class="portfolio-title">Чокер Минимализм</h3>
                     <p class="portfolio-price">4 500 ₽</p>
                     <p class="portfolio-desc">Тонкий чокер из натуральной латуни с позолотой. Минималистичный дизайн, универсальный ко всем образам.</p>
-                    <a href="#contact" class="btn btn-primary">Заказать похожее</a>
+                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
                 </div>
             </div>
 
@@ -629,7 +241,7 @@
                     <h3 class="portfolio-title">Колье с аметистом</h3>
                     <p class="portfolio-price">7 200 ₽</p>
                     <p class="portfolio-desc">Колье с натуральным аметистом. Завязывается на шею, легко регулируется по размеру. Идеально для любых случаев.</p>
-                    <a href="#contact" class="btn btn-primary">Заказать похожее</a>
+                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
                 </div>
             </div>
 
@@ -640,7 +252,7 @@
                     <h3 class="portfolio-title">Комплект из розовых камней</h3>
                     <p class="portfolio-price">9 500 ₽</p>
                     <p class="portfolio-desc">Комплект: чокер + серьги из натурального розового кварца. Нежное сочетание цветов и фактур.</p>
-                    <a href="#contact" class="btn btn-primary">Заказать похожее</a>
+                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
                 </div>
             </div>
 
@@ -651,7 +263,7 @@
                     <h3 class="portfolio-title">Серьги Лаймстоун</h3>
                     <p class="portfolio-price">3 800 ₽</p>
                     <p class="portfolio-desc">Парные серьги из натурального лаймстоуна. Лёгкие, удобные, красиво переливаются на свету.</p>
-                    <a href="#contact" class="btn btn-primary">Заказать похожее</a>
+                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
                 </div>
             </div>
 
@@ -662,7 +274,7 @@
                     <h3 class="portfolio-title">Браслет Океан</h3>
                     <p class="portfolio-price">5 100 ₽</p>
                     <p class="portfolio-desc">Браслет с натуральными камнями в оттенках морской волны. Регулируется по размеру запястья.</p>
-                    <a href="#contact" class="btn btn-primary">Заказать похожее</a>
+                    <a href="index.html#contact" class="btn btn-primary">Заказать похожее</a>
                 </div>
             </div>
 
@@ -673,109 +285,16 @@
                     <h3 class="portfolio-title">Персональный заказ</h3>
                     <p class="portfolio-price">от 2 500 ₽</p>
                     <p class="portfolio-desc">Мечтаете о чём-то особенном? Я создам украшение вашей мечты, учитывая все ваши пожелания и предпочтения.</p>
-                    <a href="#contact" class="btn btn-primary">Оформить заказ</a>
+                    <a href="index.html#contact" class="btn btn-primary">Оформить заказ</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ADVANTAGES -->
-    <section class="advantages">
-        <h2 class="section-title">Почему выбирают меня</h2>
-        <div class="advantages-grid">
-            <div class="advantage-item">
-                <h3>🎨 Авторские дизайны</h3>
-                <p>Каждое украшение создано вручную с любовью и вниманием к деталям.</p>
-            </div>
-            <div class="advantage-item">
-                <h3>💎 Натуральные материалы</h3>
-                <p>Только качественные камни, латунь и проверенные материалы — ничего искусственного.</p>
-            </div>
-            <div class="advantage-item">
-                <h3>✨ Индивидуальный подход</h3>
-                <p>Я принимаю заказы на персонализированные украшения и доработки.</p>
-            </div>
-            <div class="advantage-item">
-                <h3>🚚 Доставка по РФ</h3>
-                <p>Отправляю украшения почтой по всей России в красивой упаковке.</p>
-            </div>
-            <div class="advantage-item">
-                <h3>💬 Свободное общение</h3>
-                <p>Всегда готова ответить на все ваши вопросы и помочь выбрать идеальное украшение.</p>
-            </div>
-            <div class="advantage-item">
-                <h3>❤️ Качество гарантировано</h3>
-                <p>Все украшения проходят проверку и отправляются в идеальном состоянии.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section class="contact" id="contact">
-        <h2>Заказать украшение</h2>
-        <p>Напишите мне, какое украшение вас интересует, или опишите то, о чём вы мечтаете</p>
-        
-        <div class="contact-methods">
-            <div class="contact-item">
-                <div class="contact-label">WhatsApp</div>
-                <a href="tel:+79148656819">+7 914 865 68-19</a>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">Telegram канал</div>
-                <a href="https://t.me/tvoiukrashenia" target="_blank">@tvoiukrashenia</a>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">Форма ниже</div>
-                <p style="color: #ddd;">Напишите мне сообщение</p>
-            </div>
-        </div>
-
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 40px; border-radius: 8px; max-width: 600px; margin: 40px auto;">
-            <h3 style="margin-bottom: 20px; font-size: 18px;">Быстрая форма заказа</h3>
-            <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" placeholder="Ваше имя" required style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-                <input type="email" placeholder="Ваша почта" required style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-                <textarea placeholder="Описание желаемого украшения (материал, размер, дизайн и т.д.)" rows="5" required style="padding: 12px; border-radius: 4px; border: none; font-family: inherit; font-size: 14px;"></textarea>
-                <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; font-size: 16px;">Отправить запрос</button>
-            </form>
-        </div>
-    </section>
-
     <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Tvoiukrashenia — украшения ручной работы. Все права защищены.</p>
-        <p style="margin-top: 10px; color: #aaa;">Создано с заботой о вашей красоте ✨</p>
+    <footer class="footer">
+        <p>&copy; 2024 Твои украшения. Все права защищены.</p>
+        <p>Создано с любовью к украшениям ✧</p>
     </footer>
-
-    <script>
-        // Простой функционал формы
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const name = form.children[0].value;
-            const email = form.children[1].value;
-            const message = form.children[2].value;
-            
-            // Создаём сообщение для WhatsApp
-            const whatsappMessage = `Привет! Меня зовут ${name}.\n${message}\n\nМоя почта: ${email}`;
-            const whatsappLink = `https://wa.me/79148656819?text=${encodeURIComponent(whatsappMessage)}`;
-            
-            // Открываем WhatsApp
-            window.open(whatsappLink, '_blank');
-            
-            // Очищаем форму
-            form.reset();
-            alert('Спасибо! Форма отправлена. Сейчас откроется WhatsApp.');
-        });
-
-    // Получить первый блок "Колье и чокеры"
-    const necklaceCard = document.querySelector('.category-card:nth-child(1)');
-    
-    // При клике на блок
-    necklaceCard.addEventListener('click', function() {
-        this.classList.toggle('active');
-    });
-</script>
-    
 </body>
 </html>
