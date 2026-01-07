@@ -257,6 +257,12 @@
     align-items: center;
     min-height: 400px;
 }
+        /* При наведении на "Колье" - убираем белый фон полностью */
+.category-card:nth-child(1):hover {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
+        url('photo_2026-01-07_18-07-37.jpg');
+}
 
 /* Когда нажимаешь на блок */
 .category-card:nth-child(1).active {
