@@ -685,7 +685,7 @@
         <div class="contact-methods">
             <div class="contact-item">
                 <div class="contact-label">WhatsApp, Telegram</div>
-                <a href="tel:+79148656819">+7 914 865 68-1</a>
+                <a href="tel:+79148656819">+7 914 865 68-19</a>
             </div>
             <div class="contact-item">
                 <div class="contact-label">Telegram канал</div>
@@ -714,32 +714,24 @@
         <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
     </footer>
 
-      <script>
+    <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // ВАШИ НАСТРОЙКИ TELEGRAM (Всё заполнено!)
+            // ВАШИ НАСТРОЙКИ TELEGRAM
             const botToken = '8263906001:AAHmkxEAOybXhF8hrgyO9E-b9CbV8OEunMw';
-            const chatId = '633411381'; // Ваш личный ID
+            const chatId = '633411381';
 
-            // Собираем данные из формы
+            // Собираем данные
             const form = this;
             const name = form.children[0].value;
             const email = form.children[1].value;
             const message = form.children[2].value;
 
-            // Текст, который придет вам в бота
-            const text = `
-✨ *НОВЫЙ ЗАКАЗ С САЙТА!* ✨
+            // Простой текст без спецсимволов, который точно не сломается
+            const text = `✨ НОВЫЙ ЗАКАЗ С САЙТА! ✨\n\n👤 Имя: ${name}\n📧 Почта: ${email}\n\n📝 Детали заказа:\n${message}`;
 
-👤 *Имя:* ${name}
-📧 *Почта:* ${email}
-
-📝 *Детали заказа:*
-${message}
-            `;
-
-            // Отправка запроса в Telegram
+            // Отправка (убрали parse_mode, чтобы не было ошибок)
             fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
                 method: 'POST',
                 headers: {
@@ -747,16 +739,15 @@ ${message}
                 },
                 body: JSON.stringify({
                     chat_id: chatId,
-                    text: text,
-                    parse_mode: 'Markdown'
+                    text: text
                 })
             })
             .then(response => {
                 if (response.ok) {
                     alert('Спасибо! Ваш заказ отправлен Веронике. Я свяжусь с вами в ближайшее время.');
-                    form.reset(); // Очистить форму
+                    form.reset();
                 } else {
-                    alert('Ошибка отправки. Пожалуйста, напишите мне в WhatsApp или Telegram.');
+                    alert('Ошибка отправки. Пожалуйста, напишите мне в WhatsApp.');
                 }
             })
             .catch(error => {
@@ -765,7 +756,7 @@ ${message}
             });
         });
 
-        // Анимация карточек (оставляем без изменений)
+        // Карточки
         const necklaceCard = document.querySelector('.category-card:nth-child(1)');
         if (necklaceCard) {
             necklaceCard.addEventListener('click', function() {
