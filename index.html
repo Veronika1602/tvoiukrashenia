@@ -291,13 +291,14 @@
             font-size: 14px;
             color: #888;
         }
-        /* Фон для третьей карточки "Броши, браслеты и серьги" */
-.category-card:nth-child(3) {
+     /* Фон для второй карточки "Броши, браслеты и серьги" */
+.category-card:nth-child(2) {
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
         url('6876b264-e8fd-4f2b-a5ee-32d199a55a5a(1).png');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -306,8 +307,8 @@
     min-height: 400px;
 }
 
-/* При наведении на "Броши, браслеты и серьги" - убираем белый фон полностью */
-.category-card:nth-child(3):hover {
+/* При наведении на блок - убираем белый фон полностью */
+.category-card:nth-child(2):hover {
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
         url('6876b264-e8fd-4f2b-a5ee-32d199a55a5a(1).png');
