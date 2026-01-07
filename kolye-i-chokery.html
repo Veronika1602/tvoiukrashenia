@@ -505,8 +505,14 @@
         <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
     </footer>
 
-    <script>
-        // Функция для листания стрелками
+      <script>
+        // Функция для заказа товара
+        function orderProduct(productName) {
+            localStorage.setItem('selectedProduct', productName);
+            window.location.href = 'index.html#contact';
+        }
+
+        // Функция для листания стрелками в галерее
         function changeGallery(btn, direction) {
             const image = btn.closest('.portfolio-image');
             const items = image.querySelectorAll('.gallery-item');
@@ -522,7 +528,7 @@
             dots[newIndex].classList.add('active');
         }
 
-        // Функция для кликания на точку
+        // Функция для кликания на точку в галерее
         function goToGallery(dot, index) {
             const image = dot.closest('.portfolio-image');
             const items = image.querySelectorAll('.gallery-item');
@@ -549,6 +555,7 @@
             }
         });
     </script>
+
 
 </body>
 </html>
