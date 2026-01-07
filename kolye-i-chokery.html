@@ -12,12 +12,13 @@
         }
 
         :root {
-            --color-primary: #dbcebb;   /* Бежевый */
-            --color-accent: #c2785d;    /* Рыжий акцент */
-            --color-light: #dbcebb;     /* Фон */
-            --color-heading: #51291f;   /* Темно-коричневый текст */
-            --color-text: #89816a;      /* Обычный текст */
-            --color-dark: #2a2a2a;      /* Темный фон подвала */
+            --color-primary: #dbcebb;
+            --color-accent: #c2785d;
+            --color-light: #dbcebb;
+            --color-dark: #2a2a2a;
+            --color-border: #dbac8e;
+            --color-text: #89816a;
+            --color-heading: #51291f;
         }
 
         body {
@@ -27,60 +28,94 @@
             background-color: var(--color-light);
         }
 
-        /* --- ШАПКА САЙТА --- */
+        /* --- ШАПКА (ТОЧНАЯ КОПИЯ ГЛАВНОЙ) --- */
         header {
             background-color: white;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        .header-container {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 40px;
+            padding: 20px 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .logo {
             font-size: 24px;
-            font-weight: 700;
-            color: var(--color-accent);
+            font-weight: 600;
+            color: #c2785d;
             text-decoration: none;
         }
 
-        .nav-links {
+        nav ul {
             display: flex;
             list-style: none;
-            gap: 30px;
-            align-items: center;
+            gap: 40px;
         }
 
-        .nav-links a {
+        nav a {
             text-decoration: none;
-            color: var(--color-heading);
-            font-size: 15px;
-            font-weight: 500;
+            color: var(--color-text);
+            font-size: 14px;
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
+        nav a:hover {
             color: var(--color-accent);
         }
 
-        /* КНОПКА В МЕНЮ (Коричневая) */
+        /* Выпадающее меню (как на главной) */
+        .nav-dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            list-style: none;
+            padding: 10px 0;
+            min-width: 200px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            z-index: 200;
+        }
+
+        .nav-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: var(--color-primary);
+            color: white;
+            padding-left: 25px;
+        }
+
+        /* Кнопка в меню */
         .contact-btn {
             background-color: var(--color-primary);
-            color: var(--color-heading) !important;
-            padding: 10px 24px;
+            color: var(--color-heading) !important; /* Цвет текста как вы просили (коричневый) */
+            padding: 10px 20px;
             border-radius: 4px;
             text-decoration: none;
             transition: background-color 0.3s;
-            font-weight: 600;
             font-size: 14px;
+            font-weight: 600;
         }
 
         .contact-btn:hover {
@@ -88,7 +123,7 @@
             color: white !important;
         }
 
-        /* --- КАТАЛОГ ТОВАРОВ --- */
+        /* --- КАТАЛОГ --- */
         .portfolio {
             padding: 40px 40px 80px 40px;
             max-width: 1200px;
@@ -103,7 +138,6 @@
             font-weight: 700;
         }
 
-        /* СЕТКА (3 колонки на ПК, 1 на телефоне) */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -165,7 +199,7 @@
             line-height: 1.5;
         }
 
-        /* КНОПКА ПОД ТОВАРОМ */
+        /* Кнопка "Заказать похожее" */
         .btn-buy {
             display: block;
             width: 100%;
@@ -186,7 +220,6 @@
             background-color: var(--color-heading);
         }
 
-        /* ССЫЛКА НАЗАД */
         .back-link {
             display: inline-block;
             margin-bottom: 20px;
@@ -199,7 +232,6 @@
             color: var(--color-accent);
         }
 
-        /* ПОДВАЛ */
         footer {
             background-color: var(--color-dark);
             color: white;
@@ -208,16 +240,17 @@
             font-size: 14px;
         }
 
-        /* АДАПТИВНОСТЬ */
+        /* Адаптив для шапки (как на главной) */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none; 
+            nav {
+                flex-direction: column;
+                padding: 15px 20px;
+                gap: 15px;
             }
-            .header-container {
-                justify-content: center;
-            }
-            .portfolio {
-                padding: 20px;
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
             }
             .portfolio-grid {
                 grid-template-columns: 1fr;
@@ -227,22 +260,29 @@
 </head>
 <body>
 
-    <!-- ШАПКА -->
+    <!-- ШАПКА (Идентична главной) -->
     <header>
-        <div class="header-container">
+        <nav>
             <a href="index.html" class="logo">Твои украшения✧</a>
-            
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="index.html#about">Обо мне</a></li>
-                    <li><a href="index.html#categories">Категории</a></li>
-                    <li><a href="index.html#contact" class="contact-btn">Написать мне</a></li>
-                </ul>
-            </nav>
-        </div>
+            <ul>
+                <li><a href="index.html#about">Обо мне</a></li>
+                
+                <!-- Выпадающее меню -->
+                <li class="nav-dropdown">
+                    <a href="index.html#categories">Мои работы</a>
+                    <ul class="dropdown-menu">
+                        <!-- Ссылка на эту же страницу (для наглядности) -->
+                        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="index.html#contact">Контакты</a></li>
+            </ul>
+            <a href="index.html#contact" class="contact-btn">Заказать</a>
+        </nav>
     </header>
 
-    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <!-- КАТАЛОГ -->
     <section class="portfolio">
         <a href="index.html" class="back-link">← Вернуться на главную</a>
         
@@ -253,7 +293,6 @@
             <!-- Товар 1 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <!-- Замените 📿 на <img src="фото.jpg"> -->
                     📿
                 </div>
                 <div class="portfolio-content">
@@ -334,8 +373,8 @@
 
     <!-- ПОДВАЛ -->
     <footer>
-        <p>&copy; 2026 Твои украшения. Все права защищены.</p>
-        <p style="margin-top: 10px; color: #aaa;">Создано с любовью ✧</p>
+        <p>&copy; 2026 Твои украшения — украшения ручной работы. Все права защищены.</p>
+        <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
     </footer>
 
 </body>
