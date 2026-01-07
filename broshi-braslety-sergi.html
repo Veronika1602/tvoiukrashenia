@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Броши, браслеты и серьги - Твои украшения</title>
+    <style>
+        /* CSS СТИЛИ (ТОЧНАЯ КОПИЯ) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --color-primary: #dbcebb; --color-accent: #c2785d; --color-light: #dbcebb; --color-heading: #51291f; --color-text: #89816a; --color-dark: #2a2a2a; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: var(--color-text); line-height: 1.6; background-color: var(--color-light); }
+        
+        /* ШАПКА */
+        header { background-color: white; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 24px; font-weight: 600; color: #c2785d; text-decoration: none; }
+        nav ul { display: flex; list-style: none; gap: 40px; }
+        nav a { text-decoration: none; color: var(--color-text); font-size: 14px; transition: color 0.3s; }
+        nav a:hover { color: var(--color-accent); }
+        
+        /* МЕНЮ И КНОПКА */
+        .nav-dropdown { position: relative; }
+        .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: white; list-style: none; padding: 10px 0; min-width: 220px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 4px; z-index: 200; }
+        .nav-dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu a { display: block; padding: 12px 20px; color: var(--color-text); text-decoration: none; transition: all 0.3s; }
+        .dropdown-menu a:hover { background-color: var(--color-primary); color: white; padding-left: 25px; }
+        
+        .contact-btn { background-color: var(--color-primary); color: var(--color-heading) !important; padding: 10px 20px; border-radius: 4px; text-decoration: none; transition: background-color 0.3s; font-size: 14px; font-weight: 600; }
+        .contact-btn:hover { background-color: var(--color-accent); color: white !important; }
+
+        /* КАТАЛОГ */
+        .portfolio { padding: 40px 40px 80px 40px; max-width: 1200px; margin: 0 auto; }
+        .section-title { font-size: 36px; color: var(--color-heading); text-align: center; margin-bottom: 40px; font-weight: 700; }
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .portfolio-item { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); transition: all 0.3s; }
+        .portfolio-item:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.15); }
+        .portfolio-image { height: 300px; background: #f9f9f9; display: flex; align-items: center; justify-content: center; font-size: 40px; color: #ccc; overflow: hidden; }
+        .portfolio-image img { width: 100%; height: 100%; object-fit: cover; }
+        .portfolio-content { padding: 20px; }
+        .portfolio-title { font-size: 18px; color: var(--color-heading); margin-bottom: 5px; font-weight: 600; }
+        .portfolio-price { font-size: 16px; color: var(--color-accent); font-weight: 700; margin-bottom: 15px; }
+        .portfolio-desc { font-size: 13px; color: #888; margin-bottom: 20px; line-height: 1.5; }
+        
+        .btn-buy { display: block; width: 100%; text-align: center; padding: 12px; background-color: var(--color-accent); color: white; text-decoration: none; border-radius: 4px; font-size: 14px; font-weight: 600; transition: background 0.3s; border: none; cursor: pointer; }
+        .btn-buy:hover { background-color: var(--color-heading); }
+        
+        .back-link { display: inline-block; margin-bottom: 20px; color: var(--color-heading); text-decoration: none; font-size: 14px; font-weight: 500; }
+        .back-link:hover { color: var(--color-accent); }
+        
+        footer { background-color: var(--color-dark); color: white; padding: 40px; text-align: center; font-size: 14px; }
+        
+        @media (max-width: 768px) { nav { flex-direction: column; padding: 15px 20px; gap: 15px; } nav ul { flex-direction: column; gap: 10px; width: 100%; } .portfolio-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <!-- ШАПКА -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Твои украшения✧</a>
+            <ul>
+                <li><a href="index.html#about">Обо мне</a></li>
+                <li class="nav-dropdown">
+                    <a href="index.html#categories">Мои работы</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+                        <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Контакты</a></li>
+            </ul>
+            <a href="index.html#contact" class="contact-btn">Заказать</a>
+        </nav>
+    </header>
+
+    <!-- КАТАЛОГ -->
+    <section class="portfolio">
+        <a href="index.html" class="back-link">← Вернуться на главную</a>
+        
+        <h2 class="section-title">Броши, браслеты и серьги</h2>
+        
+        <div class="portfolio-grid">
+            
+            <!-- Товар 1 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">✨</div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Браслет "Океан"</h3>
+                    <p class="portfolio-price">5 100 ₽</p>
+                    <p class="portfolio-desc">Браслет с натуральными камнями в оттенках морской волны.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
+                </div>
+            </div>
+
+            <!-- Товар 2 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">👂</div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Серьги Лаймстоун</h3>
+                    <p class="portfolio-price">3 800 ₽</p>
+                    <p class="portfolio-desc">Парные серьги из натурального лаймстоуна. Лёгкие и удобные.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
+                </div>
+            </div>
+
+            <!-- Товар 3 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">🌸</div>
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Брошь "Пион"</h3>
+                    <p class="portfolio-price">4 200 ₽</p>
+                    <p class="portfolio-desc">Текстильная брошь ручной работы. Идеальный акцент для пальто.</p>
+                    <a href="index.html#contact" class="btn-buy">Заказать похожее</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ -->
+    <footer>
+        <p>&copy; 2026 Твои украшения — украшения ручной работы. Все права защищены.</p>
+        <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
+    </footer>
+
+</body>
+</html>
