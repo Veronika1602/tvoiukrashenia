@@ -72,6 +72,47 @@
         nav a:hover {
             color: var(--color-accent);
         }
+        /* DROPDOWN MENU */
+.nav-dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    list-style: none;
+    padding: 10px 0;
+    min-width: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 4px;
+    z-index: 200;
+}
+
+.nav-dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--color-primary);
+    color: white;
+    padding-left: 25px;
+}
+        
 
         .contact-btn {
             background-color: var(--color-primary);
@@ -557,7 +598,12 @@
 <h1 class="logo">Твои украшения✧</h1>
             <ul>
                 <li><a href="#about">Обо мне</a></li>
-                <li><a href="#categories">Мои работы</a></li>
+                <li class="nav-dropdown">
+    <a href="#categories">Мои работы</a>
+    <ul class="dropdown-menu">
+        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+    </ul>
+                </li>
                 <li><a href="#portfolio">Портфолио</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
