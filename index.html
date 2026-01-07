@@ -697,12 +697,31 @@
             </div>
         </div>
 
-        <div style="background: rgba(255, 255, 255, 0.1); padding: 40px; border-radius: 8px; max-width: 600px; margin: 40px auto;">
+<div style="background: rgba(255, 255, 255, 0.1); padding: 40px; border-radius: 8px; max-width: 600px; margin: 40px auto;">
             <h3 style="margin-bottom: 20px; font-size: 18px;">Быстрая форма заказа</h3>
             <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
-                <input type="text" placeholder="Ваше имя" required style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-                <input type="email" placeholder="Ваша почта" required style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-                <textarea placeholder="Описание желаемого украшения (материал, размер, дизайн и т.д.)" rows="5" required style="padding: 12px; border-radius: 4px; border: none; font-family: inherit; font-size: 14px;"></textarea>
+                
+                <!-- Имя (Обязательно) -->
+                <input type="text" placeholder="Ваше имя *" required style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
+                
+                <!-- Телефон (Необязательно) -->
+                <input type="tel" placeholder="Ваш телефон" style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
+
+                <!-- Телеграм (Необязательно) -->
+                <input type="text" placeholder="Ваш Telegram (@username)" style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
+
+                <!-- Почта (Необязательно) -->
+                <input type="email" placeholder="Ваша почта" style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
+                
+                <!-- Поле для фото -->
+                <div style="background: white; padding: 10px; border-radius: 4px;">
+                    <label style="font-size: 14px; color: #666; display: block; margin-bottom: 5px;">Прикрепить фото (пример/эскиз):</label>
+                    <input type="file" id="fileInput" accept="image/*" style="font-size: 14px;">
+                </div>
+
+                <!-- Сообщение -->
+                <textarea placeholder="Описание желаемого украшения (материал, размер, дизайн и т.д.) *" rows="5" required style="padding: 12px; border-radius: 4px; border: none; font-family: inherit; font-size: 14px;"></textarea>
+                
                 <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; font-size: 16px;">Отправить запрос</button>
             </form>
         </div>
@@ -714,45 +733,78 @@
         <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
     </footer>
 
-    <script>
+   <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // ВАШИ НАСТРОЙКИ TELEGRAM
+            const btn = this.querySelector('button');
+            const originalBtnText = btn.innerText;
+            btn.innerText = 'Отправка...'; // Показываем, что процесс идет
+            btn.disabled = true;
+
+            // ВАШИ ДАННЫЕ
             const botToken = '8263906001:AAHmkxEAOybXhF8hrgyO9E-b9CbV8OEunMw';
             const chatId = '633411381';
 
-            // Собираем данные
+            // Сбор данных из полей (обращаемся по порядку)
             const form = this;
-            const name = form.children[0].value;
-            const email = form.children[1].value;
-            const message = form.children[2].value;
+            const name = form.children[0].value;      // 1 поле - Имя
+            const phone = form.children[1].value;     // 2 поле - Телефон
+            const telegram = form.children[2].value;  // 3 поле - ТГ
+            const email = form.children[3].value;     // 4 поле - Почта
+            // 5 элемент - это div с файлом, пропускаем его при счете value
+            const message = form.children[5].value;   // 6 элемент - Текст (textarea)
+            
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
 
-            // Простой текст без спецсимволов, который точно не сломается
-            const text = `✨ НОВЫЙ ЗАКАЗ С САЙТА! ✨\n\n👤 Имя: ${name}\n📧 Почта: ${email}\n\n📝 Детали заказа:\n${message}`;
+            // Формируем текст сообщения
+            const text = `✨ НОВЫЙ ЗАКАЗ! ✨\n\n👤 Имя: ${name}\n📞 Тел: ${phone || 'Не указан'}\n✈️ TG: ${telegram || 'Не указан'}\n📧 Почта: ${email || 'Не указана'}\n\n📝 Сообщение:\n${message}`;
 
-            // Отправка (убрали parse_mode, чтобы не было ошибок)
-            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
+            // Логика: Если есть файл -> sendPhoto, если нет -> sendMessage
+            let url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            let body = null;
+            let headers = {};
+
+            if (file) {
+                // Если есть картинка
+                url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
+                const formData = new FormData();
+                formData.append('chat_id', chatId);
+                formData.append('photo', file);
+                formData.append('caption', text);
+                body = formData;
+                // headers оставляем пустыми для FormData
+            } else {
+                // Если только текст
+                headers = { 'Content-Type': 'application/json' };
+                body = JSON.stringify({
                     chat_id: chatId,
                     text: text
-                })
+                });
+            }
+
+            // Отправка
+            fetch(url, {
+                method: 'POST',
+                headers: headers,
+                body: body
             })
             .then(response => {
                 if (response.ok) {
-                    alert('Спасибо! Ваш заказ отправлен Веронике. Я свяжусь с вами в ближайшее время.');
+                    alert('Спасибо! Ваш заказ (и фото) успешно отправлены.');
                     form.reset();
                 } else {
-                    alert('Ошибка отправки. Пожалуйста, напишите мне в WhatsApp.');
+                    alert('Ошибка отправки. Возможно файл слишком большой.');
                 }
             })
             .catch(error => {
                 console.error('Ошибка:', error);
-                alert('Произошла ошибка. Попробуйте позже.');
+                alert('Произошла ошибка соединения.');
+            })
+            .finally(() => {
+                btn.innerText = originalBtnText;
+                btn.disabled = false;
             });
         });
 
