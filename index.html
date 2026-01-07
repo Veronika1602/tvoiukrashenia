@@ -233,15 +233,24 @@
             gap: 30px;
         }
 
-        .category-card {
-            background: var(--color-light);
-            border-radius: 8px;
-            padding: 40px 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
+       .category-card {
+    background: var(--color-light);
+    border-radius: 8px;
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+/* Фон для первой карточки "Колье" */
+.category-card:nth-child(1) {
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+        url('photo_2026-01-07_18-07-37.jpg');
+    background-size: cover;
+    background-position: center;
+}
 
         .category-card:hover {
             border-color: var(--color-accent);
