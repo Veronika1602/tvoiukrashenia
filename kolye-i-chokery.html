@@ -486,16 +486,30 @@
                 </div>
             </div>
 
-            <!-- Товар 4 -->
+            <!-- Товар 4 С ГАЛЕРЕЕЙ -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    👂
+                    <div class="gallery-container">
+                        <img src="4_1.jpg" alt="Колье Жемчужная классика - фото 1" class="gallery-item active">
+                        <img src="4_2.jpg" alt="Колье Жемчужная классика - фото 2" class="gallery-item">
+                        <img src="4_3.jpg" alt="Колье Жемчужная классика - фото 3" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                        <button class="dot" onclick="goToGallery(this, 2)"></button>
+                    </div>
                 </div>
+                
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Серьги Лаймстоун</h3>
-                    <p class="portfolio-price">3 800 ₽</p>
-                    <p class="portfolio-desc">Парные серьги из натурального лаймстоуна. Лёгкие и удобные.</p>
-                    <button class="btn-buy" onclick="orderProduct('НАЗВАНИЕ ТОВАРА')">Заказать похожее</button>
+                    <h3 class="portfolio-title">Колье "Жемчужная классика"</h3>
+                    <p class="portfolio-price"></p>
+                    <p class="portfolio-desc">Жемчуг с цепью. Это колье — воплощение вневременной классики и совершенства.</p>
+                    <button class="btn-buy" onclick="orderProduct('Колье Жемчужная классика')">Заказать похожее</button>
                 </div>
             </div>
 
