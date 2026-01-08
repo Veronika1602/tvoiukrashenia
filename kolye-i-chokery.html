@@ -513,33 +513,89 @@
                 </div>
             </div>
 
-            <!-- Товар 5 -->
+                       <!-- Товар 5 С ГАЛЕРЕЕЙ -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    ⌚
+                    <div class="gallery-container">
+                        <img src="5_1.png" alt="Колье Притяжение - фото 1" class="gallery-item active">
+                        <img src="5_2.png" alt="Колье Притяжение - фото 2" class="gallery-item">
+                        <img src="5_3.png" alt="Колье Притяжение - фото 3" class="gallery-item">
+                        <img src="5_4.jpg" alt="Колье Притяжение - фото 4" class="gallery-item">
+                        <img src="5_5.jpg" alt="Колье Притяжение - фото 5" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                        <button class="dot" onclick="goToGallery(this, 2)"></button>
+                        <button class="dot" onclick="goToGallery(this, 3)"></button>
+                        <button class="dot" onclick="goToGallery(this, 4)"></button>
+                    </div>
                 </div>
+                
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Браслет Океан</h3>
-                    <p class="portfolio-price">5 100 ₽</p>
-                    <p class="portfolio-desc">Браслет с натуральными камнями в оттенках морской волны.</p>
-                    <button class="btn-buy" onclick="orderProduct('НАЗВАНИЕ ТОВАРА')">Заказать похожее</button>
+                    <h3 class="portfolio-title">Колье "Притяжение"</h3>
+                    <p class="portfolio-price"></p>
+                    <p class="portfolio-desc">Граненный шоколадный гематит с коричневым кристаллом. Шоколадные оттенки гематита и коричневого кристалла создают образ непреодолимого притяжения и внутренней силы.</p>
+                    <button class="btn-buy" onclick="orderProduct('Колье Притяжение')">Заказать похожее</button>
                 </div>
             </div>
 
-            <!-- Товар 6 -->
+            <!-- Товар 6 С ГАЛЕРЕЕЙ -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    🎁
+                    <div class="gallery-container">
+                        <img src="6_1.jpg" alt="Колье Минимализм - фото 1" class="gallery-item active">
+                        <img src="6_2.png" alt="Колье Минимализм - фото 2" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                    </div>
                 </div>
+                
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Персональный заказ</h3>
-                    <p class="portfolio-price">от 2 500 ₽</p>
-                    <p class="portfolio-desc">Я создам украшение вашей мечты, учитывая все ваши пожелания.</p>
-                    <button class="btn-buy" onclick="orderProduct('НАЗВАНИЕ ТОВАРА')">Заказать похожее</button>
+                    <h3 class="portfolio-title">Колье "Минимализм"</h3>
+                    <p class="portfolio-price"></p>
+                    <p class="portfolio-desc">Жемчуг Майорка с гематитом. Контрастное сочетание нежного жемчуга и строгого матового гематита создаёт идеальный баланс между женственностью и силой.</p>
+                    <button class="btn-buy" onclick="orderProduct('Колье Минимализм')">Заказать похожее</button>
                 </div>
             </div>
 
-        </div>
+            <!-- Товар 7 С ГАЛЕРЕЕЙ -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <div class="gallery-container">
+                        <img src="7_1.png" alt="Колье Спокойствие - фото 1" class="gallery-item active">
+                        <img src="7_2.png" alt="Колье Спокойствие - фото 2" class="gallery-item">
+                        <img src="7_3.png" alt="Колье Спокойствие - фото 3" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                        <button class="dot" onclick="goToGallery(this, 2)"></button>
+                    </div>
+                </div>
+                
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">Колье "Спокойствие"</h3>
+                    <p class="portfolio-price"></p>
+                    <p class="portfolio-desc">Натуральный амазонит с сердцем. Это колье для тех, кто верит в силу камня и красоту природных минералов</p>
+                    <button class="btn-buy" onclick="orderProduct('Колье Спокойствие')">Заказать похожее</button>
+                </div>
+            </div>
+
     </section>
 
     <!-- ПОДВАЛ -->
