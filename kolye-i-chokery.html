@@ -457,16 +457,32 @@
                     <button class="btn-buy" onclick="orderProduct('Колье Синий кристалл')">Заказать похожее</button>
                 </div>
             </div>
-            <!-- Товар 3 -->
+            <!-- Товар 3 С ГАЛЕРЕЕЙ -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    💎
+                    <div class="gallery-container">
+                        <img src="3_1.png" alt="Чокер Изумрудный свет - фото 1" class="gallery-item active">
+                        <img src="3_2.png" alt="Чокер Изумрудный свет - фото 2" class="gallery-item">
+                        <img src="3_3.jpg" alt="Чокер Изумрудный свет - фото 3" class="gallery-item">
+                        <img src="3_4.png" alt="Чокер Изумрудный свет - фото 4" class="gallery-item">
+                    </div>
+                    
+                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+                    
+                    <div class="gallery-dots">
+                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                        <button class="dot" onclick="goToGallery(this, 1)"></button>
+                        <button class="dot" onclick="goToGallery(this, 2)"></button>
+                        <button class="dot" onclick="goToGallery(this, 3)"></button>
+                    </div>
                 </div>
+                
                 <div class="portfolio-content">
-                    <h3 class="portfolio-title">Комплект "Роза"</h3>
-                    <p class="portfolio-price">9 500 ₽</p>
-                    <p class="portfolio-desc">Комплект: чокер + серьги из натурального розового кварца.</p>
-                    <button class="btn-buy" onclick="orderProduct('НАЗВАНИЕ ТОВАРА')">Заказать похожее</button>
+                    <h3 class="portfolio-title">Чокер "Изумрудный свет"</h3>
+                    <p class="portfolio-price"></p>
+                    <p class="portfolio-desc">Жемчуг Майорка с зелёным клубничным кварцем. Этот чокер — воплощение природной гармонии. Нежные жемчужины создают основу, словно капли росы, а в центре композиции горделиво сияет зелёный клубничный кварц.</p>
+                    <button class="btn-buy" onclick="orderProduct('Чокер Изумрудный свет')">Заказать похожее</button>
                 </div>
             </div>
 
