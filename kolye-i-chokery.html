@@ -355,7 +355,7 @@
         @view-transition {
             navigation: auto;
         }
-         /* === ФИКСИРОВАННАЯ КНОПКА В КАРТОЧКЕ === */
+        /* === ФИКСИРОВАННАЯ КНОПКА В КАРТОЧКЕ === */
         .portfolio-item {
             display: flex;
             flex-direction: column;
@@ -365,13 +365,111 @@
             display: flex;
             flex-direction: column;
             padding: 20px;
-            flex-grow: 1; /* Занимает всё свободное место */
+            flex-grow: 1;
         }
 
         .btn-buy {
-            margin-top: auto; /* Кнопка всегда внизу */
+            margin-top: auto;
         }
 
+        /* === ФИЛЬТРЫ === */
+        .filters-section {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .filters-sidebar {
+            width: 250px;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .filter-group {
+            margin-bottom: 30px;
+        }
+
+        .filter-group h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--color-heading);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 10px;
+        }
+
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .filter-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--color-accent);
+        }
+
+        .filter-option label {
+            margin-left: 10px;
+            font-size: 14px;
+            color: var(--color-text);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .filter-option input[type="checkbox"]:checked + label {
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        .portfolio-with-filters {
+            display: flex;
+            gap: 30px;
+        }
+
+        .portfolio-grid-wrapper {
+            flex: 1;
+        }
+
+        .reset-filters {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--color-primary);
+            color: var(--color-heading);
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .reset-filters:hover {
+            background-color: var(--color-accent);
+            color: white;
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-with-filters {
+                flex-direction: column;
+            }
+
+            .filters-sidebar {
+                width: 100%;
+                position: static;
+            }
+        }
     </style>
 </head>
 <body>
@@ -400,6 +498,76 @@
         <a href="index.html" class="back-link">← Вернуться на главную</a>
         
         <h2 class="section-title">Колье и чокеры</h2>
+        
+        <div class="portfolio-with-filters">
+            <!-- ФИЛЬТРЫ СЛЕВА -->
+            <div class="filters-sidebar">
+                <div class="filter-group">
+                    <h4>Цвет</h4>
+                    <div class="filter-option">
+                        <input type="checkbox" id="color-white" value="белый" onchange="filterProducts()">
+                        <label for="color-white">Белый</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="color-blue" value="синий" onchange="filterProducts()">
+                        <label for="color-blue">Синий</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="color-green" value="зелёный" onchange="filterProducts()">
+                        <label for="color-green">Зелёный</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="color-brown" value="коричневый" onchange="filterProducts()">
+                        <label for="color-brown">Коричневый</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="color-pink" value="розовый" onchange="filterProducts()">
+                        <label for="color-pink">Розовый</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="color-red" value="бордовый" onchange="filterProducts()">
+                        <label for="color-red">Бордовый</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Материал</h4>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-pearl" value="жемчуг" onchange="filterProducts()">
+                        <label for="material-pearl">Жемчуг</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-hematite" value="гематит" onchange="filterProducts()">
+                        <label for="material-hematite">Гематит</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-quartz" value="кварц" onchange="filterProducts()">
+                        <label for="material-quartz">Кварц</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-aquamarine" value="аквамарин" onchange="filterProducts()">
+                        <label for="material-aquamarine">Аквамарин</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-zircon" value="циркон" onchange="filterProducts()">
+                        <label for="material-zircon">Циркон</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-amazonite" value="амазонит" onchange="filterProducts()">
+                        <label for="material-amazonite">Амазонит</label>
+                    </div>
+                    <div class="filter-option">
+                        <input type="checkbox" id="material-chalcedon" value="халцедон" onchange="filterProducts()">
+                        <label for="material-chalcedon">Халцедон</label>
+                    </div>
+                </div>
+
+                <button class="reset-filters" onclick="resetFilters()">Очистить фильтры</button>
+            </div>
+
+            <!-- ТОВАРЫ СПРАВА -->
+            <div class="portfolio-grid-wrapper">
+                <div class="portfolio-grid">
         
         <div class="portfolio-grid">
             
@@ -702,7 +870,9 @@
                     <button class="btn-buy" onclick="orderProduct('Колье Сердечная симфония')">Заказать похожее</button>
                 </div>
             </div>
-
+</div>
+            </div>
+        </div>
     </section>
 
     <!-- ПОДВАЛ -->
@@ -761,7 +931,46 @@
             }
         });
     </script>
+// Определяем свойства товаров
+        const products = {
+            'Колье "Северный свет"': { colors: ['белый', 'синий'], materials: ['аквамарин', 'жемчуг'] },
+            'Колье "Синий кристалл"': { colors: ['синий'], materials: ['циркон', 'гематит'] },
+            'Чокер "Изумрудный свет"': { colors: ['зелёный'], materials: ['жемчуг', 'кварц'] },
+            'Колье "Жемчужная классика"': { colors: ['белый'], materials: ['жемчуг'] },
+            'Колье "Притяжение"': { colors: ['коричневый'], materials: ['гематит', 'кварц'] },
+            'Колье "Минимализм"': { colors: ['белый', 'коричневый'], materials: ['жемчуг', 'гематит'] },
+            'Колье "Спокойствие"': { colors: ['зелёный'], materials: ['амазонит'] },
+            'Чокер "Бордовый Шёпот"': { colors: ['бордовый'], materials: ['халцедон'] },
+            'Колье "Романтика"': { colors: ['розовый'], materials: ['жемчуг', 'циркон'] },
+            'Колье "Волшебная Черепаха"': { colors: ['коричневый'], materials: ['гематит'] },
+            'Колье "Сердечная симфония"': { colors: ['розовый', 'белый'], materials: ['жемчуг'] }
+        };
 
+        function filterProducts() {
+            const selectedColors = Array.from(document.querySelectorAll('input[id^="color-"]:checked')).map(el => el.value);
+            const selectedMaterials = Array.from(document.querySelectorAll('input[id^="material-"]:checked')).map(el => el.value);
+            
+            const items = document.querySelectorAll('.portfolio-item');
+            
+            items.forEach(item => {
+                const title = item.querySelector('.portfolio-title').textContent;
+                const product = products[title];
+                
+                if (!product) return;
+                
+                const colorMatch = selectedColors.length === 0 || selectedColors.some(c => product.colors.includes(c));
+                const materialMatch = selectedMaterials.length === 0 || selectedMaterials.some(m => product.materials.includes(m));
+                
+                item.style.display = (colorMatch && materialMatch) ? 'flex' : 'none';
+            });
+        }
+
+        function resetFilters() {
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            filterProducts();
+        }
 
 </body>
 </html>
