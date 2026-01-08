@@ -613,7 +613,7 @@
         @view-transition {
             navigation: auto;
         }
-        /* === СТИЛИ ДЛЯ БЛОКА "ОФОРМЛЕНИЕ ЗАКАЗА И ДОСТАВКА" === */
+       /* === СТИЛИ ДЛЯ БЛОКА "ОФОРМЛЕНИЕ ЗАКАЗА И ДОСТАВКА" === */
         .why-choose-me {
             padding: 80px 40px;
             background-color: var(--color-light);
@@ -631,10 +631,30 @@
             margin-top: 40px;
         }
 
+        .why-card-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .why-card-header {
+            background-color: var(--color-light);
+            padding: 20px 30px;
+            border-bottom: 2px solid #c2785d;
+        }
+
+        .why-card-header h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-heading);
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
         .why-card {
             background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 0 0 10px 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             color: white;
@@ -643,22 +663,6 @@
         .why-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-      .why-card h3 {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--color-heading);
-            margin-bottom: 20px;
-            margin-top: 0;
-            border-bottom: 2px solid #c2785d;
-            padding-bottom: 15px;
-            padding-top: 0;
-            height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
         }
 
         .why-card h4 {
