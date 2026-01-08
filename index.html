@@ -613,8 +613,8 @@
         @view-transition {
             navigation: auto;
         }
-         /* === СТИЛИ ДЛЯ БЛОКА "ОФОРМЛЕНИЕ ЗАКАЗА И ДОСТАВКА" === */
- .why-choose-me {
+        /* === СТИЛИ ДЛЯ БЛОКА "ОФОРМЛЕНИЕ ЗАКАЗА И ДОСТАВКА" === */
+        .why-choose-me {
             padding: 80px 40px;
             background-color: var(--color-light);
         }
@@ -624,7 +624,14 @@
             margin: 0 auto;
         }
 
-             .why-card {
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .why-card {
             background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
             padding: 30px;
             border-radius: 10px;
@@ -683,19 +690,6 @@
         .why-card em {
             color: #f5d76e;
             font-style: italic;
-        }
-                .why-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-                .why-grid .why-card:nth-child(1) h3,
-        .why-grid .why-card:nth-child(2) h3,
-        .why-grid .why-card:nth-child(3) h3 {
-            min-height: 60px;
-            display: flex;
-            align-items: flex-end;
         }
     </style>
 </head>
