@@ -1054,7 +1054,7 @@
             }
         });
     </script>
-    <script>
+   <script>
     // Аккордион функционал
     const accordionHeaders = document.querySelectorAll('.accordion-header');
     
@@ -1064,12 +1064,16 @@
             const isActive = accordionItem.classList.contains('active');
             
             // Закрываем все открытые аккордионы
-            document.querySelectorAll('.accordion-item').forEach(item => {
-                item.classList.remove('active');
+            document.querySelectorAll('.accordion-item.active').forEach(item => {
+                if (item !== accordionItem) {
+                    item.classList.remove('active');
+                }
             });
             
-            // Открываем текущий, если он был закрыт
-            if (!isActive) {
+            // Открываем/закрываем текущий
+            if (isActive) {
+                accordionItem.classList.remove('active');
+            } else {
                 accordionItem.classList.add('active');
             }
         });
