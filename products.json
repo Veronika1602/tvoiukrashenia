@@ -1,24 +1,5 @@
 [
   {
-    "id": "тест",
-    "category": "kolye-i-chokery",
-    "title": "Тест",
-    "price": "100",
-    "currency": "RUB",
-    "description": "пукпукп",
-    "images": [
-      "1_1.jpg"
-    ],
-    "filters": {
-      "colors": [
-        "фиолетовый"
-      ],
-      "materials": [
-        "камень"
-      ]
-    }
-  },
-  {
     "id": "kolye-severnyy-svet",
     "category": "kolye-i-chokery",
     "title": "Колье \"Северный свет\"",
