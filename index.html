@@ -613,6 +613,137 @@
             .contact-methods {
                 flex-direction: column;
             }
+        
+            /* ===== MOBILE GRID POLISH ===== */
+            /* навигация: меньше воздуха, но всё читаемо */
+            nav {
+                padding: 12px 16px;
+                gap: 12px;
+            }
+
+            nav > ul.nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 6px 0;
+            }
+
+            .contact-btn {
+                width: 100%;
+                text-align: center;
+                padding: 12px 16px;
+            }
+
+            /* hero: чтобы не был слишком высоким */
+            .hero {
+                padding: 56px 16px;
+                background-attachment: scroll; /* на мобилке fixed часто дергается */
+            }
+
+            .hero h1 {
+                font-size: 30px;
+                line-height: 1.15;
+                margin-bottom: 14px;
+            }
+
+            .hero p {
+                font-size: 15px;
+                line-height: 1.7;
+                margin-bottom: 18px;
+            }
+
+            /* секции: ровный вертикальный ритм */
+            .about,
+            .categories,
+            .advantages,
+            .why-choose-me,
+            .contact {
+                padding: 56px 16px !important;
+            }
+
+            .categories {
+                margin-bottom: 44px !important;
+                border-radius: 14px;
+            }
+
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 26px;
+            }
+
+            /* about */
+            .about-image {
+                height: 320px;
+            }
+
+            /* категории: аккуратная сетка */
+            .categories-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .category-card,
+            .category-card:nth-child(1),
+            .category-card:nth-child(3),
+            .card-bracelets {
+                min-height: 220px !important;
+                padding: 28px 18px !important;
+                border-radius: 16px !important;
+            }
+
+            .category-card h3 {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .category-card p {
+                font-size: 13px;
+            }
+
+            /* аккордеон: удобнее читать */
+            .accordion {
+                margin-top: 18px;
+            }
+
+            .accordion-header {
+                padding: 16px 16px;
+                font-size: 16px;
+            }
+
+            .accordion-body {
+                padding: 18px 16px;
+            }
+
+            .accordion-body p,
+            .accordion-body li {
+                font-size: 14px;
+                line-height: 1.7;
+            }
+
+            /* контакты */
+            .contact h2 {
+                font-size: 28px;
+                margin-bottom: 16px;
+            }
+
+            .contact p {
+                font-size: 15px;
+                margin-bottom: 22px;
+            }
+
+            .contact-item {
+                padding: 16px 18px;
+                border-radius: 12px;
+            }
+
+            /* форма: меньше боковых полей, комфортный размер */
+            .contact form input,
+            .contact form textarea {
+                font-size: 14px;
+            }
+        
         }
         /* === ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ === */
         body {
@@ -758,6 +889,94 @@ footer .copyright{
   font-size: 11px !important;
 }
 
+
+/* ===========================
+   DESIGN VARIANT: COZY / WARM
+   =========================== */
+:root{
+  --color-primary:#e2d4bf;
+  --color-light:#e2d4bf;
+  --color-accent:#c2785d;
+  --color-text:#7b705d;
+  --color-heading:#4a241b;
+  --color-card:#ffffff;
+}
+/* Header */
+header{
+  background: rgba(255,255,255,0.92) !important;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+}
+nav{ padding: 16px 36px !important; }
+.nav-links{ gap: 20px !important; }
+.nav-links a.active{
+  color: var(--color-accent) !important;
+  font-weight: 700;
+}
+/* Hero: softer, warm overlay */
+.hero{
+  filter: none;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 30% 20%, rgba(226,212,191,0.35), rgba(0,0,0,0.0) 55%),
+              linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.25));
+  pointer-events:none;
+}
+.hero h2{ text-shadow: 0 10px 30px rgba(0,0,0,0.35); }
+.hero p{ max-width: 760px; margin-inline:auto; }
+/* More rounded, cozy cards */
+.category-card{
+  border-radius: 18px !important;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.10) !important;
+  position: relative;
+  overflow:hidden;
+  min-height: 190px;
+}
+.category-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-size: cover;
+  background-position: center;
+  opacity: .28;
+  filter: saturate(1.05) contrast(1.02);
+  transform: scale(1.04);
+}
+.category-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.72));
+}
+.category-card.card-kolye::before{ background-image:url("assets/images/kolye-i-chokery/1_1.jpg"); }
+.category-card.card-bracelets::before{ background-image:url("assets/images/broshi-braslety-sergi/1_1.jpg"); }
+.category-card.card-custom::before{ background-image:url("assets/images/kolye-i-chokery/3_1.png"); }
+.category-card h3, .category-card p{ position:relative; z-index:1; }
+/* Accordion: warm paper cards */
+.accordion-item{
+  background: rgba(255,255,255,0.88) !important;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08) !important;
+}
+/* Contact: keep your gradient, but softer */
+.contact{
+  background: linear-gradient(135deg, rgba(194,120,93,0.35), rgba(45,95,100,0.60)) !important;
+}
+
+
+        @media (max-width: 420px) {
+            .hero h1 { font-size: 28px; }
+            .btn { width: 100%; }
+            .category-card,
+            .category-card:nth-child(1),
+            .category-card:nth-child(3),
+            .card-bracelets { min-height: 200px !important; }
+            .accordion-header { font-size: 15px; }
+        }
+
 </style>
 </head>
 <body>
@@ -796,7 +1015,7 @@ footer .copyright{
             <h2>Евгения</h2>
             <p>Меня зовут Евгения, и я создаю украшения вручную в Санкт-Петербурге.</p>
             <p>Каждое изделие — это результат кропотливого труда, стремления к совершенству и любви к деталям. Я использую только качественные материалы, которые дарят украшениям долгую жизнь.</p>
-            <p>Мне важно, чтобы вы чувствовали себя увереннее и прекраснее, надевая мои украшения. Каждая работа создаётся с душой — это не просто аксессуар, это ваша история.</p>
+<p>Мне важно, чтобы вы чувствовали себя увереннее и прекраснее, надевая мои украшения. Каждая работа создаётся с душой — это не просто аксессуар, это ваша история.</p>
         </div>
         <div class="about-image">
             <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/da5fd1b3-c062-4c45-86c1-b158df1e19f4" alt="Процесс создания украшения" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
@@ -809,7 +1028,7 @@ footer .copyright{
 <div class="categories-grid">
     <!-- 1. Колье -->
     <a href="kolye-i-chokery.html" style="text-decoration: none; color: inherit;">
-        <div class="category-card">
+        <div class="category-card card-kolye">
             <h3>Колье и чокеры</h3>
             <p>Авторские колье и чокеры из качественных материалов</p>
         </div>
@@ -824,7 +1043,7 @@ footer .copyright{
 </a>
 
     <!-- 3. На заказ (пока без ссылки или на контакты) -->
-    <div class="category-card">
+    <div class="category-card card-custom">
         <h3>На заказ</h3>
         <p>Создам украшение вашей мечты по вашему эскизу</p>
     </div>
@@ -1122,5 +1341,30 @@ footer .copyright{
         });
     });
 </script>
+
+<script>
+  // ===== Scrollspy: подсветка пункта меню при прокрутке =====
+  (function(){
+    const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+    const sections = links
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+
+    function setActive(){
+      const y = window.scrollY + 120; // учитываем sticky header
+      let current = sections[0];
+
+      for(const s of sections){
+        if(s.offsetTop <= y) current = s;
+      }
+
+      links.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id));
+    }
+
+    window.addEventListener('scroll', setActive, { passive:true });
+    window.addEventListener('load', setActive);
+  })();
+</script>
+
 </body>
 </html>
