@@ -7,10 +7,10 @@
     "currency": "RUB",
     "description": "Аквамарин, жемчуг Майорка и позолота 14 карат. Каждая бусина — словно кусочек льда и света, переплетённые в гармонию.",
     "images": [
-      "1_1.jpg",
-      "1_2.png",
-      "1_3.png",
-      "1_4.png"
+      "assets/images/kolye-i-chokery/1_1.jpg",
+      "assets/images/kolye-i-chokery/1_2.png",
+      "assets/images/kolye-i-chokery/1_3.png",
+      "assets/images/kolye-i-chokery/1_4.png"
     ],
     "filters": {
       "colors": [
@@ -31,9 +31,9 @@
     "currency": "RUB",
     "description": "Колье с натуральным цирконом, гематитом и керамикой. Стильное украшение ручной работы с современным минималистичным дизайном.",
     "images": [
-      "2_1.png",
-      "2_2.png",
-      "2_3.png"
+      "assets/images/kolye-i-chokery/2_1.png",
+      "assets/images/kolye-i-chokery/2_2.png",
+      "assets/images/kolye-i-chokery/2_3.png"
     ],
     "filters": {
       "colors": [
@@ -53,10 +53,10 @@
     "currency": "RUB",
     "description": "Жемчуг Майорка с зелёным клубничным кварцем. Этот чокер — воплощение природной гармонии. Нежные жемчужины создают основу, словно капли росы, а в центре композиции горделиво сияет зелёный клубничный кварц.",
     "images": [
-      "3_1.png",
-      "3_2.png",
-      "3_3.jpg",
-      "3_4.png"
+      "assets/images/kolye-i-chokery/3_1.png",
+      "assets/images/kolye-i-chokery/3_2.png",
+      "assets/images/kolye-i-chokery/3_3.jpg",
+      "assets/images/kolye-i-chokery/3_4.png"
     ],
     "filters": {
       "colors": [
@@ -76,9 +76,9 @@
     "currency": "RUB",
     "description": "Жемчуг с цепью. Это колье — воплощение вневременной классики и совершенства.",
     "images": [
-      "4_2.png",
-      "4_1.jpg",
-      "4_3.png"
+      "assets/images/kolye-i-chokery/4_2.png",
+      "assets/images/kolye-i-chokery/4_1.jpg",
+      "assets/images/kolye-i-chokery/4_3.png"
     ],
     "filters": {
       "colors": [
@@ -97,11 +97,11 @@
     "currency": "RUB",
     "description": "Граненный шоколадный гематит с коричневым кристаллом. Шоколадные оттенки гематита и коричневого кристалла создают образ непреодолимого притяжения и внутренней силы.",
     "images": [
-      "5_1.png",
-      "5_2.png",
-      "5_3.png",
-      "5_4.jpg",
-      "5_5.jpg"
+      "assets/images/kolye-i-chokery/5_1.png",
+      "assets/images/kolye-i-chokery/5_2.png",
+      "assets/images/kolye-i-chokery/5_3.png",
+      "assets/images/kolye-i-chokery/5_4.jpg",
+      "assets/images/kolye-i-chokery/5_5.jpg"
     ],
     "filters": {
       "colors": [
@@ -121,8 +121,8 @@
     "currency": "RUB",
     "description": "Жемчуг Майорка с гематитом. Контрастное сочетание нежного жемчуга и строгого матового гематита создаёт идеальный баланс между женственностью и силой.",
     "images": [
-      "6_1.jpg",
-      "6_2.png"
+      "assets/images/kolye-i-chokery/6_1.jpg",
+      "assets/images/kolye-i-chokery/6_2.png"
     ],
     "filters": {
       "colors": [
@@ -143,9 +143,9 @@
     "currency": "RUB",
     "description": "Натуральный амазонит с сердцем. Это колье для тех, кто верит в силу камня и красоту природных минералов",
     "images": [
-      "7_1.png",
-      "7_2.png",
-      "7_3.png"
+      "assets/images/kolye-i-chokery/7_1.png",
+      "assets/images/kolye-i-chokery/7_2.png",
+      "assets/images/kolye-i-chokery/7_3.png"
     ],
     "filters": {
       "colors": [
@@ -164,8 +164,8 @@
     "currency": "RUB",
     "description": "Тонированный полупрозрачный халцедон с позолотой 18 карат. Деликатный акцент, который мягко подчёркивает линию шеи и добавляет образу глубины и уверенности.",
     "images": [
-      "8_1.png",
-      "8_2.png"
+      "assets/images/kolye-i-chokery/8_1.png",
+      "assets/images/kolye-i-chokery/8_2.png"
     ],
     "filters": {
       "colors": [
@@ -184,10 +184,10 @@
     "currency": "RUB",
     "description": "Жемчуг Майорка с розовым цирконом. Это украшение для тех, кто верит в красоту моментов и магию деталей.",
     "images": [
-      "9_1.png",
-      "9_2.png",
-      "9_3.png",
-      "9_4.png"
+      "assets/images/kolye-i-chokery/9_1.png",
+      "assets/images/kolye-i-chokery/9_2.png",
+      "assets/images/kolye-i-chokery/9_3.png",
+      "assets/images/kolye-i-chokery/9_4.png"
     ],
     "filters": {
       "colors": [
@@ -207,9 +207,9 @@
     "currency": "RUB",
     "description": "Гематит и фурнитура с покрытием 18 карат. Акцентное украшение из серебристого гематита с позолоченной подвеской-черепахой, которая символизирует мудрость и стабильность.",
     "images": [
-      "10_1.png",
-      "10_2.png",
-      "10_3.png"
+      "assets/images/kolye-i-chokery/10_1.png",
+      "assets/images/kolye-i-chokery/10_2.png",
+      "assets/images/kolye-i-chokery/10_3.png"
     ],
     "filters": {
       "colors": [
@@ -228,10 +228,10 @@
     "currency": "RUB",
     "description": "Изящное колье из люкс жемчуга Майорка и кристалла-подвески в позолоте 14 карат. Это украшение дарует образу светящееся, романтичное настроение и ощущение нежной элегантности.",
     "images": [
-      "11_1.png",
-      "11_2.png",
-      "11_3.png",
-      "11_4.png"
+      "assets/images/kolye-i-chokery/11_1.png",
+      "assets/images/kolye-i-chokery/11_2.png",
+      "assets/images/kolye-i-chokery/11_3.png",
+      "assets/images/kolye-i-chokery/11_4.png"
     ],
     "filters": {
       "colors": [
