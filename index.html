@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Твои украшения — украшения ручной работы</title>
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -56,10 +58,13 @@
             text-decoration: none;
         }
 
-        nav ul {
+        nav > ul.nav-links {
             display: flex;
             list-style: none;
             gap: 40px;
+            flex: 1;
+            justify-content: center;
+            align-items: center;
         }
 
         nav a {
@@ -716,25 +721,26 @@
             color: #f5d76e;
             font-style: italic;
         }
+    
     </style>
 </head>
 <body>
     <!-- HEADER -->
     <header>
         <nav>
-<h1 class="logo">Твои украшения✧</h1>
-            <ul>
+            <h1 class="logo">Твои украшения✧</h1>
+            <ul class="nav-links">
                 <li><a href="#about">Обо мне</a></li>
                 <li class="nav-dropdown">
-    <a href="#categories">Мои работы</a>
-<ul class="dropdown-menu">
-    <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
-    <!-- Добавляем новую ссылку: -->
-    <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
-</ul>
+                    <a href="#categories">Мои работы</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+                        <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
+                    </ul>
                 </li>
                 <li><a href="#why-choose-me">Оформление заказа и доставка</a></li>
                 <li><a href="#contact">Контакты</a></li>
+            </ul>
             <a href="#contact" class="contact-btn">Заказать</a>
         </nav>
     </header>
