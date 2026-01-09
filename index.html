@@ -77,7 +77,24 @@
         nav a:hover {
             color: var(--color-accent);
         }
-        /* DROPDOWN MENU */
+        
+        /* Активный пункт меню */
+        nav a.active,
+        nav .nav-links li.active > a {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        nav a.active::after,
+        nav .nav-links li.active > a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: var(--color-accent);
+            margin-top: 6px;
+            border-radius: 2px;
+        }
+/* DROPDOWN MENU */
 .nav-dropdown {
     position: relative;
 }
