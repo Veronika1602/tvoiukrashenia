@@ -204,6 +204,16 @@
 </head>
 
 <body>
+  <script>
+  const ADMIN_PASSWORD = "veronika123";  // ← тут можешь задать свой пароль
+
+  const entered = prompt("Введите пароль для доступа в админку:");
+
+  if (entered !== ADMIN_PASSWORD) {
+    document.body.innerHTML = "<h2 style='text-align:center;margin-top:100px;'>⛔ Доступ запрещён</h2>";
+    throw new Error("Доступ запрещён");
+  }
+</script>
   <header>
     <a class="logo" href="index.html">Твои украшения✧</a>
     <div class="hint">
