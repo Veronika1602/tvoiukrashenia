@@ -1,1399 +1,1340 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Твои украшения — украшения ручной работы</title>
-    <style>
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --color-primary: #dbcebb;
-            --color-accent: #c2785d;
-            --color-light: #dbcebb;
-            --color-dark: #2a2a2a;
-            --color-border: #dbac8e;
-            --color-text: #89816a;
-            --color-heading: #51291f;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--color-light);
-            color: var(--color-text);
-            line-height: 1.6;
-        }
-
-        /* HEADER & NAVIGATION */
-        header {
-            background-color: white;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 600;
-            color: #c2785d;
-            text-decoration: none;
-        }
-
-        nav > ul.nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-            flex: 1;
-            justify-content: center;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--color-text);
-            font-size: 14px;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--color-accent);
-        }
-        
-        /* Активный пункт меню */
-        nav a.active,
-        nav .nav-links li.active > a {
-            color: var(--color-accent);
-            font-weight: 700;
-        }
-
-        nav a.active::after,
-        nav .nav-links li.active > a::after {
-            content: '';
-            display: block;
-            height: 2px;
-            background: var(--color-accent);
-            margin-top: 6px;
-            border-radius: 2px;
-        }
-/* DROPDOWN MENU */
-.nav-dropdown {
-    position: relative;
-}
-
-.dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    list-style: none;
-    padding: 10px 0;
-    min-width: 200px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 4px;
-    z-index: 200;
-}
-
-.nav-dropdown:hover .dropdown-menu {
-    display: block;
-}
-
-.dropdown-menu li {
-    margin: 0;
-}
-
-.dropdown-menu a {
-    display: block;
-    padding: 12px 20px;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.dropdown-menu a:hover {
-    background-color: var(--color-primary);
-    color: white;
-    padding-left: 25px;
-}
-        
-
- .contact-btn {
-            background-color: var(--color-primary);
-            color: var(--color-heading); 
-            
-            font-weight: 600; 
-            padding: 10px 20px;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-            font-size: 14px;
-        }
-
-        .contact-btn:hover {
-            background-color: var(--color-accent);
-            color: white; 
-        }
-
-        /* HERO SECTION */
-        .hero {
-            background: url('https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5a33d3d5-80c4-4424-99e5-04d6e43cd01c') center/cover no-repeat;
-            background-attachment: fixed;
-            padding: 80px 40px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(219, 206, 187, 0.5);
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            color: var(--color-heading);
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: #dbac8e;
-            color: var(--color-heading);
-            font-weight: bold;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-accent);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: var(--color-heading);
-            border: 2px solid #dbac8e;
-        }
-
-        .btn-secondary:hover {
-            background-color: #dbac8e;
-            color: var(--color-heading);
-        }
-
-        /* ABOUT SECTION */
-        .about {
-            padding: 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 36px;
-            color: var(--color-heading);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, rgba(45, 95, 100, 0.1), rgba(212, 165, 116, 0.1));
-            height: 400px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary);
-            font-size: 14px;
-        }
-
-        /* CATEGORIES */
-.categories {
-    padding: 80px 40px;
-    background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-    max-width: 1200px;
-    margin: 0 auto;
-    border-radius: 8px;
-    margin-bottom: 80px; 
-}
-
-        .section-title {
-            font-size: 36px;
-            color: var(--color-heading);
-            text-align: center;
-            margin-bottom: 60px;
-            font-weight: 700;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-       .category-card {
-    background: var(--color-light);
-    border-radius: 8px;
-    padding: 40px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    border: 2px solid transparent;
-}
-
-/* Фон для первой карточки "Колье и чокеры" */
-.category-card:nth-child(1) {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-        url('photo_2026-01-07_18-07-37.jpg');
-    background-size: cover;
-    background-position: center;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-    border: none;
-}
-        /* При наведении на "Колье" - убираем белый фон полностью */
-.category-card:nth-child(1):hover {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url('photo_2026-01-07_18-07-37.jpg');
-}
-
-/* Когда нажимаешь на блок */
-.category-card:nth-child(1).active {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url('photo_2026-01-07_18-07-37.jpg');
-}
-
-        .category-card:hover {
-            border-color: var(--color-accent);
-            transform: translateY(-5px);
-        }
-
-        .category-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .category-card h3 {
-            font-size: 20px;
-            color: var(--color-heading);
-            margin-bottom: 10px;
-        }
-
-        .category-card p {
-            font-size: 14px;
-            color: #888;
-        }
-/* Фон для карточки с БРАСЛЕТАМИ */
-.card-bracelets {
-    background-image: 
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.7) 100%),
-        url('Braslet.png'); 
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-    border: none;
-}
-
-/* При наведении */
-.card-bracelets:hover {
-    background-image: 
-        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%),
-        url('Braslet.png');
-    border-color: var(--color-accent);
-    transform: translateY(-5px);
-}
-      /* Фон для третьей карточки "На заказ" */
-.category-card:nth-child(3) {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)),
-        url('3block.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
-    border: none;
-}
-
-/* При наведении на "На заказ" - убираем белый фон полностью */
-.category-card:nth-child(3):hover {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)),
-        url('3block.png');
-}
-
-        /* PORTFOLIO SECTION */
-        .portfolio {
-            padding: 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-item {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .portfolio-item:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .portfolio-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, rgba(45, 95, 100, 0.1), rgba(212, 165, 116, 0.1));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary);
-            font-size: 12px;
-        }
-
-        .portfolio-content {
-            padding: 20px;
-        }
-
-        .portfolio-title {
-            font-size: 18px;
-            color: var(--color-heading);
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .portfolio-price {
-            font-size: 16px;
-            color: var(--color-accent);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .portfolio-desc {
-            font-size: 13px;
-            color: #888;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .portfolio-item .btn {
-            width: 100%;
-            text-align: center;
-        }
-
-        /* CONTACT SECTION */
-        .contact {
-            background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-            color: white;
-            padding: 60px 40px 30px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 36px;
-            margin-bottom: 30px;
-        }
-
-        .contact p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px 30px;
-            border-radius: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-item a {
-            color: var(--color-accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: white;
-        }
-
-        .contact-label {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 5px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* ADVANTAGES */
-        .advantages {
-            padding: 80px 40px;
-            background-color: var(--color-light); 
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .advantage-item {
-            text-align: center;
-        }
-
-        .advantage-item h3 {
-            color: var(--color-heading);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .advantage-item p {
-            color: #666;
-            font-size: 14px;
-            line-height: 1.7;
-        }
-
-        /* FOOTER */
-        footer {
-            background-color: var(--color-dark);
-            color: white;
-            padding: 24px 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                padding: 15px 20px;
-                gap: 15px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-                width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .about-text h2 {
-                font-size: 28px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .contact-methods {
-                flex-direction: column;
-            }
-        
-            /* ===== MOBILE GRID POLISH ===== */
-            /* навигация: меньше воздуха, но всё читаемо */
-            nav {
-                padding: 12px 16px;
-                gap: 12px;
-            }
-
-            nav > ul.nav-links {
-                gap: 8px;
-            }
-
-            .nav-links a {
-                font-size: 13px;
-                padding: 6px 0;
-            }
-
-            .contact-btn {
-                width: 100%;
-                text-align: center;
-                padding: 12px 16px;
-            }
-
-            /* hero: чтобы не был слишком высоким */
-            .hero {
-                padding: 56px 16px;
-                background-attachment: scroll; /* на мобилке fixed часто дергается */
-            }
-
-            .hero h1 {
-                font-size: 30px;
-                line-height: 1.15;
-                margin-bottom: 14px;
-            }
-
-            .hero p {
-                font-size: 15px;
-                line-height: 1.7;
-                margin-bottom: 18px;
-            }
-
-            /* секции: ровный вертикальный ритм */
-            .about,
-            .categories,
-            .advantages,
-            .why-choose-me,
-            .contact {
-                padding: 56px 16px !important;
-            }
-
-            .categories {
-                margin-bottom: 44px !important;
-                border-radius: 14px;
-            }
-
-            .section-title {
-                font-size: 28px;
-                margin-bottom: 26px;
-            }
-
-            /* about */
-            .about-image {
-                height: 320px;
-            }
-
-            /* категории: аккуратная сетка */
-            .categories-grid {
-                grid-template-columns: 1fr;
-                gap: 14px;
-            }
-
-            .category-card,
-            .category-card:nth-child(1),
-            .category-card:nth-child(3),
-            .card-bracelets {
-                min-height: 220px !important;
-                padding: 28px 18px !important;
-                border-radius: 16px !important;
-            }
-
-            .category-card h3 {
-                font-size: 18px;
-                margin-bottom: 8px;
-            }
-
-            .category-card p {
-                font-size: 13px;
-            }
-
-            /* аккордеон: удобнее читать */
-            .accordion {
-                margin-top: 18px;
-            }
-
-            .accordion-header {
-                padding: 16px 16px;
-                font-size: 16px;
-            }
-
-            .accordion-body {
-                padding: 18px 16px;
-            }
-
-            .accordion-body p,
-            .accordion-body li {
-                font-size: 14px;
-                line-height: 1.7;
-            }
-
-            /* контакты */
-            .contact h2 {
-                font-size: 28px;
-                margin-bottom: 16px;
-            }
-
-            .contact p {
-                font-size: 15px;
-                margin-bottom: 22px;
-            }
-
-            .contact-item {
-                padding: 16px 18px;
-                border-radius: 12px;
-            }
-
-            /* форма: меньше боковых полей, комфортный размер */
-            .contact form input,
-            .contact form textarea {
-                font-size: 14px;
-            }
-        
-        }
-        /* === ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ === */
-        body {
-            animation: fadeIn 0.8s ease-in-out; /* Время анимации 0.8 секунд */
-        }
-
-        @keyframes fadeIn {
-            from { 
-                opacity: 0; 
-                transform: translateY(10px); /* Чуть-чуть сдвигаем снизу вверх */
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0);
-            }
-        }
-
-        /* Бонус для современных браузеров (Chrome, Edge) */
-        @view-transition {
-            navigation: auto;
-        }
-      /* === СТИЛИ ДЛЯ БЛОКА "ОФОРМЛЕНИЕ ЗАКАЗА И ДОСТАВКА" === */
-        .why-choose-me {
-            padding: 20px 40px;
-            background-color: var(--color-light);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .accordion {
-            margin-top: 40px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .accordion-item {
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .accordion-header {
-            width: 100%;
-            padding: 20px 30px;
-            background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-            border: none;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--color-heading);
-            transition: all 0.3s ease;
-        }
-
-        .accordion-header:hover {
-            background: linear-gradient(135deg, rgba(219, 206, 187, 0.9), rgba(45, 95, 100, 0.9));
-        }
-
-        .accordion-icon {
-            font-size: 24px;
-            font-weight: 700;
-            transition: transform 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-icon {
-            transform: rotate(45deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .accordion-item.active .accordion-content {
-            max-height: 2000px;
-        }
-
-        .accordion-body {
-            padding: 30px;
-            background: linear-gradient(135deg, var(--color-primary), rgba(45, 95, 100, 0.8));
-            color: white;
-        }
-
-        .accordion-body h4 {
-            font-size: 16px;
-            font-weight: 600;
-            color: white;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-
-        .accordion-body p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 15px;
-        }
-
-        .accordion-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0;
-        }
-
-        .accordion-body li {
-            font-size: 16px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 12px;
-        }
-
-        .accordion-body em {
-            color: #f5d76e;
-            font-style: italic;
-        }
-
-
-/* ===== FOOTER ULTRA COMPACT OVERRIDE ===== */
-footer{
-  padding: 12px 16px !important;
-}
-footer p{
-  margin: 4px 0 !important;
-  line-height: 1.2;
-  font-size: 12px;
-}
-footer .footer-content{
-  gap: 6px !important;
-}
-footer .footer-bottom,
-footer .copyright{
-  margin-top: 6px !important;
-  padding-top: 6px !important;
-  font-size: 11px !important;
-}
-
-
-/* ===========================
-   DESIGN VARIANT: COZY / WARM
-   =========================== */
-:root{
-  --color-primary:#e2d4bf;
-  --color-light:#e2d4bf;
-  --color-accent:#c2785d;
-  --color-text:#7b705d;
-  --color-heading:#4a241b;
-  --color-card:#ffffff;
-}
-/* Header */
-header{
-  background: rgba(255,255,255,0.92) !important;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-}
-nav{ padding: 16px 36px !important; }
-.nav-links{ gap: 20px !important; }
-.nav-links a.active{
-  color: var(--color-accent) !important;
-  font-weight: 700;
-}
-/* Hero: softer, warm overlay */
-.hero{
-  filter: none;
-}
-.hero::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(circle at 30% 20%, rgba(226,212,191,0.35), rgba(0,0,0,0.0) 55%),
-              linear-gradient(180deg, rgba(0,0,0,0.10), rgba(0,0,0,0.25));
-  pointer-events:none;
-}
-.hero h2{ text-shadow: 0 10px 30px rgba(0,0,0,0.35); }
-.hero p{ max-width: 760px; margin-inline:auto; }
-/* More rounded, cozy cards */
-.category-card{
-  border-radius: 18px !important;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.10) !important;
-  position: relative;
-  overflow:hidden;
-  min-height: 190px;
-}
-.category-card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-size: cover;
-  background-position: center;
-  opacity: .28;
-  filter: saturate(1.05) contrast(1.02);
-  transform: scale(1.04);
-}
-.category-card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.45), rgba(255,255,255,0.72));
-}
-.category-card.card-kolye::before{ background-image:url("assets/images/kolye-i-chokery/1_1.jpg"); }
-.category-card.card-bracelets::before{ background-image:url("assets/images/broshi-braslety-sergi/1_1.jpg"); }
-.category-card.card-custom::before{ background-image:url("assets/images/kolye-i-chokery/3_1.png"); }
-.category-card h3, .category-card p{ position:relative; z-index:1; }
-/* Accordion: warm paper cards */
-.accordion-item{
-  background: rgba(255,255,255,0.88) !important;
-  border: 1px solid rgba(0,0,0,0.06) !important;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08) !important;
-}
-/* Contact: keep your gradient, but softer */
-.contact{
-  background: linear-gradient(135deg, rgba(194,120,93,0.35), rgba(45,95,100,0.60)) !important;
-}
-
-
-        @media (max-width: 420px) {
-            .hero h1 { font-size: 28px; }
-            .btn { width: 100%; }
-            .category-card,
-            .category-card:nth-child(1),
-            .category-card:nth-child(3),
-            .card-bracelets { min-height: 200px !important; }
-            .accordion-header { font-size: 15px; }
-        }
-
-
-/* ===== UNIFIED SECTION SPACING ===== */
-.categories {
-    margin-bottom: 0 !important;
-    padding-bottom: 80px !important;
-}
-
-.why-choose-me {
-    padding-top: 80px !important;
-    padding-bottom: 80px !important;
-}
-
-.contact {
-    padding-top: 80px !important;
-    padding-bottom: 60px !important;
-}
-
-
-/* ===== WORKS SECTION HEADER SPACING FIX ===== */
-.categories {
-    padding-top: 60px !important;   /* уменьшили верхний отступ */
-    padding-bottom: 80px !important;
-}
-
-.categories .section-title {
-    margin-top: 0 !important;
-    margin-bottom: 40px !important;
-}
-
-</style>
-</head>
-<body>
-    <!-- HEADER -->
-    <header>
-        <nav>
-            <h1 class="logo">Твои украшения✧</h1>
-            <ul class="nav-links">
-                <li><a href="#about">Обо мне</a></li>
-                <li class="nav-dropdown">
-                    <a href="#categories">Мои работы</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
-                        <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
-                    </ul>
-                </li>
-                <li><a href="#why-choose-me">Оформление заказа и доставка</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-            <a href="#contact" class="contact-btn">Заказать</a>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Украшения ручной работы</h1>
-            <p>Каждое украшение создаётся вручную из качественных материалов. Уникальные, авторские дизайны, которые подчеркивают вашу индивидуальность.</p>
-<a href="#categories" class="btn btn-primary">Смотреть работы</a>
-        </div>
-    </section>
-
-    <!-- ABOUT SECTION -->
-    <section class="about" id="about">
-        <div class="about-text">
-            <h2>Евгения</h2>
-            <p>Меня зовут Евгения, и я создаю украшения вручную в Санкт-Петербурге.</p>
-            <p>Каждое изделие — это результат кропотливого труда, стремления к совершенству и любви к деталям. Я использую только качественные материалы, которые дарят украшениям долгую жизнь.</p>
-<p>Мне важно, чтобы вы чувствовали себя увереннее и прекраснее, надевая мои украшения. Каждая работа создаётся с душой — это не просто аксессуар, это ваша история.</p>
-        </div>
-        <div class="about-image">
-            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/da5fd1b3-c062-4c45-86c1-b158df1e19f4" alt="Процесс создания украшения" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
-        </div>
-    </section>
-
-    <!-- CATEGORIES -->
-    <section class="categories" id="categories">
-        <h2 class="section-title">Мои работы</h2>
-<div class="categories-grid">
-    <!-- 1. Колье -->
-    <a href="kolye-i-chokery.html" style="text-decoration: none; color: inherit;">
-        <div class="category-card card-kolye">
-            <h3>Колье и чокеры</h3>
-            <p>Авторские колье и чокеры из качественных материалов</p>
-        </div>
-    </a>
-
-    <!-- 2. Броши -->
-<a href="broshi-braslety-sergi.html" style="text-decoration: none; color: inherit;">
-    <div class="category-card card-bracelets">
-        <h3>Броши, браслеты и серьги</h3>
-        <p>Стильные аксессуары для завершения образа</p>
-    </div>
-</a>
-
-    <!-- 3. На заказ (пока без ссылки или на контакты) -->
-    <div class="category-card card-custom">
-        <h3>На заказ</h3>
-        <p>Создам украшение вашей мечты по вашему эскизу</p>
-    </div>
-</div>
-    </section>
-
-<!-- БЛОК "Оформление заказа и доставка" -->
-<section class="why-choose-me" id="why-choose-me">
-    <div class="container">
-        <h2 class="section-title">Оформление заказа и доставка</h2>
-        
-        <div class="accordion">
-            <!-- АККОРДИОН 1 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Почему нужно уточнять наличие?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body">
-                        <p>Каждое украшение создаётся вручную, поэтому наличие товаров меняется постоянно. Это не склад готовых изделий, это мастерская, где каждая вещь — результат творческого процесса.</p>
-                        <p>Поэтому перед заказом обязательно уточните наличие у мастера. Все работы также размещаются в моем <a href="https://t.me/tvoiukrashenia" target="_blank" style="color: white; text-decoration: underline; font-weight: 600;">Telegram-канале</a> — там всегда актуальная информация о готовых украшениях.</p>
-                        
-                        <h4 style="color: #b23224;">Украшение вашей мечты — это возможно!</h4>
-                        <p>Каждое изделие уникально, и вы можете сделать его ещё более личным:</p>
-                        <ul>
-                            <li><span style="color: #b23224; font-weight: normal;">Хотите изменить детали?</span> Размер, цвет, материал — всё можно адаптировать под вас. Напишите в WhatsApp или 
-                                Telegram, обсудим и воплотим. Учтите, что корректировка потребует времени на переделку.</li>
-                            <li><span style="color: #b23224; font-weight: normal;">Вдохновились украшением в Pinterest?</span> Пришлите ссылку или фото — создам похожее специально для вас.</li>
-                            <li><span style="color: #b23224; font-weight: normal;">Есть собственная идея?</span> Это самое интересное. Обсуждаем концепцию, я даю рекомендации, и вместе воплощаем вашу фантазию в реальность.</li>
-                        </ul>
-                        <p><em style="color: var(--color-heading);">Украшение — это не товар с полки, это ваша история. Я её создаю вместе с вами.</em></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- АККОРДИОН 2 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Как заказать украшение?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body">
-                        <h4>Способ 1 — Через форму на сайте</h4>
-                        <p>Нажмите кнопку "Заказать" в верхней части сайта. Заполните быструю форму, укажите, какое украшение вас интересует, прикрепите эскиз или ссылку на вдохновение. После отправки я свяжусь с вами.</p>
-                        
-                        <h4>Способ 2 — Через каталог</h4>
-                        <p>Найдите украшение в каталоге и нажмите "Заказать похожее". Вы попадёте в форму заказа — останется указать контакты. После отправки я свяжусь с вами.</p>
-                        
-                        <h4>Способ 3 — Прямой контакт</h4>
-                        <p>Пишите в Telegram или WhatsApp: <strong>+79148656819</strong> или <a href="https://t.me/EvgeniyaAnatolevnaDmitrieva" target="_blank" style="color: white; text-decoration: underline; font-weight: 600;">@EvgeniyaAnatolevnaDmitrieva</a></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- АККОРДИОН 3 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Как проходит процесс создания и доставки украшения?</span>
-                    <span class="accordion-icon">+</span>
-                </button>
-                <div class="accordion-content">
-                    <div class="accordion-body">
-                        <p>После вашего заказа мы с вами:</p>
-                        <ul>
-                            <li><strong>✧ Уточняем наличие</strong> — если украшение в готовом виде, идём дальше. Если нет, запускаю изготовление.</li>
-                            <li><strong>✧ Обсуждаем детали</strong> — размер, цвет, материал, любые изменения. Это занимает время на переделку, но оно того стоит.</li>
-                            <li><strong>✧ Договариваемся о доставке и оплате</strong> — оплата осуществляется перед отправкой. Я нахожусь в Санкт-Петербурге и могу доставить украшение в любую точку России.</li>
-                            <li><strong>✧ Контрольное фото перед отправкой</strong> — вы видите финальный результат. Если хотите изменения, обсуждаем их до отправки.</li>
-                            <li><strong>✧ Отправляем</strong> — оформление доставки занимает от нескольких часов до 2 дней (если украшение готово в готовом виде).</li>
-                        </ul>
-                        
-                        <h4>Если украшения нет в наличии</h4>
-                        <p>Это не проблема — мы найдём решение:</p>
-                        <ul>
-                            <li><strong>✧ Индивидуальное изготовление</strong> — если нужные материалы уже в наличии, создам украшение специально для вас.</li>
-                            <li><strong>✧ Если материалов нет</strong> — договариваемся о сроках: когда ждём поставку материалов и сколько займёт изготовление. Или обсуждаем замену материалов на похожие.</li>
-                            <li><strong>✧ Система оплаты</strong> — предоплата 50%, остаток вносите после готовности украшения и перед отправкой.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- CONTACT SECTION -->
-    <section class="contact" id="contact">
-        <h2>Заказать украшение</h2>
-        <p>Напишите мне, какое украшение вас интересует, или опишите то, о чём вы мечтаете</p>
-        
-        <div class="contact-methods">
-            <div class="contact-item">
-                <div class="contact-label">WhatsApp, Telegram</div>
-                <a href="tel:+79148656819">+7 914 865 68-19<br><a href="https://t.me/EvgeniyaAnatolevnaDmitrieva" target="_blank">@EvgeniyaAnatolevnaDmitrieva</a></a>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">Telegram канал</div>
-                <a href="https://t.me/tvoiukrashenia" target="_blank">@tvoiukrashenia</a>
-            </div>
-            <div class="contact-item">
-                <div class="contact-label">Форма ниже</div>
-                <p style="color: #ddd;">Напишите мне сообщение</p>
-            </div>
-        </div>
-
-<div style="background: rgba(255, 255, 255, 0.1); padding: 40px; border-radius: 8px; max-width: 600px; margin: 20px auto;">
-            <h3 style="margin-bottom: 20px; font-size: 18px;">Быстрая форма заказа</h3>
-            <form id="contactForm" style="display: flex; flex-direction: column; gap: 15px;">
-                
-                <!-- Имя (Обязательно) -->
-                <input type="text" placeholder="Ваше имя *" required style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-                
-                <!-- Телефон (Необязательно) -->
-                <input type="tel" placeholder="Ваш телефон" style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-
-                <!-- Телеграм (Необязательно) -->
-                <input type="text" placeholder="Ваш Telegram (@username)" style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-
-                <!-- Почта (Необязательно) -->
-                <input type="email" placeholder="Ваша почта" style="padding: 12px; border-radius: 4px; border: none; font-size: 14px;">
-                
- <!-- Поле для фото с предпросмотром -->
-                <div style="background: white; padding: 15px; border-radius: 4px; border: 1px dashed #ccc; text-align: center;">
-                    <label for="fileInput" style="cursor: pointer; display: block;">
-                        <span style="font-size: 24px;">📷</span><br>
-                        <span style="font-size: 14px; color: #666;">Нажмите, чтобы добавить фото</span>
-                    </label>
-                    <input type="file" id="fileInput" accept="image/*" style="display: none;"> <!-- Скрытый инпут -->
-                    
-                    <!-- Сюда будет вставляться картинка -->
-                    <div id="previewContainer" style="margin-top: 10px; display: none;">
-                        <img id="imagePreview" src="" style="max-width: 100%; max-height: 200px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                        <p style="font-size: 12px; color: green; margin-top: 5px;">✓ Фото выбрано</p>
-                    </div>
-                </div>
-
-                <!-- Сообщение -->
-                <textarea placeholder="Описание желаемого украшения (материал, размер, дизайн и т.д.)" rows="5" style="padding: 12px; border-radius: 4px; border: none; font-family: inherit; 
-                    font-size: 14px;"></textarea>
-                
-                <button type="submit" class="btn btn-primary" style="border: none; cursor: pointer; font-size: 16px;">Отправить запрос</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>&copy; 2026 Твои украшения — украшения ручной работы. Все права защищены.</p>
-        <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
-    </footer>
-
-   <script>
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const btn = this.querySelector('button');
-            const originalBtnText = btn.innerText;
-            btn.innerText = 'Отправка...'; // Показываем, что процесс идет
-            btn.disabled = true;
-
-            // ВАШИ ДАННЫЕ
-            const botToken = '8263906001:AAHmkxEAOybXhF8hrgyO9E-b9CbV8OEunMw';
-            const chatId = '633411381';
-
-            // Сбор данных из полей (обращаемся по порядку)
-            const form = this;
-            const name = form.children[0].value;      // 1 поле - Имя
-            const phone = form.children[1].value;     // 2 поле - Телефон
-            const telegram = form.children[2].value;  // 3 поле - ТГ
-            const email = form.children[3].value;     // 4 поле - Почта
-            // 5 элемент - это div с файлом, пропускаем его при счете value
-            const message = form.children[5].value;   // 6 элемент - Текст (textarea)
-            
-            const fileInput = document.getElementById('fileInput');
-            const file = fileInput.files[0];
-
-            // Формируем текст сообщения
-            const text = `✨ НОВЫЙ ЗАКАЗ! ✨\n\n👤 Имя: ${name}\n📞 Тел: ${phone || 'Не указан'}\n✈️ TG: ${telegram || 'Не указан'}\n📧 Почта: ${email || 'Не указана'}\n\n📝 Сообщение:\n${message}`;
-
-            // Логика: Если есть файл -> sendPhoto, если нет -> sendMessage
-            let url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-            let body = null;
-            let headers = {};
-
-            if (file) {
-                // Если есть картинка
-                url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
-                const formData = new FormData();
-                formData.append('chat_id', chatId);
-                formData.append('photo', file);
-                formData.append('caption', text);
-                body = formData;
-                // headers оставляем пустыми для FormData
-            } else {
-                // Если только текст
-                headers = { 'Content-Type': 'application/json' };
-                body = JSON.stringify({
-                    chat_id: chatId,
-                    text: text
-                });
-            }
-
-            // Отправка
-            fetch(url, {
-                method: 'POST',
-                headers: headers,
-                body: body
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Спасибо! Ваш заказ (и фото) успешно отправлены.');
-                    form.reset();
- document.getElementById('previewContainer').style.display = 'none'; // Скрываем картинку
-                    document.getElementById('imagePreview').src = ''; // Очищаем путь
-                    
-                } else {
-                    alert('Ошибка отправки. Возможно файл слишком большой.');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-                alert('Произошла ошибка соединения.');
-            })
-            .finally(() => {
-                btn.innerText = originalBtnText;
-                btn.disabled = false;
-            });
-        });
-
-        // Карточки
-        const necklaceCard = document.querySelector('.category-card:nth-child(1)');
-        if (necklaceCard) {
-            necklaceCard.addEventListener('click', function() {
-                this.classList.toggle('active');
-            });
-        }
-       // Логика предпросмотра фото
-        document.getElementById('fileInput').addEventListener('change', function(event) {
-            const file = event.target.files[0];
-            const previewContainer = document.getElementById('previewContainer');
-            const imagePreview = document.getElementById('imagePreview');
-
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    imagePreview.src = e.target.result; // Показываем картинку
-                    previewContainer.style.display = 'block'; // Включаем блок
-                }
-                reader.readAsDataURL(file);
-            } else {
-                previewContainer.style.display = 'none'; // Скрываем, если отменили выбор
-            }
-        });
-    </script>
-      <script>
-        // Когда страница загружается, проверяем есть ли сохраненный товар
-        document.addEventListener('DOMContentLoaded', function() {
-            const selectedProduct = localStorage.getItem('selectedProduct');
-            if (selectedProduct) {
-                // Находим textarea с описанием
-                const textarea = document.querySelector('textarea[placeholder*="Описание"]');
-                if (textarea) {
-                    // Подставляем название товара
-                    textarea.value = 'Хочу заказать: ' + selectedProduct;
-                    // Очищаем сохраненное значение
-                    localStorage.removeItem('selectedProduct');
-                }
-            }
-        });
-    </script>
-   <script>
-    // Аккордион функционал
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    
-    accordionHeaders.forEach(header => {
-        header.addEventListener('click', function() {
-            const accordionItem = this.closest('.accordion-item');
-            const isActive = accordionItem.classList.contains('active');
-            
-            // Закрываем все открытые аккордионы
-            document.querySelectorAll('.accordion-item.active').forEach(item => {
-                if (item !== accordionItem) {
-                    item.classList.remove('active');
-                }
-            });
-            
-            // Открываем/закрываем текущий
-            if (isActive) {
-                accordionItem.classList.remove('active');
-            } else {
-                accordionItem.classList.add('active');
-            }
-        });
-    });
-</script>
-
-<script>
-  // ===== Scrollspy: подсветка пункта меню при прокрутке =====
-  (function(){
-    const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
-    const sections = links
-      .map(a => document.querySelector(a.getAttribute('href')))
-      .filter(Boolean);
-
-    function setActive(){
-      const y = window.scrollY + 120; // учитываем sticky header
-      let current = sections[0];
-
-      for(const s of sections){
-        if(s.offsetTop <= y) current = s;
-      }
-
-      links.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id));
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Твои украшения — украшения ручной работы</title>
+
+  <!-- Fonts (Editorial + Modern) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       Editorial Fashion + Soft Beige
+       ========================= */
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root{
+      /* Soft Beige palette */
+      --bg: #F5F3EF;            /* main background */
+      --bg-2: #EFEAE3;          /* section background */
+      --card: #FFFFFF;          /* cards */
+      --text: #6E665D;          /* body text */
+      --heading: #2E2A26;       /* headings */
+      --muted: #9A9187;         /* secondary text */
+      --line: #DED6CC;          /* lines & borders */
+      --accent: #C6A27E;        /* champagne gold */
+      --accent-2: #B8926C;      /* hover */
+      --shadow: 0 18px 40px rgba(0,0,0,0.08);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.06);
+
+      --radius-lg: 18px;
+      --radius-md: 14px;
+
+      --container: 1200px;
+      --pad-x: 40px;
+
+      --h1: clamp(36px, 5vw, 72px);
+      --h2: clamp(28px, 3.2vw, 46px);
+      --h3: 20px;
+
+      --ease: cubic-bezier(.2,.8,.2,1);
     }
 
-    window.addEventListener('scroll', setActive, { passive:true });
-    window.addEventListener('load', setActive);
-  })();
-</script>
+    html{ scroll-behavior: smooth; }
+
+    body{
+      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 15% 10%, rgba(198,162,126,0.12), transparent 60%),
+                  radial-gradient(900px 600px at 90% 30%, rgba(198,162,126,0.10), transparent 55%),
+                  linear-gradient(180deg, var(--bg) 0%, #F7F5F2 100%);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img{ max-width: 100%; display:block; }
+
+    .container{
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--pad-x);
+    }
+
+    /* subtle editorial grid lines */
+    .page-grid{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      z-index: 0;
+      background:
+        linear-gradient(to right, rgba(222,214,204,.6) 1px, transparent 1px) 0 0 / 120px 100%,
+        linear-gradient(to bottom, rgba(222,214,204,.35) 1px, transparent 1px) 0 0 / 100% 140px;
+      mask-image: radial-gradient(circle at 40% 10%, rgba(0,0,0,1) 0%, rgba(0,0,0,.85) 40%, rgba(0,0,0,0) 80%);
+    }
+
+    /* =========================
+       Header / Nav
+       ========================= */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(245,243,239,0.76);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(222,214,204,.75);
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap: 10px;
+      text-decoration:none;
+      color: var(--heading);
+    }
+
+    .brand__name{
+      font-family: "Playfair Display", serif;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      font-size: 22px;
+    }
+
+    .brand__mark{
+      color: var(--accent);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+
+    .nav-links{
+      list-style:none;
+      display:flex;
+      align-items:center;
+      gap: 26px;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color: var(--heading);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 8px 2px;
+      opacity: .9;
+      transition: opacity .25s var(--ease);
+    }
+
+    /* editorial underline */
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:2px;
+      width:0%;
+      height:1px;
+      background: var(--accent);
+      transition: width .35s var(--ease);
+      opacity: .95;
+    }
+
+    .nav-links a:hover{ opacity: 1; }
+    .nav-links a:hover::after{ width: 100%; }
+
+    .nav-links a.active{
+      opacity: 1;
+    }
+    .nav-links a.active::after{
+      width: 100%;
+    }
+
+    /* dropdown */
+    .nav-dropdown{ position: relative; }
+    .dropdown-menu{
+      display:none;
+      position:absolute;
+      top: calc(100% + 10px);
+      left: -10px;
+      min-width: 240px;
+      padding: 10px;
+      list-style:none;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(222,214,204,.8);
+      border-radius: 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-dropdown:hover .dropdown-menu{ display:block; }
+
+    .dropdown-menu a{
+      display:block;
+      padding: 10px 12px;
+      border-radius: 10px;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      font-size: 14px;
+      color: var(--heading);
+    }
+    .dropdown-menu a::after{ display:none; }
+
+    .dropdown-menu a:hover{
+      background: rgba(198,162,126,.14);
+    }
+
+    /* CTA button */
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      text-decoration:none;
+      cursor:pointer;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
+      will-change: transform;
+    }
+
+    .btn-primary{
+      background: linear-gradient(135deg, #D8B58A 0%, var(--accent) 100%);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(198,162,126,.25);
+    }
+    .btn-primary:hover{
+      background: linear-gradient(135deg, #D8B58A 0%, var(--accent-2) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 34px rgba(198,162,126,.30);
+    }
+
+    .btn-ghost{
+      background: transparent;
+      color: var(--heading);
+      border-color: rgba(198,162,126,.55);
+    }
+    .btn-ghost:hover{
+      background: rgba(198,162,126,.10);
+      transform: translateY(-2px);
+    }
+
+    /* =========================
+       Section base
+       ========================= */
+    section{
+      position: relative;
+      z-index: 1;
+    }
+
+    .section{
+      padding: 120px 0;
+    }
+
+    .section--soft{
+      background: linear-gradient(135deg, rgba(239,234,227,.85) 0%, rgba(245,243,239,.85) 100%);
+      border-top: 1px solid rgba(222,214,204,.75);
+      border-bottom: 1px solid rgba(222,214,204,.75);
+    }
+
+    .kicker{
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .title{
+      font-family: "Playfair Display", serif;
+      color: var(--heading);
+      font-size: var(--h2);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+
+    .lead{
+      margin-top: 18px;
+      font-size: 18px;
+      color: var(--text);
+      max-width: 60ch;
+    }
+
+    /* reveal animation (1/3) */
+    .reveal{
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+    .reveal.is-visible{
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       HERO (Editorial asymmetric)
+       ========================= */
+    .hero{
+      padding: 56px 0 90px;
+    }
+
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 36px;
+      align-items: end;
+    }
+
+    .hero__copy{
+      padding: 20px 0;
+    }
+
+    .hero__h1{
+      font-family: "Playfair Display", serif;
+      font-size: var(--h1);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--heading);
+      margin-top: 14px;
+    }
+
+    .hero__desc{
+      margin-top: 18px;
+      font-size: 18px;
+      color: var(--text);
+      max-width: 56ch;
+    }
+
+    .hero__actions{
+      display:flex;
+      gap: 14px;
+      margin-top: 26px;
+      flex-wrap: wrap;
+    }
+
+    /* editorial geometry */
+    .hero__decor{
+      position:absolute;
+      right: 6%;
+      top: 88px;
+      width: 180px;
+      height: 180px;
+      border: 1px solid rgba(198,162,126,.55);
+      border-radius: 999px;
+      opacity: .45;
+      transform: rotate(12deg);
+      z-index: 0;
+    }
+
+    .hero__decor::after{
+      content:"";
+      position:absolute;
+      inset: 18px;
+      border: 1px solid rgba(222,214,204,.85);
+      border-radius: 999px;
+      transform: rotate(-18deg);
+    }
+
+    .hero__media{
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow:hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(222,214,204,.85);
+      background: #fff;
+      min-height: 520px;
+    }
+
+    .hero__media img{
+      width:100%;
+      height: 520px;
+      object-fit: cover;
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .hero__media::before{
+      /* soft overlay to feel like editorial paper */
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(245,243,239,0.0) 0%, rgba(245,243,239,0.22) 80%),
+        radial-gradient(600px 400px at 30% 20%, rgba(198,162,126,.10), transparent 55%);
+      pointer-events:none;
+    }
+
+    .hero__caption{
+      position:absolute;
+      left: 18px;
+      bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(222,214,204,.85);
+      backdrop-filter: blur(10px);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--heading);
+    }
+
+    /* =========================
+       ABOUT (diagonal mask)
+       ========================= */
+    .about__grid{
+      display:grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .about__card{
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(222,214,204,.9);
+      border-radius: var(--radius-lg);
+      padding: 26px 26px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about__name{
+      font-family: "Playfair Display", serif;
+      color: var(--heading);
+      font-size: clamp(26px, 3vw, 38px);
+      letter-spacing: -0.02em;
+      margin-top: 10px;
+    }
+
+    .about__card p{
+      margin-top: 14px;
+      color: var(--text);
+      font-size: 16px;
+    }
+
+    .about__media{
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(222,214,204,.9);
+      background: #fff;
+      min-height: 460px;
+    }
+
+    .about__media img{
+      width:100%;
+      height: 460px;
+      object-fit: cover;
+    }
+
+    /* diagonal overlay */
+    .about__media::after{
+      content:"";
+      position:absolute;
+      inset:-40px -80px auto auto;
+      width: 240px;
+      height: 240px;
+      transform: rotate(18deg);
+      background: rgba(245,243,239,0.75);
+      border: 1px solid rgba(222,214,204,.85);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
+    }
+
+    /* =========================
+       WORKS (Editorial grid + featured card)
+       ========================= */
+    .works__head{
+      display:flex;
+      align-items:flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 34px;
+    }
+
+    .works__hint{
+      max-width: 46ch;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: .02em;
+    }
+
+    .works__grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 18px;
+    }
+
+    .works__stack{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    .work-card{
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid rgba(222,214,204,.9);
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+      will-change: transform;
+    }
+
+    /* hover animation (2/3) */
+    .work-card:hover{
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .work-card a{
+      text-decoration:none;
+      color: inherit;
+      display:block;
+    }
+
+    .work-card__media{
+      width: 100%;
+      height: 320px;
+      background: linear-gradient(135deg, rgba(198,162,126,.12) 0%, rgba(239,234,227,.9) 100%);
+      position: relative;
+      overflow:hidden;
+    }
+
+    .work-card--featured .work-card__media{ height: 520px; }
+
+    .work-card__media img{
+      width:100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s var(--ease);
+      filter: saturate(1.02) contrast(1.02);
+    }
+
+    .work-card:hover .work-card__media img{
+      transform: scale(1.04);
+    }
+
+    .work-card__media::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.0) 55%, rgba(0,0,0,0.22) 100%);
+      pointer-events:none;
+    }
+
+    .work-card__body{
+      position:absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      padding: 14px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(222,214,204,.85);
+      backdrop-filter: blur(10px);
+    }
+
+    .work-card__title{
+      font-family: "Playfair Display", serif;
+      color: var(--heading);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .work-card__desc{
+      margin-top: 6px;
+      font-size: 13px;
+      color: rgba(46,42,38,.78);
+      letter-spacing: .01em;
+    }
+
+    .work-card__tag{
+      display:inline-flex;
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(46,42,38,.72);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(198,162,126,.55);
+      background: rgba(245,243,239,0.6);
+    }
+
+    /* =========================
+       ORDER (Accordion – soft paper)
+       ========================= */
+    .order__wrap{
+      display:grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .order__note{
+      position: sticky;
+      top: 92px;
+      align-self: start;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid rgba(222,214,204,.9);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .order__note p{
+      margin-top: 12px;
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    .accordion{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .accordion-item{
+      border-radius: var(--radius-lg);
+      overflow:hidden;
+      border: 1px solid rgba(222,214,204,.9);
+      background: rgba(255,255,255,0.75);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .accordion-header{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 14px;
+      background: transparent;
+      border: none;
+      padding: 18px 18px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--heading);
+      text-align:left;
+    }
+
+    .accordion-header:hover{
+      background: rgba(198,162,126,.08);
+    }
+
+    .accordion-icon{
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(198,162,126,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--heading);
+      transition: transform .25s var(--ease), background .25s var(--ease);
+      flex: 0 0 auto;
+    }
+
+    .accordion-item.active .accordion-icon{
+      transform: rotate(45deg);
+      background: rgba(198,162,126,.12);
+    }
+
+    .accordion-content{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s var(--ease);
+    }
+    .accordion-item.active .accordion-content{
+      max-height: 2400px;
+    }
+
+    .accordion-body{
+      padding: 0 18px 18px;
+      color: var(--text);
+      font-size: 15px;
+    }
+    .accordion-body h4{
+      margin-top: 14px;
+      margin-bottom: 8px;
+      font-size: 14px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--heading);
+    }
+    .accordion-body p{ margin: 10px 0; }
+    .accordion-body ul{ margin: 10px 0 0; padding: 0; list-style: none; }
+    .accordion-body li{
+      padding-left: 18px;
+      position: relative;
+      margin: 10px 0;
+      color: var(--text);
+    }
+    .accordion-body li::before{
+      content:"✧";
+      position:absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      opacity: .9;
+    }
+    .accordion-body a{
+      color: var(--heading);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(198,162,126,.65);
+    }
+    .accordion-body a:hover{
+      border-bottom-color: rgba(46,42,38,.55);
+    }
+
+    /* =========================
+       CONTACT (light, premium, readable)
+       ========================= */
+    .contact__grid{
+      display:grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .contact-cards{
+      display:grid;
+      gap: 12px;
+    }
+
+    .contact-card{
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(222,214,204,.9);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-label{
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-card a{
+      color: var(--heading);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(198,162,126,.65);
+    }
+    .contact-card a:hover{
+      border-bottom-color: rgba(46,42,38,.55);
+    }
+
+    .form-card{
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(222,214,204,.95);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-title{
+      font-family: "Playfair Display", serif;
+      color: var(--heading);
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .form{
+      display:flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .field{
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(222,214,204,.95);
+      background: rgba(245,243,239,0.6);
+      outline: none;
+      font-size: 14px;
+      color: var(--heading);
+      transition: border-color .2s var(--ease), box-shadow .2s var(--ease), background .2s var(--ease);
+    }
+
+    .field:focus{
+      border-color: rgba(198,162,126,.85);
+      box-shadow: 0 0 0 6px rgba(198,162,126,.14);
+      background: #fff;
+    }
+
+    .filebox{
+      background: rgba(245,243,239,0.6);
+      border: 1px dashed rgba(198,162,126,.55);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .filebox label{
+      cursor:pointer;
+      display:block;
+      color: var(--heading);
+      font-weight: 700;
+    }
+
+    .filebox small{
+      display:block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .preview{
+      margin-top: 10px;
+      display:none;
+    }
+
+    .preview img{
+      border-radius: 12px;
+      max-height: 220px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* =========================
+       Footer
+       ========================= */
+    footer{
+      padding: 28px 0;
+      border-top: 1px solid rgba(222,214,204,.8);
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+    .footer__inner{
+      display:flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+      text-align:center;
+      font-size: 13px;
+    }
+
+    /* =========================
+       Responsive
+       ========================= */
+    @media (max-width: 980px){
+      :root{ --pad-x: 22px; }
+      .hero__grid{ grid-template-columns: 1fr; }
+      .hero__media, .hero__media img{ height: 420px; min-height: 420px; }
+      .about__grid{ grid-template-columns: 1fr; }
+      .about__media, .about__media img{ height: 380px; min-height: 380px; }
+      .works__grid{ grid-template-columns: 1fr; }
+      .work-card--featured .work-card__media{ height: 420px; }
+      .order__wrap{ grid-template-columns: 1fr; }
+      .order__note{ position: relative; top: auto; }
+      .contact__grid{ grid-template-columns: 1fr; }
+      .nav-links{ display:none; } /* clean mobile header */
+    }
+
+    @media (max-width: 520px){
+      .hero{ padding: 40px 0 70px; }
+      .hero__actions .btn{ width: 100%; }
+      .btn{ width: 100%; }
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ scroll-behavior: auto !important; }
+      .reveal{ transition: none !important; }
+      .work-card, .btn{ transition: none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-grid" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="#top" aria-label="На главную">
+          <span class="brand__name">Твои украшения</span>
+          <span class="brand__mark">✧</span>
+        </a>
+
+        <ul class="nav-links" aria-label="Навигация">
+          <li><a href="#about">Обо мне</a></li>
+          <li class="nav-dropdown">
+            <a href="#categories">Мои работы</a>
+            <ul class="dropdown-menu" aria-label="Категории">
+              <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+              <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
+            </ul>
+          </li>
+          <li><a href="#why-choose-me">Оформление заказа и доставка</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+
+        <a href="#contact" class="btn btn-primary">Заказать</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__decor" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero__grid reveal">
+        <div class="hero__copy">
+          <div class="kicker">Портфолио украшений ручной работы</div>
+          <h1 class="hero__h1">Украшения ручной работы</h1>
+          <p class="hero__desc">
+            Каждое украшение создаётся вручную из качественных материалов. Уникальные, авторские дизайны, которые подчеркивают вашу индивидуальность.
+          </p>
+
+          <div class="hero__actions">
+            <a href="#categories" class="btn btn-primary">Смотреть работы</a>
+            <a href="#about" class="btn btn-ghost">О мастере</a>
+          </div>
+        </div>
+
+        <div class="hero__media" aria-label="Превью работ">
+          <!-- Placeholder (замените на ваше hero-фото) -->
+          <img
+            src="https://images.unsplash.com/photo-1610223515982-2f9f4c9c31b8?auto=format&fit=crop&w=1600&q=80"
+            alt="Украшение крупным планом"
+          />
+          <div class="hero__caption">Lookbook • 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section section--soft" id="about">
+    <div class="container">
+      <div class="about__grid reveal">
+        <div class="about__card">
+          <div class="kicker">Обо мне</div>
+          <h2 class="about__name">Евгения</h2>
+          <p>Меня зовут Евгения, и я создаю украшения вручную в Санкт-Петербурге.</p>
+          <p>Каждое изделие — это результат кропотливого труда, стремления к совершенству и любви к деталям. Я использую только качественные материалы, которые дарят украшениям долгую жизнь.</p>
+          <p>Мне важно, чтобы вы чувствовали себя увереннее и прекраснее, надевая мои украшения. Каждая работа создаётся с душой — это не просто аксессуар, это ваша история.</p>
+        </div>
+
+        <div class="about__media">
+          <!-- Placeholder (замените на ваше фото процесса / мастерской) -->
+          <img
+            src="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80"
+            alt="Процесс создания украшения"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORKS / CATEGORIES -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="works__head reveal">
+        <div>
+          <div class="kicker">Коллекции</div>
+          <h2 class="title">Мои работы</h2>
+        </div>
+        <p class="works__hint">
+          Лаконичная витрина категорий — чтобы внимание оставалось на украшениях. Нажмите на карточку, чтобы перейти в каталог.
+        </p>
+      </div>
+
+      <div class="works__grid reveal">
+        <!-- Featured -->
+        <div class="work-card work-card--featured">
+          <a href="kolye-i-chokery.html">
+            <div class="work-card__media">
+              <!-- Placeholder -->
+              <img
+                src="https://images.unsplash.com/photo-1600721391689-2564bb8055de?auto=format&fit=crop&w=1800&q=80"
+                alt="Колье и чокеры"
+              />
+            </div>
+            <div class="work-card__body">
+              <div class="work-card__title">Колье и чокеры</div>
+              <div class="work-card__desc">Авторские колье и чокеры из качественных материалов</div>
+              <span class="work-card__tag">Смотреть коллекцию</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Stack -->
+        <div class="works__stack">
+          <div class="work-card">
+            <a href="broshi-braslety-sergi.html">
+              <div class="work-card__media">
+                <!-- Placeholder -->
+                <img
+                  src="https://images.unsplash.com/photo-1617038260897-41a1f14b0f1f?auto=format&fit=crop&w=1800&q=80"
+                  alt="Броши, браслеты и серьги"
+                />
+              </div>
+              <div class="work-card__body">
+                <div class="work-card__title">Броши, браслеты и серьги</div>
+                <div class="work-card__desc">Стильные аксессуары для завершения образа</div>
+                <span class="work-card__tag">Открыть каталог</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="work-card">
+            <a href="#contact">
+              <div class="work-card__media">
+                <!-- Placeholder -->
+                <img
+                  src="https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=1800&q=80"
+                  alt="Украшение на заказ"
+                />
+              </div>
+              <div class="work-card__body">
+                <div class="work-card__title">На заказ</div>
+                <div class="work-card__desc">Создам украшение вашей мечты по вашему эскизу</div>
+                <span class="work-card__tag">Оставить заявку</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ORDER / DELIVERY -->
+  <section class="section section--soft" id="why-choose-me">
+    <div class="container">
+      <div class="order__wrap reveal">
+        <div class="order__note">
+          <div class="kicker">Информация</div>
+          <h2 class="title" style="margin-top:10px;">Оформление заказа и доставка</h2>
+          <p>
+            Всё прозрачно и спокойно: мы уточняем наличие, обсуждаем детали, вы получаете контрольное фото — и только потом отправка.
+          </p>
+          <p style="color: var(--muted); font-size: 13px; letter-spacing:.02em;">
+            Совет: если хотите быстрее — пришлите фото/ссылку на вдохновение сразу в заявке.
+          </p>
+        </div>
+
+        <div class="accordion" aria-label="Аккордеон: заказ и доставка">
+          <!-- ACC 1 -->
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <span>Почему нужно уточнять наличие?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p>Каждое украшение создаётся вручную, поэтому наличие товаров меняется постоянно. Это не склад готовых изделий, это мастерская, где каждая вещь — результат творческого процесса.</p>
+                <p>Поэтому перед заказом обязательно уточните наличие у мастера. Все работы также размещаются в моем <a href="https://t.me/tvoiukrashenia" target="_blank" rel="noopener">Telegram-канале</a> — там всегда актуальная информация о готовых украшениях.</p>
+
+                <h4>Украшение вашей мечты — это возможно!</h4>
+                <p>Каждое изделие уникально, и вы можете сделать его ещё более личным:</p>
+                <ul>
+                  <li><strong>Хотите изменить детали?</strong> Размер, цвет, материал — всё можно адаптировать под вас. Напишите в WhatsApp или Telegram, обсудим и воплотим. Учтите, что корректировка потребует времени на переделку.</li>
+                  <li><strong>Вдохновились украшением в Pinterest?</strong> Пришлите ссылку или фото — создам похожее специально для вас.</li>
+                  <li><strong>Есть собственная идея?</strong> Это самое интересное. Обсуждаем концепцию, я даю рекомендации, и вместе воплощаем вашу фантазию в реальность.</li>
+                </ul>
+                <p style="margin-top: 10px;"><em>Украшение — это не товар с полки, это ваша история. Я её создаю вместе с вами.</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACC 2 -->
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <span>Как заказать украшение?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <h4>Способ 1 — Через форму на сайте</h4>
+                <p>Нажмите кнопку "Заказать" в верхней части сайта. Заполните быструю форму, укажите, какое украшение вас интересует, прикрепите эскиз или ссылку на вдохновение. После отправки я свяжусь с вами.</p>
+
+                <h4>Способ 2 — Через каталог</h4>
+                <p>Найдите украшение в каталоге и нажмите "Заказать похожее". Вы попадёте в форму заказа — останется указать контакты. После отправки я свяжусь с вами.</p>
+
+                <h4>Способ 3 — Прямой контакт</h4>
+                <p>Пишите в Telegram или WhatsApp: <strong>+79148656819</strong> или <a href="https://t.me/EvgeniyaAnatolevnaDmitrieva" target="_blank" rel="noopener">@EvgeniyaAnatolevnaDmitrieva</a></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACC 3 -->
+          <div class="accordion-item">
+            <button class="accordion-header" type="button">
+              <span>Как проходит процесс создания и доставки украшения?</span>
+              <span class="accordion-icon">+</span>
+            </button>
+            <div class="accordion-content">
+              <div class="accordion-body">
+                <p>После вашего заказа мы с вами:</p>
+                <ul>
+                  <li><strong>Уточняем наличие</strong> — если украшение в готовом виде, идём дальше. Если нет, запускаю изготовление.</li>
+                  <li><strong>Обсуждаем детали</strong> — размер, цвет, материал, любые изменения. Это занимает время на переделку, но оно того стоит.</li>
+                  <li><strong>Договариваемся о доставке и оплате</strong> — оплата осуществляется перед отправкой. Я нахожусь в Санкт-Петербурге и могу доставить украшение в любую точку России.</li>
+                  <li><strong>Контрольное фото перед отправкой</strong> — вы видите финальный результат. Если хотите изменения, обсуждаем их до отправки.</li>
+                  <li><strong>Отправляем</strong> — оформление доставки занимает от нескольких часов до 2 дней (если украшение готово в готовом виде).</li>
+                </ul>
+
+                <h4>Если украшения нет в наличии</h4>
+                <p>Это не проблема — мы найдём решение:</p>
+                <ul>
+                  <li><strong>Индивидуальное изготовление</strong> — если нужные материалы уже в наличии, создам украшение специально для вас.</li>
+                  <li><strong>Если материалов нет</strong> — договариваемся о сроках: когда ждём поставку материалов и сколько займёт изготовление. Или обсуждаем замену материалов на похожие.</li>
+                  <li><strong>Система оплаты</strong> — предоплата 50%, остаток вносите после готовности украшения и перед отправкой.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="reveal">
+        <div class="kicker">Связаться</div>
+        <h2 class="title">Заказать украшение</h2>
+        <p class="lead">Напишите мне, какое украшение вас интересует, или опишите то, о чём вы мечтаете</p>
+      </div>
+
+      <div class="contact__grid reveal" style="margin-top: 26px;">
+        <div class="contact-cards">
+          <div class="contact-card">
+            <div class="contact-label">WhatsApp, Telegram</div>
+            <div style="margin-top:10px;">
+              <a href="tel:+79148656819">+7 914 865 68-19</a><br>
+              <a href="https://t.me/EvgeniyaAnatolevnaDmitrieva" target="_blank" rel="noopener">@EvgeniyaAnatolevnaDmitrieva</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-label">Telegram канал</div>
+            <div style="margin-top:10px;">
+              <a href="https://t.me/tvoiukrashenia" target="_blank" rel="noopener">@tvoiukrashenia</a>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-label">Форма ниже</div>
+            <div style="margin-top:10px; color: var(--muted); font-size: 14px;">
+              Напишите мне сообщение — можно приложить фото/эскиз
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <div class="form-title">Быстрая форма заказа</div>
+          <form id="contactForm" class="form">
+            <input class="field" type="text" placeholder="Ваше имя *" required>
+            <input class="field" type="tel" placeholder="Ваш телефон">
+            <input class="field" type="text" placeholder="Ваш Telegram (@username)">
+            <input class="field" type="email" placeholder="Ваша почта">
+
+            <!-- File -->
+            <div class="filebox">
+              <label for="fileInput">📷 Добавить фото</label>
+              <small>Фото украшения / эскиз / ссылка на вдохновение</small>
+              <input type="file" id="fileInput" accept="image/*" style="display:none;">
+              <div id="previewContainer" class="preview">
+                <img id="imagePreview" src="" alt="Предпросмотр">
+                <div style="margin-top:8px; font-size:12px; color: #2F7A3D;">✓ Фото выбрано</div>
+              </div>
+            </div>
+
+            <textarea class="field" placeholder="Описание желаемого украшения (материал, размер, дизайн и т.д.)" rows="5" style="resize: vertical;"></textarea>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Отправить запрос</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer__inner">
+        <div>&copy; 2026 Твои украшения — украшения ручной работы. Все права защищены.</div>
+        <div>Создано с любовью к украшениям ✧</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ========= 1) Scroll reveal (Animation #1 of max 3) =========
+    (function(){
+      const els = document.querySelectorAll('.reveal');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    })();
+
+    // ========= Accordion =========
+    (function(){
+      const headers = document.querySelectorAll('.accordion-header');
+      headers.forEach(header => {
+        header.addEventListener('click', function() {
+          const item = this.closest('.accordion-item');
+          const isActive = item.classList.contains('active');
+
+          document.querySelectorAll('.accordion-item.active').forEach(open => {
+            if(open !== item) open.classList.remove('active');
+          });
+
+          item.classList.toggle('active', !isActive);
+        });
+      });
+    })();
+
+    // ========= Form submit (kept from your original logic) =========
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const btn = this.querySelector('button');
+      const originalBtnText = btn.innerText;
+      btn.innerText = 'Отправка...';
+      btn.disabled = true;
+
+      // ВАШИ ДАННЫЕ (как в исходнике)
+      const botToken = '8263906001:AAHmkxEAOybXhF8hrgyO9E-b9CbV8OEunMw';
+      const chatId = '633411381';
+
+      const form = this;
+      const name = form.children[0].value;
+      const phone = form.children[1].value;
+      const telegram = form.children[2].value;
+      const email = form.children[3].value;
+      const message = form.children[5].value;
+
+      const fileInput = document.getElementById('fileInput');
+      const file = fileInput.files[0];
+
+      const text = `✨ НОВЫЙ ЗАКАЗ! ✨\n\n👤 Имя: ${name}\n📞 Тел: ${phone || 'Не указан'}\n✈️ TG: ${telegram || 'Не указан'}\n📧 Почта: ${email || 'Не указана'}\n\n📝 Сообщение:\n${message}`;
+
+      let url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+      let body = null;
+      let headers = {};
+
+      if (file) {
+        url = `https://api.telegram.org/bot${botToken}/sendPhoto`;
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('photo', file);
+        formData.append('caption', text);
+        body = formData;
+      } else {
+        headers = { 'Content-Type': 'application/json' };
+        body = JSON.stringify({ chat_id: chatId, text: text });
+      }
+
+      fetch(url, { method: 'POST', headers, body })
+        .then(response => {
+          if (response.ok) {
+            alert('Спасибо! Ваш заказ (и фото) успешно отправлены.');
+            form.reset();
+            document.getElementById('previewContainer').style.display = 'none';
+            document.getElementById('imagePreview').src = '';
+          } else {
+            alert('Ошибка отправки. Возможно файл слишком большой.');
+          }
+        })
+        .catch(error => {
+          console.error('Ошибка:', error);
+          alert('Произошла ошибка соединения.');
+        })
+        .finally(() => {
+          btn.innerText = originalBtnText;
+          btn.disabled = false;
+        });
+    });
+
+    // ========= Preview image =========
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+      const file = event.target.files[0];
+      const previewContainer = document.getElementById('previewContainer');
+      const imagePreview = document.getElementById('imagePreview');
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+          previewContainer.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+      } else {
+        previewContainer.style.display = 'none';
+      }
+    });
+
+    // ========= Fill textarea from localStorage (kept) =========
+    document.addEventListener('DOMContentLoaded', function() {
+      const selectedProduct = localStorage.getItem('selectedProduct');
+      if (selectedProduct) {
+        const textarea = document.querySelector('textarea[placeholder*="Описание"]');
+        if (textarea) {
+          textarea.value = 'Хочу заказать: ' + selectedProduct;
+          localStorage.removeItem('selectedProduct');
+        }
+      }
+    });
+
+    // ========= Scrollspy =========
+    (function(){
+      const links = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+      const sections = links
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+
+      function setActive(){
+        const y = window.scrollY + 140;
+        let current = sections[0];
+        for(const s of sections){
+          if(s.offsetTop <= y) current = s;
+        }
+        links.forEach(a => a.classList.toggle('active', current && a.getAttribute('href') === '#' + current.id));
+      }
+
+      window.addEventListener('scroll', setActive, { passive:true });
+      window.addEventListener('load', setActive);
+    })();
+  </script>
 
 </body>
 </html>
