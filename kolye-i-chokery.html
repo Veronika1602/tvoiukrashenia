@@ -142,18 +142,33 @@
             font-weight: 700;
         }
 
-        /* --- СЕТКА ТОВАРОВ --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
+     /* ===== СЕТКА КАРТОЧЕК: МАКСИМУМ 4 В РЯД ===== */
+.portfolio-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* максимум 4 */
+  gap: 30px;
+}
 
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+/* 3 в ряд */
+@media (max-width: 1400px){
+  .portfolio-grid{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* 2 в ряд */
+@media (max-width: 1050px){
+  .portfolio-grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* 1 в ряд */
+@media (max-width: 650px){
+  .portfolio-grid{
+    grid-template-columns: 1fr;
+  }
+}
 
         .portfolio-item {
             background: white;
