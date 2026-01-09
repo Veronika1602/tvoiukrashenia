@@ -379,33 +379,47 @@
             navigation: auto;
         }
 
-        /* === ФИЛЬТРЫ + РАСКЛАДКА (ТОВАРЫ + ФИЛЬТР СПРАВА) === */
-        .portfolio-with-filters {
-            display: flex;
-            gap: 30px;
-            align-items: flex-start;
-        }
+/* === ФИЛЬТРЫ + РАСКЛАДКА (ТОВАРЫ + ФИЛЬТР СПРАВА) === */
+.portfolio-with-filters{
+  display: grid;
+  grid-template-columns: 1fr 220px;  /* товары | фильтр */
+  gap: 30px;
+  align-items: start;
+}
 
-        .portfolio-grid-wrapper {
-            flex: 1;
-            min-width: 0;
-            order: 1; /* товары слева */
-        }
+.portfolio-grid-wrapper{
+  min-width: 0; /* важно: чтобы сетка не распирала контейнер */
+}
 
-        .filters-sidebar {
-            width: 220px;
-            min-width: 220px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            height: fit-content;
+/* фильтр справа и липкий */
+.filters-sidebar{
+  width: 220px;
+  min-width: 220px;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: fit-content;
 
-            position: sticky;
-            top: 100px;
+  position: sticky;
+  top: 100px;
 
-            order: 2; /* фильтр справа */
-        }
+  align-self: start; /* важно для sticky внутри grid */
+}
+
+/* Адаптив: на узких экранах фильтр уходит вниз (с заданной ширины) */
+@media (max-width: 900px){
+  .portfolio-with-filters{
+    grid-template-columns: 1fr; /* один столбец */
+  }
+
+  .filters-sidebar{
+    width: 100%;
+    min-width: 0;
+    position: static; /* на телефоне sticky обычно мешает */
+  }
+}
+
 
         .filter-group {
             margin-bottom: 30px;
@@ -468,10 +482,6 @@
             color: white;
         }
 
-        @media (max-width: 1024px) {
-            .portfolio-with-filters {
-                flex-direction: column;
-            }
 
             .filters-sidebar {
                 width: 100%;
