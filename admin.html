@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Админка — товары</title>
+  <style>
+    :root{
+      --color-primary:#dbcebb;
+      --color-accent:#c2785d;
+      --color-light:#dbcebb;
+      --color-dark:#2a2a2a;
+      --color-text:#89816a;
+      --color-heading:#51291f;
+      --color-card:#ffffff;
+      --shadow:0 2px 10px rgba(0,0,0,0.08);
+      --radius:12px;
+      --gap:16px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background:var(--color-light);
+      color:var(--color-heading);
+      line-height:1.5;
+      padding:24px;
+    }
+    header{
+      max-width:1200px;
+      margin:0 auto 18px auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .logo{
+      font-weight:800;
+      color:var(--color-accent);
+      text-decoration:none;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+    .hint{
+      color:var(--color-text);
+      font-size:13px;
+    }
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:24px;
+      align-items:start;
+    }
+    @media (max-width: 980px){
+      .wrap{grid-template-columns:1fr}
+    }
+    .card{
+      background:var(--color-card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    h1{
+      font-size:22px;
+      color:var(--color-heading);
+      margin-bottom:6px;
+    }
+    h2{
+      font-size:16px;
+      color:var(--color-heading);
+      margin-bottom:10px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    .row-1{display:grid;grid-template-columns:1fr;gap:12px;}
+    label{
+      font-size:12px;
+      color:var(--color-text);
+      display:block;
+      margin-bottom:6px;
+    }
+    input, textarea, select{
+      width:100%;
+      padding:10px 12px;
+      border:1px solid rgba(0,0,0,0.10);
+      border-radius:10px;
+      outline:none;
+      font-size:14px;
+      background:#fff;
+      color:#333;
+    }
+    textarea{min-height:110px; resize:vertical}
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(194,120,93,0.55);
+      box-shadow:0 0 0 3px rgba(194,120,93,0.15);
+    }
+    .btns{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+    button{
+      border:none;
+      border-radius:10px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:14px;
+      transition:transform .05s ease, opacity .2s ease;
+    }
+    button:active{transform:translateY(1px)}
+    .btn-primary{background:var(--color-accent);color:#fff}
+    .btn-ghost{background:rgba(219,206,187,0.55); color:var(--color-heading)}
+    .btn-danger{background:#b84c4c;color:#fff}
+    .btn-outline{background:#fff;color:var(--color-heading);border:1px solid rgba(0,0,0,0.12)}
+    .small{
+      font-size:12px;
+      color:var(--color-text);
+      margin-top:8px;
+    }
+    .toolbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+    .search{
+      flex:1;
+      min-width:220px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .list{
+      display:grid;
+      gap:12px;
+    }
+    .item{
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:12px;
+      padding:12px;
+      display:grid;
+      gap:8px;
+    }
+    .item-head{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .title{
+      font-weight:800;
+      color:var(--color-heading);
+    }
+    .meta{
+      font-size:12px;
+      color:var(--color-text);
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .chip{
+      font-size:12px;
+      padding:4px 8px;
+      border-radius:999px;
+      background:rgba(219,206,187,0.55);
+      color:var(--color-heading);
+    }
+    .warn{
+      background:rgba(184,76,76,0.08);
+      border:1px solid rgba(184,76,76,0.25);
+      color:#7c2e2e;
+      border-radius:12px;
+      padding:10px 12px;
+      margin-top:10px;
+      font-size:13px;
+    }
+    .ok{
+      background:rgba(90,150,90,0.10);
+      border:1px solid rgba(90,150,90,0.25);
+      color:#2b5a2b;
+      border-radius:12px;
+      padding:10px 12px;
+      margin-top:10px;
+      font-size:13px;
+    }
+    code{
+      background:rgba(0,0,0,0.05);
+      padding:2px 6px;
+      border-radius:6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size:12px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="index.html">Твои украшения✧</a>
+    <div class="hint">
+      Админка для GitHub Pages: изменения сохраняются как файл <code>products.json</code> и требуют коммита в репозиторий.
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- LEFT: FORM -->
+    <div class="card">
+      <h1>Добавить / редактировать товар</h1>
+      <div class="small">
+        Если страница открыта как <code>file://</code>, загрузка <code>products.json</code> может быть заблокирована браузером. В этом случае используй «Импортировать products.json».
+      </div>
+
+      <div class="btns" style="margin-top:12px;">
+        <button class="btn-outline" id="btnLoad" type="button">Обновить из products.json</button>
+        <label style="margin:0">
+          <input id="fileImport" type="file" accept="application/json" style="display:none">
+          <button class="btn-outline" id="btnImport" type="button">Импортировать products.json</button>
+        </label>
+      </div>
+
+      <hr style="border:none;border-top:1px solid rgba(0,0,0,0.08); margin:14px 0;">
+
+      <form id="productForm" class="row-1">
+        <div class="row">
+          <div>
+            <label for="category">Категория</label>
+            <select id="category" required>
+              <option value="kolye-i-chokery">Колье и чокеры</option>
+              <option value="broshi-braslety-sergi">Броши, браслеты и серьги</option>
+            </select>
+          </div>
+          <div>
+            <label for="id">ID (авто)</label>
+            <input id="id" placeholder="например: kolye-severnyy-svet" />
+          </div>
+        </div>
+
+        <div class="row-1">
+          <div>
+            <label for="title">Название</label>
+            <input id="title" required placeholder='Например: Колье "Северный свет"' />
+          </div>
+          <div class="row">
+            <div>
+              <label for="price">Цена (можно пусто)</label>
+              <input id="price" placeholder="Например: 4500 или 4 500 ₽" />
+            </div>
+            <div>
+              <label for="currency">Валюта</label>
+              <select id="currency">
+                <option value="RUB">RUB</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="description">Описание</label>
+            <textarea id="description" placeholder="Коротко и красиво :)"></textarea>
+          </div>
+
+          <div>
+            <label for="images">Фото (через запятую)</label>
+            <input id="images" placeholder='Например: 1_1.jpg, 1_2.png, 1_3.png' />
+            <div class="small">Файлы должны лежать рядом со страницей категории (или укажи путь, если лежат в папке).</div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="colors">Фильтр: цвет (через запятую)</label>
+              <input id="colors" placeholder="белый, синий" />
+            </div>
+            <div>
+              <label for="materials">Фильтр: материал (через запятую)</label>
+              <input id="materials" placeholder="жемчуг, гематит" />
+            </div>
+          </div>
+
+          <div class="btns">
+            <button class="btn-primary" id="btnSave" type="submit">Сохранить товар</button>
+            <button class="btn-ghost" id="btnNew" type="button">Очистить форму</button>
+            <button class="btn-danger" id="btnDelete" type="button" disabled>Удалить</button>
+          </div>
+
+          <div id="msg"></div>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT: LIST + EXPORT -->
+    <div class="card">
+      <div class="toolbar">
+        <div class="search">
+          <input id="search" placeholder="Поиск по названию / категории / цвету..." />
+          <select id="filterCategory">
+            <option value="all">Все категории</option>
+            <option value="kolye-i-chokery">Колье и чокеры</option>
+            <option value="broshi-braslety-sergi">Броши, браслеты и серьги</option>
+          </select>
+        </div>
+        <div class="btns" style="margin:0">
+          <button class="btn-primary" id="btnDownload" type="button">Скачать products.json</button>
+          <button class="btn-outline" id="btnCopy" type="button">Скопировать JSON</button>
+        </div>
+      </div>
+
+      <div class="small">
+        После скачивания заменяешь файл <code>products.json</code> в репозитории → коммит → GitHub Pages обновится.
+      </div>
+
+      <div id="list" class="list" style="margin-top:12px;"></div>
+    </div>
+  </div>
+
+<script>
+  // -------------------------
+  // Storage in memory (not server)
+  // -------------------------
+  let products = [];
+  let editingIndex = -1;
+
+  const els = {
+    msg: document.getElementById('msg'),
+    list: document.getElementById('list'),
+    search: document.getElementById('search'),
+    filterCategory: document.getElementById('filterCategory'),
+
+    category: document.getElementById('category'),
+    id: document.getElementById('id'),
+    title: document.getElementById('title'),
+    price: document.getElementById('price'),
+    currency: document.getElementById('currency'),
+    description: document.getElementById('description'),
+    images: document.getElementById('images'),
+    colors: document.getElementById('colors'),
+    materials: document.getElementById('materials'),
+
+    btnDelete: document.getElementById('btnDelete')
+  };
+
+  function showMessage(type, text){
+    els.msg.innerHTML = type === 'ok'
+      ? `<div class="ok">${text}</div>`
+      : `<div class="warn">${text}</div>`;
+    setTimeout(() => { els.msg.innerHTML = ""; }, 4500);
+  }
+
+  function slugify(str){
+    return (str || "")
+      .toLowerCase()
+      .trim()
+      .replace(/["'«»]/g, "")
+      .replace(/ё/g, "e")
+      .replace(/й/g, "y")
+      .replace(/ж/g, "zh")
+      .replace(/х/g, "h")
+      .replace(/ц/g, "ts")
+      .replace(/ч/g, "ch")
+      .replace(/ш/g, "sh")
+      .replace(/щ/g, "sch")
+      .replace(/ю/g, "yu")
+      .replace(/я/g, "ya")
+      .replace(/[^a-z0-9а-я\- ]/g, "")
+      .replace(/\s+/g, "-")
+      .replace(/-+/g, "-");
+  }
+
+  function splitList(v){
+    return (v || "")
+      .split(",")
+      .map(s => s.trim())
+      .filter(Boolean);
+  }
+
+  function normalizeProduct(p){
+    return {
+      id: p.id || slugify(p.title),
+      category: p.category || "kolye-i-chokery",
+      title: p.title || "",
+      price: p.price ?? "",
+      currency: p.currency || "RUB",
+      description: p.description || "",
+      images: Array.isArray(p.images) ? p.images : splitList(p.images),
+      filters: {
+        colors: Array.isArray(p.filters?.colors) ? p.filters.colors : splitList(p.filters?.colors || p.colors),
+        materials: Array.isArray(p.filters?.materials) ? p.filters.materials : splitList(p.filters?.materials || p.materials)
+      }
+    };
+  }
+
+  function fillForm(p){
+    els.category.value = p.category;
+    els.id.value = p.id;
+    els.title.value = p.title;
+    els.price.value = p.price || "";
+    els.currency.value = p.currency || "RUB";
+    els.description.value = p.description || "";
+    els.images.value = (p.images || []).join(", ");
+    els.colors.value = (p.filters?.colors || []).join(", ");
+    els.materials.value = (p.filters?.materials || []).join(", ");
+  }
+
+  function clearForm(){
+    editingIndex = -1;
+    els.btnDelete.disabled = true;
+
+    els.category.value = "kolye-i-chokery";
+    els.id.value = "";
+    els.title.value = "";
+    els.price.value = "";
+    els.currency.value = "RUB";
+    els.description.value = "";
+    els.images.value = "";
+    els.colors.value = "";
+    els.materials.value = "";
+  }
+
+  function renderList(){
+    const q = (els.search.value || "").toLowerCase().trim();
+    const cat = els.filterCategory.value;
+
+    const filtered = products.filter(p => {
+      if (cat !== "all" && p.category !== cat) return false;
+
+      if (!q) return true;
+
+      const text = [
+        p.title,
+        p.id,
+        p.category,
+        (p.filters?.colors || []).join(" "),
+        (p.filters?.materials || []).join(" ")
+      ].join(" ").toLowerCase();
+
+      return text.includes(q);
+    });
+
+    els.list.innerHTML = "";
+
+    if (filtered.length === 0){
+      els.list.innerHTML = `<div class="warn">Товары не найдены.</div>`;
+      return;
+    }
+
+    filtered.forEach(p => {
+      const idx = products.findIndex(x => x.id === p.id);
+
+      const item = document.createElement("div");
+      item.className = "item";
+
+      item.innerHTML = `
+        <div class="item-head">
+          <div>
+            <div class="title">${escapeHtml(p.title || "(без названия)")}</div>
+            <div class="meta">
+              <b>${p.category}</b> · id: <code>${escapeHtml(p.id)}</code>
+              ${p.price ? " · цена: " + escapeHtml(String(p.price)) : ""}
+            </div>
+          </div>
+          <div class="btns" style="margin:0">
+            <button class="btn-outline" type="button" data-edit="${idx}">Редактировать</button>
+          </div>
+        </div>
+        <div class="chips">
+          ${(p.filters?.colors || []).map(c => `<span class="chip">${escapeHtml(c)}</span>`).join("")}
+          ${(p.filters?.materials || []).map(m => `<span class="chip">${escapeHtml(m)}</span>`).join("")}
+        </div>
+        <div class="meta">Фото: ${(p.images || []).length ? escapeHtml(p.images.join(", ")) : "—"}</div>
+      `;
+
+      item.querySelector("[data-edit]").addEventListener("click", () => {
+        editingIndex = Number(item.querySelector("[data-edit]").dataset.edit);
+        const prod = products[editingIndex];
+
+        fillForm(prod);
+        els.btnDelete.disabled = false;
+
+        showMessage("ok", "Открыто для редактирования: " + escapeHtml(prod.title));
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      els.list.appendChild(item);
+    });
+  }
+
+  function escapeHtml(s){
+    return String(s)
+      .replaceAll("&","&amp;")
+      .replaceAll("<","&lt;")
+      .replaceAll(">","&gt;")
+      .replaceAll('"',"&quot;")
+      .replaceAll("'","&#039;");
+  }
+
+  async function loadFromSite(){
+    // This works on GitHub Pages / http(s).
+    const res = await fetch("products.json", { cache: "no-store" });
+    if (!res.ok) throw new Error("Не удалось загрузить products.json (HTTP " + res.status + ")");
+    const data = await res.json();
+    if (!Array.isArray(data)) throw new Error("products.json должен быть массивом товаров");
+    products = data.map(normalizeProduct);
+    renderList();
+    showMessage("ok", "Загружено товаров: " + products.length);
+  }
+
+  function importFromFile(file){
+    const reader = new FileReader();
+    reader.onload = () => {
+      try{
+        const data = JSON.parse(reader.result);
+        if (!Array.isArray(data)) throw new Error("Файл должен содержать массив товаров");
+        products = data.map(normalizeProduct);
+        renderList();
+        showMessage("ok", "Импортировано товаров: " + products.length);
+      }catch(e){
+        showMessage("warn", "Ошибка импорта: " + e.message);
+      }
+    };
+    reader.readAsText(file, "utf-8");
+  }
+
+  function exportJsonText(){
+    // stable output
+    const out = products.map(p => ({
+      id: p.id,
+      category: p.category,
+      title: p.title,
+      price: p.price ?? "",
+      currency: p.currency || "RUB",
+      description: p.description || "",
+      images: p.images || [],
+      filters: {
+        colors: p.filters?.colors || [],
+        materials: p.filters?.materials || []
+      }
+    }));
+    return JSON.stringify(out, null, 2);
+  }
+
+  function downloadJson(){
+    const text = exportJsonText();
+    const blob = new Blob([text], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "products.json";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+    showMessage("ok", "Файл products.json скачан. Заменишь его в репозитории и закоммитишь.");
+  }
+
+  async function copyJson(){
+    try{
+      await navigator.clipboard.writeText(exportJsonText());
+      showMessage("ok", "JSON скопирован в буфер обмена.");
+    }catch(e){
+      showMessage("warn", "Не удалось скопировать автоматически. Скачай файл вместо этого.");
+    }
+  }
+
+  // -------------------------
+  // Events
+  // -------------------------
+  document.getElementById("btnLoad").addEventListener("click", async () => {
+    try{ await loadFromSite(); }
+    catch(e){ showMessage("warn", e.message + " — попробуй импортировать файл вручную."); }
+  });
+
+  document.getElementById("btnImport").addEventListener("click", () => {
+    document.getElementById("fileImport").click();
+  });
+
+  document.getElementById("fileImport").addEventListener("change", (e) => {
+    const f = e.target.files && e.target.files[0];
+    if (f) importFromFile(f);
+    e.target.value = "";
+  });
+
+  document.getElementById("btnDownload").addEventListener("click", downloadJson);
+  document.getElementById("btnCopy").addEventListener("click", copyJson);
+
+  document.getElementById("btnNew").addEventListener("click", clearForm);
+
+  els.title.addEventListener("input", () => {
+    // Auto-generate ID if user hasn't set one while creating
+    if (editingIndex !== -1) return;
+    const auto = slugify(els.title.value);
+    if (!els.id.value || els.id.value === slugify(els.id.value)) {
+      els.id.value = auto;
+    }
+  });
+
+  document.getElementById("productForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const p = normalizeProduct({
+      id: (els.id.value || "").trim() || slugify(els.title.value),
+      category: els.category.value,
+      title: (els.title.value || "").trim(),
+      price: (els.price.value || "").trim(),
+      currency: els.currency.value,
+      description: (els.description.value || "").trim(),
+      images: splitList(els.images.value),
+      filters: {
+        colors: splitList(els.colors.value),
+        materials: splitList(els.materials.value)
+      }
+    });
+
+    if (!p.title){
+      showMessage("warn", "Название обязательно.");
+      return;
+    }
+
+    // Prevent duplicates by id
+    const sameIdIndex = products.findIndex(x => x.id === p.id);
+    if (editingIndex === -1){
+      if (sameIdIndex !== -1){
+        showMessage("warn", "Товар с таким ID уже существует. Поменяй ID или отредактируй существующий.");
+        return;
+      }
+      products.unshift(p);
+      showMessage("ok", "Товар добавлен. Не забудь скачать products.json и закоммитить.");
+    }else{
+      // If changing id, ensure uniqueness
+      if (sameIdIndex !== -1 && sameIdIndex !== editingIndex){
+        showMessage("warn", "Такой ID уже занят другим товаром.");
+        return;
+      }
+      products[editingIndex] = p;
+      showMessage("ok", "Товар обновлён. Не забудь скачать products.json и закоммитить.");
+    }
+
+    renderList();
+    clearForm();
+  });
+
+  document.getElementById("btnDelete").addEventListener("click", () => {
+    if (editingIndex === -1) return;
+
+    const p = products[editingIndex];
+    if (!confirm(`Удалить товар:\n\n${p.title}\n\nЭто действие нельзя отменить.`)) return;
+
+    products.splice(editingIndex, 1);
+    showMessage("ok", "Товар удалён. Не забудь скачать products.json и закоммитить.");
+    renderList();
+    clearForm();
+  });
+
+  els.search.addEventListener("input", renderList);
+  els.filterCategory.addEventListener("change", renderList);
+
+  // Auto-load on GitHub Pages (http/https). If fails, user can import.
+  (async () => {
+    try{
+      if (location.protocol.startsWith("http")){
+        await loadFromSite();
+      }
+    }catch(e){
+      // silent - user can click load/import
+      console.warn(e);
+    }
+  })();
+</script>
+</body>
+</html>
