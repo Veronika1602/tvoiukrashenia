@@ -26,6 +26,7 @@
             color: var(--color-text);
             line-height: 1.6;
             background-color: var(--color-light);
+            animation: fadeIn 0.8s ease-in-out;
         }
 
         /* --- ШАПКА (ТОЧНАЯ КОПИЯ ГЛАВНОЙ) --- */
@@ -126,8 +127,11 @@
         /* --- КАТАЛОГ --- */
         .portfolio {
             padding: 40px 40px 80px 40px;
-            max-width: 1200px;
-            margin: 0 auto;
+
+            /* ВАЖНО: убираем ограничение ширины, чтобы карточки заняли весь экран */
+            max-width: none;
+            width: 100%;
+            margin: 0;
         }
 
         .section-title {
@@ -138,15 +142,11 @@
             font-weight: 700;
         }
 
+        /* --- СЕТКА ТОВАРОВ --- */
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-        }
-                @media (max-width: 1200px) {
-            .portfolio-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 768px) {
@@ -161,6 +161,10 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: all 0.3s;
+
+            /* фиксируем кнопку внизу карточки */
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-item:hover {
@@ -223,13 +227,8 @@
             background: rgba(0, 0, 0, 0.8);
         }
 
-        .gallery-prev {
-            left: 10px;
-        }
-
-        .gallery-next {
-            right: 10px;
-        }
+        .gallery-prev { left: 10px; }
+        .gallery-next { right: 10px; }
 
         .gallery-dots {
             position: absolute;
@@ -268,6 +267,9 @@
 
         .portfolio-content {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .portfolio-title {
@@ -305,6 +307,7 @@
             transition: background 0.3s;
             border: none;
             cursor: pointer;
+            margin-top: auto;
         }
 
         .btn-buy:hover {
@@ -319,6 +322,7 @@
             font-size: 14px;
             font-weight: 500;
         }
+
         .back-link:hover {
             color: var(--color-accent);
         }
@@ -342,23 +346,16 @@
                 gap: 10px;
                 width: 100%;
             }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         /* === ПЛАВНОЕ ПОЯВЛЕНИЕ СТРАНИЦЫ === */
-        body {
-            animation: fadeIn 0.8s ease-in-out;
-        }
-
         @keyframes fadeIn {
-            from { 
-                opacity: 0; 
+            from {
+                opacity: 0;
                 transform: translateY(10px);
             }
-            to { 
-                opacity: 1; 
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
         }
@@ -366,28 +363,18 @@
         @view-transition {
             navigation: auto;
         }
-        /* === ФИКСИРОВАННАЯ КНОПКА В КАРТОЧКЕ === */
-        .portfolio-item {
-            display: flex;
-            flex-direction: column;
-        }
 
-        .portfolio-content {
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .btn-buy {
-            margin-top: auto;
-        }
-
-        /* === ФИЛЬТРЫ === */
-        .filters-section {
+        /* === ФИЛЬТРЫ + РАСКЛАДКА (ТОВАРЫ + ФИЛЬТР СПРАВА) === */
+        .portfolio-with-filters {
             display: flex;
             gap: 30px;
-            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .portfolio-grid-wrapper {
+            flex: 1;
+            min-width: 0;
+            order: 1; /* товары слева */
         }
 
         .filters-sidebar {
@@ -398,8 +385,11 @@
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             height: fit-content;
+
             position: sticky;
             top: 100px;
+
+            order: 2; /* фильтр справа */
         }
 
         .filter-group {
@@ -443,22 +433,6 @@
             font-weight: 600;
         }
 
-        .portfolio-with-filters {
-            display: flex;
-            gap: 15px;
-            flex-direction: row-reverse;
-            align-items: flex-start;
-        }
-
-        .portfolio-grid-wrapper {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .portfolio-grid-wrapper {
-            flex: 1;
-        }
-
         .reset-filters {
             display: block;
             width: 100%;
@@ -481,22 +455,22 @@
 
         @media (max-width: 1024px) {
             .portfolio-with-filters {
-                flex-direction: column-reverse;
+                flex-direction: column;
             }
 
             .filters-sidebar {
                 width: 100%;
-                position: static;
+                min-width: 0;
+                position: static; /* на мобилке sticky выключаем */
+                order: 0;
+            }
+
+            .portfolio-grid-wrapper {
+                order: 0;
             }
 
             .portfolio-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            }
-        }
-
-        @media (max-width: 768px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             }
         }
     </style>
@@ -525,11 +499,323 @@
     <!-- КАТАЛОГ -->
     <section class="portfolio">
         <a href="index.html" class="back-link">← Вернуться на главную</a>
-        
+
         <h2 class="section-title">Колье и чокеры</h2>
-        
+
         <div class="portfolio-with-filters">
-            <!-- ФИЛЬТРЫ СЛЕВА -->
+            <!-- ТОВАРЫ СЛЕВА -->
+            <div class="portfolio-grid-wrapper">
+                <!-- ВАЖНО: здесь должна быть ОДНА portfolio-grid (я убрала вложенную) -->
+                <div class="portfolio-grid">
+
+                    <!-- Товар 1 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="1_1.jpg" alt="Колье Северный свет - фото 1" class="gallery-item active">
+                                <img src="1_2.png" alt="Колье Северный свет - фото 2" class="gallery-item">
+                                <img src="1_3.png" alt="Колье Северный свет - фото 3" class="gallery-item">
+                                <img src="1_4.png" alt="Колье Северный свет - фото 4" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                                <button class="dot" onclick="goToGallery(this, 3)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Северный свет"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Аквамарин, жемчуг Майорка и позолота 14 карат. Каждая бусина — словно кусочек льда и света, переплетённые в гармонию.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Северный свет')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 2 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="2_1.png" alt="Колье Синий кристалл - фото 1" class="gallery-item active">
+                                <img src="2_2.png" alt="Колье Синий кристалл - фото 2" class="gallery-item">
+                                <img src="2_3.png" alt="Колье Синий кристалл - фото 3" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Синий кристалл"</h3>
+                            <p class="portfolio-desc">Колье с натуральным цирконом, гематитом и керамикой. Стильное украшение ручной работы с современным минималистичным дизайном.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Синий кристалл')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 3 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="3_1.png" alt="Чокер Изумрудный свет - фото 1" class="gallery-item active">
+                                <img src="3_2.png" alt="Чокер Изумрудный свет - фото 2" class="gallery-item">
+                                <img src="3_3.jpg" alt="Чокер Изумрудный свет - фото 3" class="gallery-item">
+                                <img src="3_4.png" alt="Чокер Изумрудный свет - фото 4" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                                <button class="dot" onclick="goToGallery(this, 3)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Чокер "Изумрудный свет"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Жемчуг Майорка с зелёным клубничным кварцем. Этот чокер — воплощение природной гармонии. Нежные жемчужины создают основу, словно капли росы, а в центре композиции горделиво сияет зелёный клубничный кварц.</p>
+                            <button class="btn-buy" onclick="orderProduct('Чокер Изумрудный свет')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 4 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="4_2.png" alt="Колье Жемчужная классика - фото 1" class="gallery-item active">
+                                <img src="4_1.jpg" alt="Колье Жемчужная классика - фото 2" class="gallery-item">
+                                <img src="4_3.png" alt="Колье Жемчужная классика - фото 3" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Жемчужная классика"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Жемчуг с цепью. Это колье — воплощение вневременной классики и совершенства.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Жемчужная классика')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 5 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="5_1.png" alt="Колье Притяжение - фото 1" class="gallery-item active">
+                                <img src="5_2.png" alt="Колье Притяжение - фото 2" class="gallery-item">
+                                <img src="5_3.png" alt="Колье Притяжение - фото 3" class="gallery-item">
+                                <img src="5_4.jpg" alt="Колье Притяжение - фото 4" class="gallery-item">
+                                <img src="5_5.jpg" alt="Колье Притяжение - фото 5" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                                <button class="dot" onclick="goToGallery(this, 3)"></button>
+                                <button class="dot" onclick="goToGallery(this, 4)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Притяжение"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Граненный шоколадный гематит с коричневым кристаллом. Шоколадные оттенки гематита и коричневого кристалла создают образ непреодолимого притяжения и внутренней силы.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Притяжение')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 6 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="6_1.jpg" alt="Колье Минимализм - фото 1" class="gallery-item active">
+                                <img src="6_2.png" alt="Колье Минимализм - фото 2" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Минимализм"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Жемчуг Майорка с гематитом. Контрастное сочетание нежного жемчуга и строгого матового гематита создаёт идеальный баланс между женственностью и силой.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Минимализм')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 7 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="7_1.png" alt="Колье Спокойствие - фото 1" class="gallery-item active">
+                                <img src="7_2.png" alt="Колье Спокойствие - фото 2" class="gallery-item">
+                                <img src="7_3.png" alt="Колье Спокойствие - фото 3" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Спокойствие"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Натуральный амазонит с сердцем. Это колье для тех, кто верит в силу камня и красоту природных минералов</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Спокойствие')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 8 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="8_1.png" alt="Чокер Бордовый Шёпот - фото 1" class="gallery-item active">
+                                <img src="8_2.png" alt="Чокер Бордовый Шёпот - фото 2" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Чокер "Бордовый Шёпот"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Тонированный полупрозрачный халцедон с позолотой 18 карат. Деликатный акцент, который мягко подчёркивает линию шеи и добавляет образу глубины и уверенности.</p>
+                            <button class="btn-buy" onclick="orderProduct('Чокер Бордовый Шёпот')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 9 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="9_1.png" alt="Колье Романтика - фото 1" class="gallery-item active">
+                                <img src="9_2.png" alt="Колье Романтика - фото 2" class="gallery-item">
+                                <img src="9_3.png" alt="Колье Романтика - фото 3" class="gallery-item">
+                                <img src="9_4.png" alt="Колье Романтика - фото 4" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                                <button class="dot" onclick="goToGallery(this, 3)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Романтика"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Жемчуг Майорка с розовым цирконом. Это украшение для тех, кто верит в красоту моментов и магию деталей.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Романтика')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 10 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="10_1.png" alt="Колье Волшебная Черепаха - фото 1" class="gallery-item active">
+                                <img src="10_2.png" alt="Колье Волшебная Черепаха - фото 2" class="gallery-item">
+                                <img src="10_3.png" alt="Колье Волшебная Черепаха - фото 3" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Волшебная Черепаха"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Гематит и фурнитура с покрытием 18 карат. Акцентное украшение из серебристого гематита с позолоченной подвеской-черепахой, которая символизирует мудрость и стабильность.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Волшебная Черепаха')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 11 С ГАЛЕРЕЕЙ -->
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">
+                            <div class="gallery-container">
+                                <img src="11_1.png" alt="Колье Сердечная симфония - фото 1" class="gallery-item active">
+                                <img src="11_2.png" alt="Колье Сердечная симфония - фото 2" class="gallery-item">
+                                <img src="11_3.png" alt="Колье Сердечная симфония - фото 3" class="gallery-item">
+                                <img src="11_4.png" alt="Колье Сердечная симфония - фото 4" class="gallery-item">
+                            </div>
+
+                            <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
+                            <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
+
+                            <div class="gallery-dots">
+                                <button class="dot active" onclick="goToGallery(this, 0)"></button>
+                                <button class="dot" onclick="goToGallery(this, 1)"></button>
+                                <button class="dot" onclick="goToGallery(this, 2)"></button>
+                                <button class="dot" onclick="goToGallery(this, 3)"></button>
+                            </div>
+                        </div>
+
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title">Колье "Сердечная симфония"</h3>
+                            <p class="portfolio-price"></p>
+                            <p class="portfolio-desc">Изящное колье из люкс жемчуга Майорка и кристалла-подвески в позолоте 14 карат. Это украшение дарует образу светящееся, романтичное настроение и ощущение нежной элегантности.</p>
+                            <button class="btn-buy" onclick="orderProduct('Колье Сердечная симфония')">Заказать похожее</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ФИЛЬТРЫ СПРАВА -->
             <div class="filters-sidebar">
                 <div class="filter-group">
                     <h4>Цвет</h4>
@@ -593,314 +879,6 @@
 
                 <button class="reset-filters" onclick="resetFilters()">Очистить фильтры</button>
             </div>
-
-            <!-- ТОВАРЫ СПРАВА -->
-            <div class="portfolio-grid-wrapper">
-                <div class="portfolio-grid">
-        
-        <div class="portfolio-grid">
-            
-           <!-- Товар 1 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="1_1.jpg" alt="Колье Северный свет - фото 1" class="gallery-item active">
-                        <img src="1_2.png" alt="Колье Северный свет - фото 2" class="gallery-item">
-                        <img src="1_3.png" alt="Колье Северный свет - фото 3" class="gallery-item">
-                        <img src="1_4.png" alt="Колье Северный свет - фото 4" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                        <button class="dot" onclick="goToGallery(this, 3)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Северный свет"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Аквамарин, жемчуг Майорка и позолота 14 карат. Каждая бусина — словно кусочек льда и света, переплетённые в гармонию.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Северный свет')">Заказать похожее</button>
-                </div>
-            </div>
-
-           <!-- Товар 2 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="2_1.png" alt="Колье Синий кристалл - фото 1" class="gallery-item active">
-                        <img src="2_2.png" alt="Колье Синий кристалл - фото 2" class="gallery-item">
-                        <img src="2_3.png" alt="Колье Синий кристалл - фото 3" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Синий кристалл"</h3>
-                    <p class="portfolio-desc">Колье с натуральным цирконом, гематитом и керамикой. Стильное украшение ручной работы с современным минималистичным дизайном.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Синий кристалл')">Заказать похожее</button>
-                </div>
-            </div>
-            <!-- Товар 3 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="3_1.png" alt="Чокер Изумрудный свет - фото 1" class="gallery-item active">
-                        <img src="3_2.png" alt="Чокер Изумрудный свет - фото 2" class="gallery-item">
-                        <img src="3_3.jpg" alt="Чокер Изумрудный свет - фото 3" class="gallery-item">
-                        <img src="3_4.png" alt="Чокер Изумрудный свет - фото 4" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                        <button class="dot" onclick="goToGallery(this, 3)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Чокер "Изумрудный свет"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Жемчуг Майорка с зелёным клубничным кварцем. Этот чокер — воплощение природной гармонии. Нежные жемчужины создают основу, словно капли росы, а в центре композиции горделиво сияет зелёный клубничный кварц.</p>
-                    <button class="btn-buy" onclick="orderProduct('Чокер Изумрудный свет')">Заказать похожее</button>
-                </div>
-            </div>
-
-            <!-- Товар 4 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="4_2.png" alt="Колье Жемчужная классика - фото 1" class="gallery-item active">
-                        <img src="4_1.jpg" alt="Колье Жемчужная классика - фото 2" class="gallery-item">
-                        <img src="4_3.png" alt="Колье Жемчужная классика - фото 3" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Жемчужная классика"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Жемчуг с цепью. Это колье — воплощение вневременной классики и совершенства.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Жемчужная классика')">Заказать похожее</button>
-                </div>
-            </div>
-
-                       <!-- Товар 5 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="5_1.png" alt="Колье Притяжение - фото 1" class="gallery-item active">
-                        <img src="5_2.png" alt="Колье Притяжение - фото 2" class="gallery-item">
-                        <img src="5_3.png" alt="Колье Притяжение - фото 3" class="gallery-item">
-                        <img src="5_4.jpg" alt="Колье Притяжение - фото 4" class="gallery-item">
-                        <img src="5_5.jpg" alt="Колье Притяжение - фото 5" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                        <button class="dot" onclick="goToGallery(this, 3)"></button>
-                        <button class="dot" onclick="goToGallery(this, 4)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Притяжение"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Граненный шоколадный гематит с коричневым кристаллом. Шоколадные оттенки гематита и коричневого кристалла создают образ непреодолимого притяжения и внутренней силы.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Притяжение')">Заказать похожее</button>
-                </div>
-            </div>
-
-            <!-- Товар 6 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="6_1.jpg" alt="Колье Минимализм - фото 1" class="gallery-item active">
-                        <img src="6_2.png" alt="Колье Минимализм - фото 2" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Минимализм"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Жемчуг Майорка с гематитом. Контрастное сочетание нежного жемчуга и строгого матового гематита создаёт идеальный баланс между женственностью и силой.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Минимализм')">Заказать похожее</button>
-                </div>
-            </div>
-
-            <!-- Товар 7 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="7_1.png" alt="Колье Спокойствие - фото 1" class="gallery-item active">
-                        <img src="7_2.png" alt="Колье Спокойствие - фото 2" class="gallery-item">
-                        <img src="7_3.png" alt="Колье Спокойствие - фото 3" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Спокойствие"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Натуральный амазонит с сердцем. Это колье для тех, кто верит в силу камня и красоту природных минералов</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Спокойствие')">Заказать похожее</button>
-                </div>
-            </div>
-             <!-- Товар 8 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="8_1.png" alt="Чокер Бордовый Шёпот - фото 1" class="gallery-item active">
-                        <img src="8_2.png" alt="Чокер Бордовый Шёпот - фото 2" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Чокер "Бордовый Шёпот"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Тонированный полупрозрачный халцедон с позолотой 18 карат. Деликатный акцент, который мягко подчёркивает линию шеи и добавляет образу глубины и уверенности.</p>
-                    <button class="btn-buy" onclick="orderProduct('Чокер Бордовый Шёпот')">Заказать похожее</button>
-                </div>
-            </div>
-
-            <!-- Товар 9 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="9_1.png" alt="Колье Романтика - фото 1" class="gallery-item active">
-                        <img src="9_2.png" alt="Колье Романтика - фото 2" class="gallery-item">
-                        <img src="9_3.png" alt="Колье Романтика - фото 3" class="gallery-item">
-                        <img src="9_4.png" alt="Колье Романтика - фото 4" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                        <button class="dot" onclick="goToGallery(this, 3)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Романтика"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Жемчуг Майорка с розовым цирконом. Это украшение для тех, кто верит в красоту моментов и магию деталей.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Романтика')">Заказать похожее</button>
-                </div>
-            </div>
-            <!-- Товар 10 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="10_1.png" alt="Колье Волшебная Черепаха - фото 1" class="gallery-item active">
-                        <img src="10_2.png" alt="Колье Волшебная Черепаха - фото 2" class="gallery-item">
-                        <img src="10_3.png" alt="Колье Волшебная Черепаха - фото 3" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Волшебная Черепаха"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Гематит и фурнитура с покрытием 18 карат. Акцентное украшение из серебристого гематита с позолоченной подвеской-черепахой, которая символизирует мудрость и стабильность.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Волшебная Черепаха')">Заказать похожее</button>
-                </div>
-            </div>
-            <!-- Товар 11 С ГАЛЕРЕЕЙ -->
-            <div class="portfolio-item">
-                <div class="portfolio-image">
-                    <div class="gallery-container">
-                        <img src="11_1.png" alt="Колье Сердечная симфония - фото 1" class="gallery-item active">
-                        <img src="11_2.png" alt="Колье Сердечная симфония - фото 2" class="gallery-item">
-                        <img src="11_3.png" alt="Колье Сердечная симфония - фото 3" class="gallery-item">
-                        <img src="11_4.png" alt="Колье Сердечная симфония - фото 4" class="gallery-item">
-                    </div>
-                    
-                    <button class="gallery-nav gallery-prev" onclick="changeGallery(this, -1)">❮</button>
-                    <button class="gallery-nav gallery-next" onclick="changeGallery(this, 1)">❯</button>
-                    
-                    <div class="gallery-dots">
-                        <button class="dot active" onclick="goToGallery(this, 0)"></button>
-                        <button class="dot" onclick="goToGallery(this, 1)"></button>
-                        <button class="dot" onclick="goToGallery(this, 2)"></button>
-                        <button class="dot" onclick="goToGallery(this, 3)"></button>
-                    </div>
-                </div>
-                
-                <div class="portfolio-content">
-                    <h3 class="portfolio-title">Колье "Сердечная симфония"</h3>
-                    <p class="portfolio-price"></p>
-                    <p class="portfolio-desc">Изящное колье из люкс жемчуга Майорка и кристалла-подвески в позолоте 14 карат. Это украшение дарует образу светящееся, романтичное настроение и ощущение нежной элегантности.</p>
-                    <button class="btn-buy" onclick="orderProduct('Колье Сердечная симфония')">Заказать похожее</button>
-                </div>
-            </div>
-</div>
-            </div>
         </div>
     </section>
 
@@ -910,7 +888,7 @@
         <p style="margin-top: 10px; color: #aaa;">Создано с любовью к украшениям ✧</p>
     </footer>
 
-      <script>
+    <script>
         // Функция для заказа товара
         function orderProduct(productName) {
             localStorage.setItem('selectedProduct', productName);
@@ -922,15 +900,15 @@
             const image = btn.closest('.portfolio-image');
             const items = image.querySelectorAll('.gallery-item');
             const dots = image.querySelectorAll('.dot');
-            
+
             let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
             let newIndex = (currentIndex + direction + items.length) % items.length;
-            
+
             items[currentIndex].classList.remove('active');
-            dots[currentIndex].classList.remove('active');
-            
+            if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+
             items[newIndex].classList.add('active');
-            dots[newIndex].classList.add('active');
+            if (dots[newIndex]) dots[newIndex].classList.add('active');
         }
 
         // Функция для кликания на точку в галерее
@@ -938,14 +916,14 @@
             const image = dot.closest('.portfolio-image');
             const items = image.querySelectorAll('.gallery-item');
             const dots = image.querySelectorAll('.dot');
-            
+
             let currentIndex = Array.from(items).findIndex(item => item.classList.contains('active'));
-            
+
             items[currentIndex].classList.remove('active');
-            dots[currentIndex].classList.remove('active');
-            
+            if (dots[currentIndex]) dots[currentIndex].classList.remove('active');
+
             items[index].classList.add('active');
-            dots[index].classList.add('active');
+            if (dots[index]) dots[index].classList.add('active');
         }
 
         // Листание клавишами стрелок
@@ -960,8 +938,9 @@
             }
         });
     </script>
+
     <script>
-// Определяем свойства товаров
+        // Определяем свойства товаров
         const products = {
             'Колье "Северный свет"': { colors: ['белый', 'синий'], materials: ['аквамарин', 'жемчуг'] },
             'Колье "Синий кристалл"': { colors: ['синий'], materials: ['циркон', 'гематит'] },
@@ -979,18 +958,18 @@
         function filterProducts() {
             const selectedColors = Array.from(document.querySelectorAll('input[id^="color-"]:checked')).map(el => el.value);
             const selectedMaterials = Array.from(document.querySelectorAll('input[id^="material-"]:checked')).map(el => el.value);
-            
+
             const items = document.querySelectorAll('.portfolio-item');
-            
+
             items.forEach(item => {
                 const title = item.querySelector('.portfolio-title').textContent;
                 const product = products[title];
-                
+
                 if (!product) return;
-                
+
                 const colorMatch = selectedColors.length === 0 || selectedColors.some(c => product.colors.includes(c));
                 const materialMatch = selectedMaterials.length === 0 || selectedMaterials.some(m => product.materials.includes(m));
-                
+
                 item.style.display = (colorMatch && materialMatch) ? 'flex' : 'none';
             });
         }
@@ -1002,6 +981,6 @@
             filterProducts();
         }
     </script>
+
 </body>
 </html>
-
