@@ -147,6 +147,8 @@
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr)); /* максимум 4 */
   gap: 30px;
+  justify-items: start; /* карточки не растягиваются при 1 товаре */
+  align-items: start;
 }
 
 /* 3 в ряд */
@@ -176,6 +178,9 @@
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             transition: all 0.3s;
+
+            width: 100%;
+            max-width: 360px; /* идеальная ширина карточки */
 
             /* фиксируем кнопку внизу карточки */
             display: flex;
@@ -483,21 +488,6 @@
         }
 
 
-            .filters-sidebar {
-                width: 100%;
-                min-width: 0;
-                position: static; /* на мобилке sticky выключаем */
-                order: 0;
-            }
-
-            .portfolio-grid-wrapper {
-                order: 0;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
-        }
     </style>
 </head>
 <body>
