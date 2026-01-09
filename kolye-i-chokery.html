@@ -71,7 +71,24 @@
             color: var(--color-accent);
         }
 
-        /* Выпадающее меню (как на главной) */
+        
+        /* Активный пункт меню */
+        nav a.active,
+        nav .nav-links li.active > a {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        nav a.active::after,
+        nav .nav-links li.active > a::after {
+            content: '';
+            display: block;
+            height: 2px;
+            background: var(--color-accent);
+            margin-top: 6px;
+            border-radius: 2px;
+        }
+/* Выпадающее меню (как на главной) */
         .nav-dropdown {
             position: relative;
         }
@@ -561,23 +578,32 @@
 <body>
 
     <!-- ШАПКА -->
-    <header>
-        <nav>
-            <a href="index.html" class="logo">Твои украшения✧</a>
-            <ul>
-                <li><a href="index.html#about">Обо мне</a></li>
-                <li class="nav-dropdown">
-                    <a href="index.html#categories">Мои работы</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
-                        <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
-                    </ul>
-                </li>
-                <li><a href="index.html#contact">Контакты</a></li>
-            </ul>
-            <a href="index.html#contact" class="contact-btn">Заказать</a>
-        </nav>
-    </header>
+    
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">Твои украшения✧</a>
+
+        <ul class="nav-links">
+            <li><a href="index.html#about">Обо мне</a></li>
+
+            <li class="nav-dropdown active">
+                <a href="index.html#categories" class="active">Мои работы</a>
+                <ul class="dropdown-menu">
+                    <li><a href="kolye-i-chokery.html">Колье и чокеры</a></li>
+                    <li><a href="broshi-braslety-sergi.html">Броши, браслеты и серьги</a></li>
+                </ul>
+            </li>
+
+            <li><a href="index.html#why-choose-me">Оформление заказа и доставка</a></li>
+            <li><a href="index.html#contact">Контакты</a></li>
+        </ul>
+
+        <a href="index.html#contact" class="contact-btn">Заказать</a>
+    </nav>
+</header>
+
+
 
     <!-- КАТАЛОГ -->
     <section class="portfolio">
