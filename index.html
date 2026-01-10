@@ -1502,7 +1502,10 @@
         img.style.setProperty('--ps', ps);
 
         if (spot){
-          spot.style.setProperty('--py', py + 'px');
+          // subtle micro-movement for spotlight (luxury feel)
+          const t = performance.now() * 0.001;
+          const sway = Math.sin(t * 1.2) * 1.5; // very subtle
+          spot.style.setProperty('--py', (parseFloat(py) * 0.6 + sway).toFixed(2) + 'px');
         }
       }
 
