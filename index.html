@@ -996,6 +996,104 @@
       }
     }
 
+
+    /* =========================
+       About photo polish
+       - Soft shadow
+       - Micro "alive frame" motion (very subtle)
+       - Master signature
+       ========================= */
+
+    .about__media{
+      box-shadow: 0 18px 44px rgba(46,42,38,0.10);
+    }
+
+    /* Micro animation for hands/photo (disabled for reduced motion) */
+    .about__media img{
+      transform: scale(1.02);
+      transform-origin: 60% 55%;
+      animation: aboutAlive 9s var(--ease) 0.2s infinite alternate;
+      will-change: transform;
+    }
+
+    @keyframes aboutAlive{
+      from{ transform: scale(1.02) translateY(0px); }
+      to{ transform: scale(1.045) translateY(-3px); }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .about__media img{ animation: none !important; transform: none !important; }
+    }
+
+    .about__signature{
+      margin-top: 26px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(222,214,204,.85);
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: var(--heading);
+      display:flex;
+      align-items:center;
+      gap: 10px;
+    }
+    .about__signature::before{
+      content:"";
+      width: 34px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(198,162,126,.0), rgba(198,162,126,.85));
+      border-radius: 2px;
+    }
+    .about__signature span{
+      color: var(--accent);
+      font-style: normal;
+      letter-spacing: .02em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+
+    /* =========================
+       About heading highlight
+       ========================= */
+    .about__kicker{
+      font-weight: 800;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(198,162,126,.65);
+      background: linear-gradient(135deg, rgba(216,181,138,.18), rgba(239,234,227,.9));
+      color: var(--heading);
+      letter-spacing:.22em;
+      text-transform: uppercase;
+      font-size: 11px;
+    }
+
+    .about__name{
+      display:inline-block;
+      margin-top: 12px;
+      padding: 6px 14px 8px;
+      border-radius: 14px;
+      background: radial-gradient(120px 60px at 30% 40%, rgba(198,162,126,.22), rgba(245,243,239,0) 60%),
+                  linear-gradient(135deg, rgba(245,243,239,.9), rgba(239,234,227,.9));
+      border: 1px solid rgba(222,214,204,.95);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+
+    /* Highlight name inside text */
+    .name-highlight{
+      color: var(--heading);
+      font-weight: 700;
+      background: none;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
+
   </style>
 </head>
 
@@ -1071,14 +1169,14 @@
       <div class="geo geo--dots" style="right: -40px; bottom: -40px;" aria-hidden="true"></div>
       <div class="about__grid reveal">
         <div class="about__card">
-          <div class="kicker">Обо мне</div>
-          <h2 class="about__name">Евгения</h2>
-          <p>Меня зовут Евгения, и я создаю украшения вручную в Санкт-Петербурге.</p>
+          <div class="about__kicker">Обо мне</div>
+                              <p>Меня зовут <strong class="name-highlight">Евгения</strong>, и я создаю украшения вручную в Санкт-Петербурге.</p>
           <p>Каждое изделие — это результат кропотливого труда, стремления к совершенству и любви к деталям. Я использую только качественные материалы, которые дарят украшениям долгую жизнь.</p>
           <p>Мне важно, чтобы вы чувствовали себя увереннее и прекраснее, надевая мои украшения. Каждая работа создаётся с душой — это не просто аксессуар, это ваша история.</p>
+          
         </div>
 
-        <div class="about__media">
+        <div class="about__media reveal">
           <!-- Placeholder (замените на ваше фото процесса / мастерской) -->
           <img
             src="https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80"
