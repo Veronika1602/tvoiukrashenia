@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -866,6 +867,73 @@
       .reveal{ transition: none !important; }
       .work-card, .btn{ transition: none !important; }
     }
+    /* =========================
+       Extra geometry (minimal, premium)
+       ========================= */
+    .geo{
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .55;
+      filter: saturate(1.02);
+    }
+
+    /* Thin diagonal line */
+    .geo--diag{
+      width: min(720px, 70vw);
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(198,162,126,.55) 30%, rgba(222,214,204,.9) 70%, transparent 100%);
+      transform: rotate(-14deg);
+    }
+
+    /* Rotated square outline */
+    .geo--diamond{
+      width: 140px;
+      height: 140px;
+      border: 1px solid rgba(198,162,126,.45);
+      transform: rotate(18deg);
+      border-radius: 16px;
+    }
+    .geo--diamond::after{
+      content:"";
+      position:absolute;
+      inset: 16px;
+      border: 1px solid rgba(222,214,204,.85);
+      border-radius: 14px;
+      transform: rotate(-10deg);
+    }
+
+    /* Corner brackets (like editorial frame) */
+    .geo--brackets{
+      width: 220px;
+      height: 220px;
+      opacity: .45;
+      background:
+        linear-gradient(var(--accent), var(--accent)) 0 0 / 36px 1px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 0 0 / 1px 36px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 100% 0 / 36px 1px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 100% 0 / 1px 36px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 0 100% / 36px 1px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 0 100% / 1px 36px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 100% 100% / 36px 1px no-repeat,
+        linear-gradient(var(--accent), var(--accent)) 100% 100% / 1px 36px no-repeat;
+      border-radius: 18px;
+    }
+
+    /* Soft dot grid (very subtle) */
+    .geo--dots{
+      width: 240px;
+      height: 240px;
+      opacity: .22;
+      background-image: radial-gradient(rgba(198,162,126,.65) 1px, transparent 1px);
+      background-size: 16px 16px;
+      border-radius: 22px;
+      transform: rotate(8deg);
+    }
+
+    /* Keep geometry behind content */
+    .hero, .section{ overflow: hidden; }
+
   </style>
 </head>
 
@@ -902,6 +970,9 @@
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero__decor" aria-hidden="true"></div>
+    <div class="geo geo--diag" style="left: -6%; top: 110px;" aria-hidden="true"></div>
+    <div class="geo geo--diamond" style="right: 10%; bottom: 18px;" aria-hidden="true"></div>
+
 
     <div class="container">
       <div class="hero__grid reveal">
@@ -933,6 +1004,8 @@
   <!-- ABOUT -->
   <section class="section section--soft" id="about">
     <div class="container">
+      <div class="geo geo--brackets" style="left: -30px; top: 26px;" aria-hidden="true"></div>
+      <div class="geo geo--dots" style="right: -40px; bottom: -40px;" aria-hidden="true"></div>
       <div class="about__grid reveal">
         <div class="about__card">
           <div class="kicker">Обо мне</div>
@@ -956,6 +1029,8 @@
   <!-- WORKS / CATEGORIES -->
   <section class="section" id="categories">
     <div class="container">
+      <div class="geo geo--brackets" style="right: -24px; top: 10px; opacity:.30;" aria-hidden="true"></div>
+      <div class="geo geo--diag" style="left: 10%; top: 92px; opacity:.28;" aria-hidden="true"></div>
       <div class="works__head reveal">
         <div>
           <div class="kicker">Коллекции</div>
