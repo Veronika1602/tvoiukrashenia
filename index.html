@@ -443,20 +443,7 @@
       object-fit: cover;
     }
 
-    /* diagonal overlay */
-    .about__media::after{
-      content:"";
-      position:absolute;
-      inset:-40px -80px auto auto;
-      width: 240px;
-      height: 240px;
-      transform: rotate(18deg);
-      background: rgba(245,243,239,0.75);
-      border: 1px solid rgba(222,214,204,.85);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.06);
-    }
-
-    /* =========================
+        /* =========================
        WORKS (Editorial grid + featured card)
        ========================= */
     .works__head{
@@ -838,6 +825,34 @@
       font-size: 13px;
     }
 
+
+    /* =========================
+       Mobile focus tuning for "Колье и чокеры" (featured card)
+       Keeps pendant area in view on smaller screens
+       ========================= */
+    .work-card--featured .work-card__media img{
+      object-position: 65% 55%;
+    }
+
+    @media (max-width: 980px){
+      .work-card--featured .work-card__media{
+        height: 380px; /* a bit shorter for mobile */
+      }
+      .work-card--featured .work-card__media img{
+        object-position: 68% 56%;
+      }
+    }
+
+    @media (max-width: 520px){
+      .work-card--featured .work-card__media{
+        height: 320px;
+      }
+      .work-card--featured .work-card__media img{
+        object-position: 70% 58%;
+      }
+    }
+
+
     /* =========================
        Responsive
        ========================= */
@@ -1209,7 +1224,7 @@
             <div class="work-card__media">
               <!-- Placeholder -->
               <img
-                src="https://images.unsplash.com/photo-1600721391689-2564bb8055de?auto=format&fit=crop&w=1800&q=80"
+                src="assets/images/home/necklaces.png"
                 alt="Колье и чокеры"
               />
             </div>
